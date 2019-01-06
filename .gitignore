@@ -79,7 +79,8 @@ dao/src/test/resources/generator.properties
 /.idea/vcs.xml
 /lib/
 /out/
-/README.md
+
 
 /hs_err_pid9405.log
 /untitled104.iml
+/README.md
