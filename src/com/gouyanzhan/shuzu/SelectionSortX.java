@@ -83,15 +83,47 @@ public class SelectionSortX {
     }
 
     @Test
-    public void testSwap(){
+    public void testSwap_1(){
         int[] arr = new int[3];
         arr[0] = 1;
         arr[1] = 2;
         arr[2] = 3;
         int a = 0;
         int b = 2;
+        System.out.println("交换前：");
         printArr(arr);
         swap(arr, a, b);
+        System.out.println("交换后：");
+        printArr(arr);
+    }
+
+    @Test
+    public void testSwap_2() {
+        int[] arr = new int[3];
+        arr[0] = 1;
+        arr[1] = 2;
+        arr[2] = 3;
+        int a = 0;
+        int b = 3;
+        System.out.println("交换前：");
+        printArr(arr);
+        swap(arr, a, b);
+        System.out.println("交换后：");
+        printArr(arr);
+    }
+
+    @Test
+    public void testSwap_3() {
+        int[] arr = new int[3];
+        arr[0] = 1;
+        arr[1] = 2;
+        arr[2] = 3;
+        int a = 0;
+        int b = 3;
+        System.out.println("交换前：");
+        printArr(arr);
+        swap(null, a, b);
+        System.out.println("交换后：");
         printArr(arr);
     }
 
@@ -103,7 +135,6 @@ public class SelectionSortX {
         arr[2] = 3;
         String str = getArrStr(arr,0, 3);
         System.out.println(str);
-
     }
 }
 
