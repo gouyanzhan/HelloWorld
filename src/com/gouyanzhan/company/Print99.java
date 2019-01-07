@@ -17,6 +17,11 @@ public class Print99 {
      */
     public static void printMultiplyTable(int a, int b) {
         System.out.print("                       " + a + " * " + b + " 乘 法 表 \n");
+        if (b > a) {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
         for (int i = 1; i <= a; i++) {
             for (int j = 1; j <= b; j++) {
                 if (i >= j) {
@@ -32,7 +37,7 @@ public class Print99 {
 
     @Test
     public void testPrintMultiplyTable() {
-        printMultiplyTable(8, 8);
+        printMultiplyTable(8, 9);
     }
 
 }
