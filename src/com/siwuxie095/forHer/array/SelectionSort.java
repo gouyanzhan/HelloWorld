@@ -1,4 +1,4 @@
-package com.siwuxie095.array;
+package com.siwuxie095.forHer.array;
 
 /**
  * 选择排序：主要是找到当前最小元素对应的索引（简称最小索引）

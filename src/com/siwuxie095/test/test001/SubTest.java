@@ -1,5 +1,7 @@
-package com.siwuxie095.test;
+package com.siwuxie095.test.test001;
 
+
+import com.siwuxie095.test.test001.BaseTest;
 
 /**
  * 派生类 用于测试

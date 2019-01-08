@@ -1,4 +1,4 @@
-package com.siwuxie095.array;
+package com.siwuxie095.forHer.array;
 
 /**
  * 数组初始化，两种方式
