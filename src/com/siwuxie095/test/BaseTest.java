@@ -1,7 +1,9 @@
 package com.siwuxie095.test;
 
 /**
- * @author Jiajing Li <lijiajing@yit.com>
+ * 基类 用于测试
+ *
+ * @author Jiajing Li
  * @date 2019-01-07 12:59:28
  */
 public class BaseTest {

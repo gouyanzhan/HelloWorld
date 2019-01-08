@@ -2,7 +2,9 @@ package com.siwuxie095.test;
 
 
 /**
- * @author Jiajing Li <lijiajing@yit.com>
+ * 派生类 用于测试
+ *
+ * @author Jiajing Li
  * @date 2019-01-07 13:00:44
  */
 public class SubTest extends BaseTest {
