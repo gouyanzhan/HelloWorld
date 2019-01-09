@@ -1,4 +1,4 @@
-package com.siwuxie095.forHer.array;
+package com.siwuxie095.foryou.array;
 
 import java.lang.reflect.Field;
 

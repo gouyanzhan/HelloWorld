@@ -1,4 +1,4 @@
-package com.siwuxie095.forHer.array;
+package com.siwuxie095.foryou.array;
 
 /**
  * for 与 for each

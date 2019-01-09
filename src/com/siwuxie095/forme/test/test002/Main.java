@@ -1,4 +1,4 @@
-package com.siwuxie095.test.test002;
+package com.siwuxie095.forme.test.test002;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,11 @@ import java.util.List;
  */
 public class Main {
 
+    /**
+     * 说明的问题：
+     *
+     * List 的 sort() 排序方法，在什么情况下是从小往大排，在什么情况下是从大往小排。
+     */
     public static void main(String[] args) {
         User user1 = new User();
         user1.setId(2);

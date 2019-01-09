@@ -1,4 +1,4 @@
-package com.siwuxie095.test.test001;
+package com.siwuxie095.forme.test.test001;
 
 /**
  * 基类 用于测试
