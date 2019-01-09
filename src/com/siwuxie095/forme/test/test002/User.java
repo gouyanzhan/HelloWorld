@@ -1,4 +1,4 @@
-package com.siwuxie095.test.test002;
+package com.siwuxie095.forme.test.test002;
 
 /**
  * @author Jiajing Li
