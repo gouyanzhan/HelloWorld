@@ -2,7 +2,7 @@ package com.gouyanzhan.company;
 
 import java.util.Scanner;
 
-public class daoxu {
+public class Daoxu {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("请输入一串字母：");
