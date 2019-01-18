@@ -22,6 +22,12 @@ public class Daoxu {
         }
     }
 
+    /**
+     * https://blog.csdn.net/pange1991/article/details/81135151
+     * http://www.codes51.com/itwd/1196553.html
+     * https://stackoverflow.com/questions/6415728/junit-testing-with-simulated-user-input
+     * https://stackoverflow.com/questions/10531465/capture-keyboard-input-in-junit-test
+     */
     public static void printReverseCharForTest(){
         String data = "Hello, World!";
         String input;

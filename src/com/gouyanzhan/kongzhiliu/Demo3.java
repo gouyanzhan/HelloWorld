@@ -1,8 +1,14 @@
 package com.gouyanzhan.kongzhiliu;
 
+import org.junit.Test;
+
 public class Demo3 {
     public static void main(String[] args) {
         int n = 2;
+    execute(n);
+    }
+
+    private static void execute(int n){
         switch (n){
             //没有break语句的switch语句，注意它的执行结果
             case 0:
@@ -23,6 +29,17 @@ public class Demo3 {
             default:
                 System.out.println("default执行");
         }
+    }
 
+    @Test
+    public void testExecute(){
+        int n = 3;
+        execute(n);
+        System.out.println();
+        n = 7;
+        execute(n);
+        System.out.println();
+        n = -1;
+        execute(n);
     }
 }

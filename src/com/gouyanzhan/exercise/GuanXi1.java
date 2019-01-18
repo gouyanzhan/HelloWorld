@@ -9,18 +9,20 @@ public class GuanXi1 {
         //定义一个double类型的变量
         double d = 5.0;
         //运用关系运算符的结果
-        boolean b1 =(i==d);
-        System.out.println("b1的结果为：" + b1);
-        printBoolForIntAndDouble(i, d);
+        boolean b1;
+        b1 = false;
         b1 = getBoolForIntAndDouble(i,d);
         System.out.println("b1的结果为：" + b1);
+        printBoolForIntAndDouble(i, d);
         //定义一个char类型变量
         char c = 'a';
         //定义一个long类型变量
         long l =97L;
         //运用关系运算符的结果
-        boolean b2 =(c==l);
+        boolean b2;
+        b2 = getBoolForCharAndLong(c,l);
         System.out.println("b2的结果为：" + b2);
+        printBoolForCharAndLong(c,l);
         //定义一个boolean类型变量
         boolean bl1 = true;
         //定义一个boolean类型变量
@@ -30,15 +32,25 @@ public class GuanXi1 {
         System.out.println("b3的结果为：" + b3);
     }
 
-    public static void printBoolForIntAndDouble(int intVal, double doubleVal) {
+    private static void printBoolForIntAndDouble(int intVal, double doubleVal) {
       boolean boolVal;
       boolVal = (intVal == doubleVal);
       System.out.println("printBoolForIntAndDouble:"+boolVal);
     }
-    public static boolean getBoolForIntAndDouble(int intVal, double doubleVal) {
+    private static boolean getBoolForIntAndDouble(int intVal, double doubleVal) {
         boolean boolVal;
         boolVal = (intVal == doubleVal);
         return boolVal;
+    }
+
+    private static boolean getBoolForCharAndLong(char charVal, long longVal){
+        boolean boolVal =(charVal == longVal);
+        return boolVal;
+    }
+
+    private static void printBoolForCharAndLong(char charVal, long longVal){
+        boolean boolVal =(charVal == longVal);
+        System.out.println("printBoolForCharAndLong:"+boolVal);
     }
     int i4;
     @Test
@@ -67,4 +79,6 @@ public class GuanXi1 {
         boolean b = getBoolForIntAndDouble(i,d);
         System.out.println(b);
     }
+
+
 }
