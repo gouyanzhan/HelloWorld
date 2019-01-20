@@ -3,7 +3,9 @@ package com.siwuxie095.forme.util;
 import java.io.Serializable;
 
 /**
- * String 相关的工具类（参考 String、StringUtils）
+ * String 相关的工具类
+ *
+ * 参考：java.lang.String、org.apache.commons.lang3.StringUtils
  *
  * @author Jiajing Li
  * @date 2019-01-18 10:13:23
