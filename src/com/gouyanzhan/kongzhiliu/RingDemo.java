@@ -21,11 +21,14 @@ public class RingDemo {
         int[][] array = new int[n][n];
         int intB ;
         if (n%2!=0){
-            intB = n/2 +1;  //奇数时i循环次数
-        }else
-            intB = n/2;   //偶数时i循环次数
-        for (int i =0;i<intB;i++)
-        {  //从外到里循环
+            //奇数时i循环次数
+            intB = n/2 +1;
+        }else {
+            //偶数时i循环次数
+            intB = n / 2;
+        }
+        for (int i =0;i<intB;i++) {
+            //从外到里循环
             //从左到右横的开始
             for(int j =i;j<n-i;j++){
                 array[i][j] = intA;
@@ -46,7 +49,6 @@ public class RingDemo {
                 array[m][i]=intA;
                 intA++;
             }
-
         }
         //输出数组
         for (int i = 0;i<n;i++){

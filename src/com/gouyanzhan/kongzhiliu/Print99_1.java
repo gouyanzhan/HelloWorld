@@ -2,6 +2,10 @@ package com.gouyanzhan.kongzhiliu;
 
 public class Print99_1 {
     public static void main(String[] args) {
+       print99();
+    }
+
+    private static void print99(){
         System.out.println("99乘法表");
         System.out.print("     ");
         //首先先打印出第一行 1-9
@@ -16,9 +20,7 @@ public class Print99_1 {
                 if (j <= i) {
                     //打印出计算结果
                     System.out.print((i * j) + "     ");
-
                 }
-
             }
             //每执行完一次该循环后换行
             System.out.println();

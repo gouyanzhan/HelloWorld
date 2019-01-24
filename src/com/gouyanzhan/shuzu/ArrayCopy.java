@@ -22,7 +22,7 @@ public class ArrayCopy {
             System.out.println("array2["+i+"] = "+array2[i]);
         }
         System.out.println("改变array2[0]的值");
-        array2[0] = 10;
+        array1[0] = 10;
         //打印出改变后的元素值
         System.out.println("array1[0] ="+array1[0]);
         System.out.println("array2[0] ="+array2[0]);
