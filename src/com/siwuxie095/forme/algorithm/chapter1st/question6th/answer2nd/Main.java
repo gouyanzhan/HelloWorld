@@ -30,7 +30,7 @@ public class Main {
         String left = "L";
         String mid = "M";
         String right = "R";
-        int steps = SortHanoiTowerByStack.hanoiProblem(2, left, mid, right);
+        int steps = SortHanoiTowerByStack.hanoiProblem(8, left, mid, right);
         System.out.println("Total steps are " + steps);
     }
 

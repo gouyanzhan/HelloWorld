@@ -33,6 +33,15 @@ public class SortHanoiTowerByStack {
             step += fromStack2ToStack(record, Action.RToM, Action.MToR, midStack, rightStack, mid, right);
             step += fromStack2ToStack(record, Action.MToR, Action.RToM, rightStack, midStack, right, mid);
         }
+        System.out.println("-----------------");
+        while (!leftStack.empty()) {
+            System.out.println(leftStack.pop());
+        }
+        System.out.println("-----------------");
+        while (!rightStack.empty()) {
+            System.out.println(rightStack.pop());
+        }
+        System.out.println("-----------------");
         return step;
     }
 
