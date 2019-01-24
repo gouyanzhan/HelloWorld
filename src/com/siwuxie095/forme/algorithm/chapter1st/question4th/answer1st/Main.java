@@ -21,31 +21,60 @@ package com.siwuxie095.forme.algorithm.chapter1st.question4th.answer1st;
  * 一个是只放 Cat 类实例的队列 catQ，另一个是只放 Dog 类实例的队列 dogQ
  *
  * 注意：从外部来看，依然是「一个」队列
- */
-/**
- * 宠物类，是父类
  *
  * @author Jiajing Li
- * @date 2019-01-09 15:49:16
+ * @date 2019-01-18 16:24:10
  */
-public class Pet {
-    /**
-     * 宠物类型
-     */
-    private String type;
+public class Main {
 
-    public Pet(String type) {
-        this.type = type;
+    public static void main(String[] args) {
+
+        CatDogQueue catDogQueue = initCatDogQueue();
+
+        while (!catDogQueue.isEmpty()) {
+            System.out.println(catDogQueue.pollAll());
+        }
+        System.out.println("-----------------------");
+
+        catDogQueue = initCatDogQueue();
+        while (!catDogQueue.isCatQueueEmpty()) {
+            System.out.println(catDogQueue.pollCat());
+        }
+        System.out.println("-----------------------");
+
+        catDogQueue = initCatDogQueue();
+        while (!catDogQueue.isDogQueueEmpty()) {
+            System.out.println(catDogQueue.pollDog());
+        }
+        System.out.println("-----------------------");
+
     }
 
-    public String getType() {
-        return type;
+    public static CatDogQueue initCatDogQueue() {
+        CatDogQueue catDogQueue = new CatDogQueue();
+        Cat cat1 = new Cat();
+        Cat cat2 = new Cat();
+        Cat cat3 = new Cat();
+
+        Dog dog1 = new Dog();
+        Dog dog2 = new Dog();
+        Dog dog3 = new Dog();
+        Dog dog4 = new Dog();
+        Dog dog5 = new Dog();
+
+        catDogQueue.add(cat1);
+        catDogQueue.add(cat2);
+
+        catDogQueue.add(dog1);
+        catDogQueue.add(dog2);
+        catDogQueue.add(dog3);
+
+        catDogQueue.add(cat3);
+
+        catDogQueue.add(dog4);
+        catDogQueue.add(dog5);
+
+        return catDogQueue;
     }
 
-    @Override
-    public String toString() {
-        return "Pet{" +
-                "type='" + type + '\'' +
-                '}';
-    }
 }

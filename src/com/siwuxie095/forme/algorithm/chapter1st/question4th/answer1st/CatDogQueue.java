@@ -87,14 +87,14 @@ public class CatDogQueue {
     /**
      * 判断猫队是否为空
      */
-    private boolean isCatQueueEmpty() {
+    public boolean isCatQueueEmpty() {
         return catQ.isEmpty();
     }
 
     /**
      * 判断狗队是否为空
      */
-    private boolean isDogQueueEmpty() {
+    public boolean isDogQueueEmpty() {
         return dogQ.isEmpty();
     }
 
