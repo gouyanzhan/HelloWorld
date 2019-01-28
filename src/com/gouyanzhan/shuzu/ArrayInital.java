@@ -1,5 +1,8 @@
 package com.gouyanzhan.shuzu;
 
+/**
+ * pass 掉
+ */
 public class ArrayInital {
     public static void main(String[] args) {
         //创建一个int型数组
