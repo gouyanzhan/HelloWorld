@@ -33,8 +33,6 @@ package com.siwuxie095.forme.algorithm.chapter2nd.question3rd.answer1st;
  * 也就是链表长度每增加 2，要删除的节点就后移一个节点。而如果要删
  * 除一个节点，则需要找到待删除节点的前一个节点。
  *
- *
- *
  * @author Jiajing Li
  * @date 2019-02-16 22:07:45
  */
@@ -42,10 +40,10 @@ public class Main {
 
     public static void main(String[] args) {
         Node head = initNode();
-        System.out.println(RemoveNode.removeMidNode(head));
+        System.out.println(Remove.removeMidNode(head));
         System.out.println("----------------------------");
         head = initNode();
-        System.out.println(RemoveNode.removeByRatio(head, 3, 5));
+        System.out.println(Remove.removeByRatio(head, 3, 5));
     }
 
     private static Node initNode() {

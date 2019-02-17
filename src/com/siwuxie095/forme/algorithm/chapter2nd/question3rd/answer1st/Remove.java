@@ -5,7 +5,7 @@ package com.siwuxie095.forme.algorithm.chapter2nd.question3rd.answer1st;
  * @author Jiajing Li
  * @date 2019-02-16 22:08:04
  */
-public class RemoveNode {
+public class Remove {
 
     /**
      * 删除链表的中间节点
