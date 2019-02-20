@@ -40,16 +40,29 @@ package com.siwuxie095.forme.algorithm.chapter2nd.question11th.answer1st;
  * 2、对于问题二：
  * 如果两个无环链表相交，那么从相交节点开始，一直到两个链表终止的这一段，是两个链表
  * 共享的。具体过程如下：
- * （1）链表 1 从头节点开始，走到最后一个节点（不是结束），统计链表 1 的长度，记为
- * len1，同时记录链表 1 的最后一个节点，记为 end1。
- * （2）链表 2 从头节点开始，走到最后一个节点（不是结束），统计链表 2 的长度，记为
- * len2，同时记录链表 2 的最后一个节点，记为 end2。
+ * （1）链表 1 从头节点开始，走到最后一个节点，统计链表 1 的长度，记为 len1，同时
+ * 记录链表 1 的最后一个节点，记为 end1。
+ * （2）链表 2 从头节点开始，走到最后一个节点，统计链表 2 的长度，记为 len2，同时
+ * 记录链表 2 的最后一个节点，记为 end2。
  * （3）如果 end1 != end2，说明两个链表不相交，返回 null 即可；如果 end1 == end2，
  * 说明两个链表相交，进入步骤 （4） 来找寻第一个相交节点。
  * （4）如果链表 1 比较长，链表 1 就先走 len1 - len2 步；反之，链表 2 就先走 len1
  * - len2 步。然后两个链表一起走，一起走的过程中，两个链表第一次走到一起的那个节点，就
  * 是第一个相交的节点。
  *
+ * 3、对于问题三：
+ * 考虑问题三的时候，已经得到了两个链表各自的第一个入环节点，假设链表 1 的第一个入环节点记为 loop1，
+ * 链表 2 的第一个入环节点记为 loop2。具体过程如下：
+ * （1）如果 loop1 == loop2，只需要考虑链表 1 从头开始到 loop1 这一段，与链表 2 从头开始到 loop2
+ * 这一段，在哪里第一次相交即可，而不用考虑进环该怎么处理，即 转化成了问题二。只不过问题二是把 null
+ * 作为一个链表的终点，这里是把 loop1 或 loop2 作为链表的终点，但是判断的主要过程是一样的。
+ * （2）如果 loop1 != loop2，让链表 1 从 loop1 出发，因为 loop1 和之后的所有节点都在环上，所以
+ * 将来一定能回到 loop1。如果回到 loop1 之前并没有遇到 loop2，说明两个链表不相交，直接返回 null；
+ * 如果回到 loop1 之前遇到了 loop2，说明两个链表相交。因为 loop1 和 loop2 都在两条链表上，只不过
+ * loop1 离链表 1 更近，loop2 离链表 2 更近，所以此时返回 loop1 或 loop2 均可。
+ *
+ * 4、对于整个问题：
+ * 结合问题一、问题二、问题三的解法即可解决。
  *
  * @author Jiajing Li
  * @date 2019-02-20 09:24:21
@@ -59,8 +72,16 @@ public class Main {
     public static void main(String[] args) {
         // 问题一
         testGetLoopNode();
+        System.out.println("------");
         // 问题二
-
+        testNoLoop();
+        System.out.println("------");
+        // 问题三
+        testBothLoop();
+        System.out.println("------");
+        // 整个问题
+        testGetIntersectNode();
+        System.out.println("------");
     }
 
     private static void testGetLoopNode() {
@@ -76,19 +97,73 @@ public class Main {
 
         Node loop = Intersect.getLoopNode(node1);
         System.out.println(loop.value);
-        System.out.println("--------------------------");
         loop = Intersect.getLoopNodeByHash(node1);
         System.out.println(loop.value);
     }
 
-    private static Node initNode2() {
-        Node node1 = new Node(6);
-        Node node2 = new Node(3);
+    private static void testNoLoop() {
+        Node node1 = new Node(1);
+        Node node2 = new Node(2);
+        Node node3 = new Node(3);
+        Node node4 = new Node(4);
 
         node1.next = node2;
-        node2.next = null;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = null;
 
-        return node1;
+        Node node5 = new Node(5);
+        Node node6 = new Node(6);
+
+        node5.next = node6;
+        node6.next = node3;
+
+        Node intersectNode = Intersect.noLoop(node1, node5);
+        System.out.println(intersectNode.value);
+    }
+
+    private static void testBothLoop() {
+        Node node1 = new Node(1);
+        Node node2 = new Node(2);
+        Node node3 = new Node(3);
+        Node node4 = new Node(4);
+
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node2;
+
+        Node node5 = new Node(5);
+        Node node6 = new Node(6);
+
+        node5.next = node6;
+        node6.next = node2;
+        
+        Node loop1 = Intersect.getLoopNode(node1);
+        Node loop5 = Intersect.getLoopNode(node5);
+        Node intersectNode = Intersect.bothLoop(node1, loop1, node5, loop5);
+        System.out.println(intersectNode.value);
+    }
+
+    private static void testGetIntersectNode() {
+        Node node1 = new Node(1);
+        Node node2 = new Node(2);
+        Node node3 = new Node(3);
+        Node node4 = new Node(4);
+
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node2;
+
+        Node node5 = new Node(5);
+        Node node6 = new Node(6);
+
+        node5.next = node6;
+        node6.next = node2;
+
+        Node intersectNode = Intersect.getIntersectNode(node1, node5);
+        System.out.println(intersectNode.value);
     }
 
 }
