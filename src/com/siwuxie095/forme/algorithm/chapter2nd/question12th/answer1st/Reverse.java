@@ -23,7 +23,7 @@ public class Reverse {
         Node prevNode = null;
         // 既起到了遍历的作用，同时也是下一组的第一个节点
         Node nextNode = null;
-        while (currNode != null) {
+        while (null != currNode) {
             nextNode = currNode.next;
             stack.push(currNode);
             if (stack.size() == K) {
@@ -46,7 +46,7 @@ public class Reverse {
         /*
          * 上一组的最后一个节点链上当前组的第一个节点
          */
-        if (left != null) {
+        if (null != left) {
             left.next = currNode;
         }
         /*

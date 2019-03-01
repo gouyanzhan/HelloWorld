@@ -28,14 +28,14 @@ public class Convert {
         // 右子树的尾节点 right end
         Node rightE = process(head.right);
         // 左子树的头节点 left start
-        Node leftS = (leftE != null) ? leftE.right : null;
+        Node leftS = (null != leftE) ? leftE.right : null;
         // 右子树的头节点 right start
-        Node rightS = (rightE != null) ? rightE.right : null;
+        Node rightS = (null != rightE) ? rightE.right : null;
 
         /*
          * 左右子树均不为空
          */
-        if (leftE != null && rightE != null) {
+        if (null != leftE && null != rightE) {
             leftE.right = head;
             head.left = leftE;
             head.right = rightS;
@@ -45,7 +45,7 @@ public class Convert {
         /*
          * 左子树不空，右子树空
          */
-        } else if (leftE != null) {
+        } else if (null != leftE) {
             leftE.right = head;
             head.left = leftE;
             head.right = leftS;
@@ -53,7 +53,7 @@ public class Convert {
         /*
          * 右子树不空，左子树空
          */
-        } else if (rightE != null) {
+        } else if (null != rightE) {
             head.right = rightS;
             rightS.left = head;
             rightE.right = head;

@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 public final class StringX implements Serializable {
 
-    /**
+    /*
      * 1、String 继承自 CharSequence，所以 String is a CharSequence，所以可以将 CharSequence 作为方法参数
      *
      * 实际上，String 字符串就是一个 char[] 字符数组，或者说是用字符数组实现的
@@ -26,6 +26,11 @@ public final class StringX implements Serializable {
      * （5）不可传 CharSequence 和 CharSequence[]
      * （6）不可传 CharSequence[] 和 CharSequence[]
      */
+
+    /**
+     * 空字符串 empty
+     */
+    public static final String EMPTY = "";
 
     private StringX() {
         throw new AssertionError("There is no StringX instance for you!");
@@ -102,6 +107,42 @@ public final class StringX implements Serializable {
         return flag;
     }
 
+    public static Boolean isAllBlank(final CharSequence... css) {
+        if (null == css || css.length == 0) {
+            return true;
+        }
+        for (final CharSequence cs : css) {
+            if (nonBlank(cs)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static Boolean isAnyBlank(final CharSequence... css) {
+        if (null == css || css.length == 0) {
+            return true;
+        }
+        for (final CharSequence cs : css) {
+            if (isBlank(cs)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static Boolean isNoneBlank(final CharSequence... css) {
+        if (null == css || css.length == 0) {
+            return false;
+        }
+        for (final CharSequence cs : css) {
+            if (isBlank(cs)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static Boolean equals(final String str1, final String str2) {
         if (str1 == str2) {
             return true;
@@ -125,5 +166,27 @@ public final class StringX implements Serializable {
         // todo ...
         return true;
     }
+
+    /**
+     * 去除字符串头尾的空格
+     */
+    public static String trim(final String str) {
+        return null == str ? null : str.trim();
+    }
+
+    /**
+     * 去除字符串头尾的空格。去除后，如果为空字符串，则返回 null。
+     */
+    public static String trimToNull(final String str) {
+        final String trimStr = trim(str);
+        return isEmpty(trimStr) ? null : str;
+    }
+
+    public static String trimToEmpty(final String str) {
+        final String trimStr = trim(str);
+        return isEmpty(trimStr) ? EMPTY : str;
+    }
+
+
 
 }

@@ -25,7 +25,7 @@ public class Partition {
         /*
          * 所有节点分进三个链表中
          */
-        while (head != null) {
+        while (null != head) {
             nextNode = head.next;
             // 每遍历一个，就把 head 断掉
             head.next = null;
@@ -59,18 +59,18 @@ public class Partition {
         /*
          * small 和 equal 链起来，即 小的和相等的重新链接
          */
-        if (sTail != null) {
+        if (null != sTail) {
             sTail.next = eHead;
             eTail = (null == eTail) ? sTail : eTail;
         }
         /*
          * equal 和 big 链起来，即 相等的和大的重新链接
          */
-        if (eTail != null) {
+        if (null != eTail) {
           eTail.next = bHead;
         }
         // 返回链表的新头节点
-        return sHead != null ? sHead : (eHead != null ? eHead : bHead);
+        return null != sHead ? sHead : (null != eHead ? eHead : bHead);
     }
 
 }

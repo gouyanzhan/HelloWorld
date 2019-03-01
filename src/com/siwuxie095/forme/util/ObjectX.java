@@ -17,6 +17,7 @@ public final class ObjectX implements Serializable {
 
     /**
      * 判断对象是否为空
+     *
      * @param obj 对象
      * @return true 为空；false 不为空
      */
@@ -26,6 +27,7 @@ public final class ObjectX implements Serializable {
 
     /**
      * 判断对象是否不为空
+     *
      * @param obj 对象
      * @return true 不为空；false 为空
      */
@@ -44,6 +46,13 @@ public final class ObjectX implements Serializable {
         return (obj1 == obj2) || (null != obj1 && obj1.equals(obj2));
     }
 
+    /**
+     * 判断两个对象是否不相等
+     *
+     * @param obj1 第一个对象
+     * @param obj2 第二个对象
+     * @return true 不相等；false 相等
+     */
     public static Boolean nonEquals(final Objects obj1, final Object obj2) {
         return (obj1 != obj2) && (null != obj1 && !obj1.equals(obj2));
     }

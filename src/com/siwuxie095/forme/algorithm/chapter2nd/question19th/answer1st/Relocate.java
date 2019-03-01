@@ -15,7 +15,7 @@ public class Relocate {
         /*
          * 找到中间节点
          */
-        while (right.next != null && right.next.next != null) {
+        while (null != right.next && null != right.next.next) {
             mid = mid.next;
             right = right.next.next;
         }
@@ -32,7 +32,7 @@ public class Relocate {
 
     private static void mergeLR(Node left, Node right) {
         Node nextNode = null;
-        while (left.next != null) {
+        while (null != left.next) {
             nextNode = right.next;
             right.next = left.next;
             left.next = right;

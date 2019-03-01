@@ -14,7 +14,7 @@ public class Reverse {
         Node prevNode = null;
         // 下一个节点
         Node nextNode = null;
-        while (headNode != null) {
+        while (null != headNode) {
             nextNode = headNode.next;
             headNode.next = prevNode;
             prevNode = headNode;
@@ -32,7 +32,7 @@ public class Reverse {
         DoubleNode prevNode = null;
         // 下一个节点
         DoubleNode nextNode = null;
-        while (headNode != null) {
+        while (null != headNode) {
             nextNode = headNode.next;
             headNode.next = prevNode;
             headNode.prev = nextNode;

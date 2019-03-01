@@ -13,7 +13,7 @@ public class Remove {
         /*
          * 把不等于 num 的全部放到栈中
          */
-        while (head != null) {
+        while (null != head) {
             if (head.value != num) {
                 stack.push(head);
             }

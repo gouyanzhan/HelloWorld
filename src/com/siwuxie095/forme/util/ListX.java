@@ -18,6 +18,7 @@ public final class ListX implements Serializable {
 
     /**
      * 创建一个 ArrayList
+     *
      * @param <E> ArrayList 的类型
      * @return 创建的 ArrayList
      */
@@ -27,6 +28,7 @@ public final class ListX implements Serializable {
 
     /**
      * 判断 list 是否为空
+     *
      * @param list 传入的 list
      * @return true 为空；false 不为空
      */
@@ -36,6 +38,7 @@ public final class ListX implements Serializable {
 
     /**
      * 判断 list 是否不为空
+     *
      * @param list 传入的 list
      * @return true 不为空；false 为空
      */

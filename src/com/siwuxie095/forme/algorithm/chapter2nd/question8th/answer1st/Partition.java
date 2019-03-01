@@ -15,7 +15,7 @@ public class Partition {
          */
         Node curr = head;
         int i = 0;
-        while (curr != null) {
+        while (null != curr) {
             i++;
             curr = curr.next;
         }

@@ -10,7 +10,7 @@ public class Remove {
         /*
          * 找到第一个值不为 num 的节点，作为新头节点
          */
-        while (head != null) {
+        while (null != head) {
             if (head.value != num) {
                 break;
             }
@@ -20,7 +20,7 @@ public class Remove {
         Node prevNode = head;
         // 当前节点
         Node currNode = head;
-        while (currNode != null) {
+        while (null != currNode) {
             if (currNode.value == num) {
                 prevNode.next = currNode.next;
             } else {

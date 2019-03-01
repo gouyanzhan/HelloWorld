@@ -19,13 +19,13 @@ public class Remove {
         /*
          * 外层遍历
          */
-        while (currNode != null) {
+        while (null != currNode) {
             prevNode = currNode;
             nextNode = currNode.next;
             /*
              * 内层遍历
              */
-            while (nextNode != null) {
+            while (null != nextNode) {
                 if (currNode.value == nextNode.value) {
                     prevNode.next = nextNode.next;
                 } else {
