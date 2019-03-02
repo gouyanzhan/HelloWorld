@@ -22,7 +22,7 @@ public class LastKthNode {
          * 第一次遍历
          */
         Node curr = head;
-        while (curr != null) {
+        while (null != curr) {
             lastKth--;
             curr = curr.next;
         }
@@ -63,7 +63,7 @@ public class LastKthNode {
          * 第一次遍历
          */
         DoubleNode curr = head;
-        while (curr != null) {
+        while (null != curr) {
             lastKth--;
             curr = curr.next;
         }
@@ -85,7 +85,7 @@ public class LastKthNode {
             }
             DoubleNode newNext = curr.next.next;
             curr.next = newNext;
-            if (newNext != null) {
+            if (null != newNext) {
                 newNext.prev = curr;
             }
         }

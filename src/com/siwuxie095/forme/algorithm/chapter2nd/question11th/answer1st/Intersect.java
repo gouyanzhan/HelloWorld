@@ -53,7 +53,7 @@ public class Intersect {
         Node curr = head;
         HashMap<Node, Node> map = new HashMap<>();
         int count = 0;
-        while (curr != null) {
+        while (null != curr) {
             if (null == curr.next) {
                 return null;
             }
@@ -78,12 +78,12 @@ public class Intersect {
         Node curr2 = head2;
         int len = 0;
         // 计算链表 1 的长度
-        while (curr1.next != null) {
+        while (null != curr1.next) {
             len++;
             curr1 = curr1.next;
         }
         // 逆向推导出链表 2 的长度
-        while (curr2.next != null) {
+        while (null != curr2.next) {
             len--;
             curr2 = curr2.next;
         }
@@ -165,7 +165,7 @@ public class Intersect {
             return noLoop(head1, head2);
         }
         // 都有环
-        if (loop1 != null && loop2 != null) {
+        if (null != loop1 && null != loop2) {
             return bothLoop(head1, loop1, head2, loop2);
         }
         return null;

@@ -21,13 +21,13 @@ public class Palindrome {
          *
          * right 移动速度是 curr 移动速度的一半，当 curr 移动到链表末尾时，right 刚好在中间。
          */
-        while (curr.next != null && curr.next.next != null) {
+        while (null != curr.next && null != curr.next.next) {
             right = right.next;
             curr = curr.next.next;
         }
         Stack<Node> stack = new Stack<>();
         // 将链表的右半部分压栈
-        while (right != null) {
+        while (null != right) {
             stack.push(right);
             right = right.next;
         }

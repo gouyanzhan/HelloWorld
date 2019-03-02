@@ -18,7 +18,7 @@ public class Palindrome {
         // n2 用于遍历
         Node n2 = head;
         // n2 移动速度是 n1 的两倍，所以 n2 到结尾时，n1 刚好到中部。
-        while (n2.next != null && n2.next.next != null) {
+        while (null != n2.next && null != n2.next.next) {
             n1 = n1.next;
             n2 = n2.next.next;
         }
@@ -30,7 +30,7 @@ public class Palindrome {
          * 右半区反转
          */
         Node n3 = null;
-        while (n2 != null) {
+        while (null != n2) {
             // 保存下一个节点
             n3 = n2.next;
             // 反转
@@ -49,7 +49,7 @@ public class Palindrome {
         n2 = head;
         boolean res = true;
         // n1 是右边第一个节点，n2 是左边第一个节点
-        while (n1 != null && n2 != null) {
+        while (null != n1 && null != n2) {
             if (n1.value != n2.value) {
                 res = false;
                 break;
@@ -66,7 +66,7 @@ public class Palindrome {
         n1 = n3.next;
         // 最后一个节点先断开
         n3.next = null;
-        while (n1 != null) {
+        while (null != n1) {
             n2 = n1.next;
             n1.next = n3;
             n3 = n1;

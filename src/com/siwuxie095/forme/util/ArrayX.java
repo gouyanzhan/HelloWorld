@@ -52,6 +52,9 @@ public final class ArrayX {
         return null == arr || arr.length == 0;
     }
 
+    /**
+     * T 和 Object 都可以
+     */
     //public static <T> Boolean nonEmpty(final T[] arr) {
     //    return null != arr && arr.length != 0;
     //}
@@ -91,4 +94,5 @@ public final class ArrayX {
     public static Boolean nonEmpty(final char[] arr) {
         return null != arr && arr.length != 0;
     }
+
 }

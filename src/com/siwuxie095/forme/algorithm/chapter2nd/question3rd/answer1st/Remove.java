@@ -23,7 +23,7 @@ public class Remove {
         Node prev = head;
         // 有三个及以上节点的时候，将第三个节点当作当前节点，从它开始进行遍历和判断即可
         Node curr = head.next.next;
-        while (curr.next != null && curr.next.next != null) {
+        while (null != curr.next && null != curr.next.next) {
             /*
              * 链表长度每增加 2，待删除的节点就后移一个节点，
              * 同样的，待删除节点的上一个节点也后移一个节点
@@ -48,7 +48,7 @@ public class Remove {
         // 第一次遍历，计算出链表的长度 n
         int n = 0;
         Node curr = head;
-        while (curr != null) {
+        while (null != curr) {
             n++;
             curr = curr.next;
         }

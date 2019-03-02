@@ -8,7 +8,7 @@ public class Common {
 
     public static void printCommonPart(Node head1, Node head2) {
         System.out.println("Common Part:");
-        while (head1 != null && head2 != null) {
+        while (null != head1 && null != head2) {
             if (head1.value < head2.value) {
                 head1 = head1.next;
             } else if (head1.value > head2.value) {

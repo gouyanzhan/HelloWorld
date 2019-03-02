@@ -23,7 +23,7 @@ public class Reverse {
          * 以 node1 为基础，遍历整个链表，计算出链表长度，
          * 并找到 fPrev 和 tNext
          */
-        while (node1 != null) {
+        while (null != node1) {
             len++;
             fPrev = (len == from - 1) ? node1 : fPrev;
             tNext = (len == to + 1) ? node1 : tNext;
@@ -56,7 +56,7 @@ public class Reverse {
          *
          * （经过一番移动，node1 变成了反转前反转部分的最后一个节点）
          */
-        if (fPrev != null) {
+        if (null != fPrev) {
             fPrev.next = node1;
             return head;
         }

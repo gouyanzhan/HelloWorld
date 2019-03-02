@@ -15,12 +15,12 @@ public class Palindrome {
         Stack<Node> stack = new Stack<>();
         Node curr = head;
         // 先将链表元素全部压入栈中
-        while (curr != null) {
+        while (null != curr) {
             stack.push(curr);
             curr = curr.next;
         }
         // 遍历链表，同时弹栈。看元素是否相等，只要有一个不相等，就不是回文结构。
-        while (head != null) {
+        while (null != head) {
             if (head.value != stack.pop().value) {
                 return false;
             }

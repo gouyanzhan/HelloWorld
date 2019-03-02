@@ -35,13 +35,13 @@ public class Add {
         }
         Node curr = head;
         int len = 0;
-        while (curr != null) {
+        while (null != curr) {
             len++;
             curr = curr.next;
         }
         curr = head;
         int value = 0;
-        while (curr != null) {
+        while (null != curr) {
             value = value + curr.value * (int) Math.pow(10, --len);
             curr = curr.next;
         }

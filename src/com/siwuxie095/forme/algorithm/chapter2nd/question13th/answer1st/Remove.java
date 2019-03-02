@@ -21,7 +21,7 @@ public class Remove {
         Node prevNode = head;
         // 当前节点
         Node currNode = head.next;
-        while (currNode != null) {
+        while (null != currNode) {
             // 包含 即 重复
             if (set.contains(currNode.value)) {
                 // 删除当前节点

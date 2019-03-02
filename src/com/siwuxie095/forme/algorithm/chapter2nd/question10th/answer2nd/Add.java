@@ -11,11 +11,11 @@ public class Add {
     public static Node addList(Node head1, Node head2) {
         Stack<Integer> s1 = new Stack<>();
         Stack<Integer> s2 = new Stack<>();
-        while (head1 != null) {
+        while (null != head1) {
             s1.push(head1.value);
             head1 = head1.next;
         }
-        while (head2 != null) {
+        while (null != head2) {
             s2.push(head2.value);
             head2 = head2.next;
         }

@@ -14,7 +14,7 @@ public class Rand {
          * 第一次遍历，先生成每一个副本节点（此时只生成了 value），并放到哈希表中，与原节点形成对应关系。
          */
         Node curr = head;
-        while (curr != null) {
+        while (null != curr) {
             map.put(curr, new Node(curr.value));
             curr = curr.next;
         }
@@ -22,7 +22,7 @@ public class Rand {
          * 第二次遍历，开始指定每一个副本节点的 next 和 rand 指针所指向的节点。
          */
         curr = head;
-        while (curr != null) {
+        while (null != curr) {
             map.get(curr).next = map.get(curr.next);
             map.get(curr).rand = map.get(curr.rand);
             curr = curr.next;

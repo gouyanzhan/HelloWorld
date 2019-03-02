@@ -19,7 +19,7 @@ public class Reverse {
         // 既起到了遍历的作用，同时也是下一组的第一个节点
         Node nextNode = null;
         int count = 1;
-        while (currNode != null) {
+        while (null != currNode) {
             nextNode = currNode.next;
             if (count == K) {
                 start = (null == prevNode) ? head : prevNode.next;
@@ -58,7 +58,7 @@ public class Reverse {
         /*
          * 上一组的最后一个节点链上当前组的第一个节点（已经逆序过了）
          */
-        if (left != null) {
+        if (null != left) {
             left.next = end;
         }
         /*

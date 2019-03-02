@@ -9,7 +9,7 @@ public class Merge {
 
     public static Node merge(Node head1, Node head2) {
         if (null == head1 || null == head2) {
-            return head1 != null ? head1 : head2;
+            return null != head1 ? head1 : head2;
         }
         /*
          * 初始化
@@ -25,7 +25,7 @@ public class Merge {
          * 由于上面的初始化，所以第一次进循环，一定是 currNode1 的值
          * 小于等于 currNode2 的值
          */
-        while (currNode1 != null && currNode2 != null) {
+        while (null != currNode1 && null != currNode2) {
             if (currNode1.value <= currNode2.value) {
                 prevNode = currNode1;
                 currNode1 = currNode1.next;
@@ -37,7 +37,7 @@ public class Merge {
                 currNode2 = nextNode;
             }
         }
-        prevNode.next = (currNode1 == null) ? currNode2 : currNode1;
+        prevNode.next = (null == currNode1) ? currNode2 : currNode1;
         return head;
     }
 

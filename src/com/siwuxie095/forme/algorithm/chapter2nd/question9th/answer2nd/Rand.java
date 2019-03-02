@@ -15,7 +15,7 @@ public class Rand {
          */
         Node currNode = head;
         Node nextNode = null;
-        while (currNode != null) {
+        while (null != currNode) {
             nextNode = currNode.next;
             // 生成当前节点的副本节点，并链在当前节点后
             currNode.next = new Node(currNode.value);
@@ -27,10 +27,10 @@ public class Rand {
          */
         currNode = head;
         Node copyNode = null;
-        while (currNode != null) {
+        while (null != currNode) {
             nextNode = currNode.next.next;
             copyNode = currNode.next;
-            copyNode.rand = currNode.rand != null ? currNode.rand.next : null;
+            copyNode.rand = (null != currNode.rand) ? currNode.rand.next : null;
             currNode = nextNode;
         }
         /*
@@ -38,11 +38,11 @@ public class Rand {
          */
         Node res = head.next;
         currNode = head;
-        while (currNode != null) {
+        while (null != currNode) {
             nextNode = currNode.next.next;
             copyNode = currNode.next;
             currNode.next = nextNode;
-            copyNode.next = nextNode != null ? nextNode.next : null;
+            copyNode.next = (null != nextNode) ? nextNode.next : null;
             currNode = nextNode;
         }
         // 返回新链表的头节点

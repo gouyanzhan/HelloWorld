@@ -26,16 +26,16 @@ public class Add {
         // 之前生成的节点
         Node prevNode = null;
         // 开始生成新链表
-        while (curr1 != null || curr2 != null) {
-            n1 = (curr1 != null) ? curr1.value : 0;
-            n2 = (curr2 != null) ? curr2.value : 0;
+        while (null != curr1 || null != curr2) {
+            n1 = (null != curr1) ? curr1.value : 0;
+            n2 = (null != curr2) ? curr2.value : 0;
             n = n1 + n2 + ca;
             prevNode = newNode;
             newNode = new Node(n % 10);
             newNode.next = prevNode;
             ca = n / 10;
-            curr1 = (curr1 != null) ? curr1.next : null;
-            curr2 = (curr2 != null) ? curr2.next : null;
+            curr1 = (null != curr1) ? curr1.next : null;
+            curr2 = (null != curr2) ? curr2.next : null;
         }
         // 边界条件处理
         if (ca == 1) {
@@ -56,7 +56,7 @@ public class Add {
     private static Node reverseList(Node head) {
         Node prevNode = null;
         Node nextNode = null;
-        while (head != null) {
+        while (null != head) {
             nextNode = head.next;
             head.next = prevNode;
             prevNode = head;
