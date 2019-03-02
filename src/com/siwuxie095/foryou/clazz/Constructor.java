@@ -66,4 +66,6 @@ public class Constructor {
         System.out.println("爱好：" + hobby);
         System.out.println("-------------------");
     }
+
+
 }

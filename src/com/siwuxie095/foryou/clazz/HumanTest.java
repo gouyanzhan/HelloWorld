@@ -29,6 +29,13 @@ public class HumanTest {
         man.selfIntroduce();
         man.work();
         man.eat();
+        man.name = "小绿";
+        man.selfIntroduce();
+        int a = 1;
+        System.out.println(a);
+        a = 2;
+        System.out.println(a);
+
     }
 
 }
