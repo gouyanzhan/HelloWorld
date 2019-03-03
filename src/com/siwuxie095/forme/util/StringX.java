@@ -28,9 +28,19 @@ public final class StringX implements Serializable {
      */
 
     /**
+     * 空格 space
+     */
+    public static final String SPACE = " ";
+
+    /**
      * 空字符串 empty
      */
     public static final String EMPTY = "";
+
+    /**
+     * 找不到索引
+     */
+    public static final Integer INDEX_NOT_FOUND = -1;
 
     private StringX() {
         throw new AssertionError("There is no StringX instance for you!");
@@ -81,11 +91,11 @@ public final class StringX implements Serializable {
     }
 
     public static Boolean isBlank(final CharSequence cs) {
-        int strLen;
-        if (null == cs || (strLen = cs.length()) == 0) {
+        int len;
+        if (null == cs || (len = cs.length()) == 0) {
             return true;
         }
-        for (int i = 0; i < strLen; ++i) {
+        for (int i = 0; i < len; ++i) {
             if (!Character.isWhitespace(cs.charAt(i))) {
                 return false;
             }
@@ -94,12 +104,12 @@ public final class StringX implements Serializable {
     }
 
     public static Boolean nonBlank(final CharSequence cs) {
-        int strLen;
-        if (null == cs || (strLen = cs.length()) == 0) {
+        int len;
+        if (null == cs || (len = cs.length()) == 0) {
             return false;
         }
         boolean flag = false;
-        for (int i = 0; i < strLen; ++i) {
+        for (int i = 0; i < len; ++i) {
             if (!Character.isWhitespace(cs.charAt(i))) {
                 flag = true;
             }
@@ -168,25 +178,229 @@ public final class StringX implements Serializable {
     }
 
     /**
-     * 去除字符串头尾的空格
+     * 字符串转字符数组
      */
-    public static String trim(final String str) {
-        return null == str ? null : str.trim();
+    public static char[] toCharArray(final String str) {
+        if (null == str) {
+            throw new NullPointerException("param cannot be null!");
+        }
+        return str.toCharArray();
     }
 
     /**
-     * 去除字符串头尾的空格。去除后，如果为空字符串，则返回 null。
+     * 去除字符串头尾的空格
+     */
+    public static String trim(final String str) {
+        String trimStr = trimStart(str);
+        return trimEnd(trimStr);
+    }
+
+    /**
+     * 去除字符串头部的空格
+     */
+    public static String trimStart(final String str) {
+        if (null == str) {
+            return null;
+        }
+
+        int len = str.length();
+        int start = 0;
+
+        char[] charArr = toCharArray(str);
+        char space = ' ';
+
+        while (start < len && charArr[start] <= space) {
+            start++;
+        }
+        return start > 0 ? str.substring(start) : str;
+    }
+
+    /**
+     * 去除字符串尾部的空格
+     */
+    public static String trimEnd(final String str) {
+        if (null == str) {
+            return null;
+        }
+
+        int len = str.length();
+        int start = 0;
+        int end = len;
+
+        char[] charArr = toCharArray(str);
+        char space = ' ';
+
+        while (end >= 0 && charArr[end - 1] <= space) {
+            end--;
+        }
+        // 注意：substring() 截取时是前闭后开，即 [start, end)，即 [start, end-1]
+        return end < len ? str.substring(start, end) : str;
+    }
+
+    /**
+     * 去除字符串头尾的空格。去除后，如果为 null 或 空字符串，则返回 null
      */
     public static String trimToNull(final String str) {
-        final String trimStr = trim(str);
-        return isEmpty(trimStr) ? null : str;
+        String trimStr = trim(str);
+        return isEmpty(trimStr) ? null : trimStr;
     }
 
+    /**
+     * 去除字符串头尾的空格。去除后，如果为 null 或 空字符串，则返回空字符串
+     */
     public static String trimToEmpty(final String str) {
-        final String trimStr = trim(str);
-        return isEmpty(trimStr) ? EMPTY : str;
+        String trimStr = trim(str);
+        return isEmpty(trimStr) ? EMPTY : trimStr;
     }
 
+    /**
+     * 去除字符串头尾的指定字符（从头尾分别开始遍历，如果当前字符是指定字符 stripChars 中的任一字符，就去除）
+     *
+     * 1、如果 stripChars 为 null，则去除头尾的空格；
+     * 2、如果 stripChars 为 空字符串{@link EMPTY}，则什么也不做，即 不去除；
+     * 3、如果 stripChars 为 指定字符，按照规则去除，直到遇到第一个不符合规则的；
+     */
+    public static String strip(final String str, final String stripChars) {
+        String stripStr = stripStart(str, stripChars);
+        return stripEnd(stripStr, stripChars);
+    }
+
+    /**
+     * 去除字符串头部的指定字符（从头部开始遍历，如果当前字符是指定字符 stripChars 中的任一字符，就去除）
+     *
+     * 1、如果 stripChars 为 null，则去除头部的空格；
+     * 2、如果 stripChars 为 空字符串{@link EMPTY}，则什么也不做，即 不去除；
+     * 3、如果 stripChars 为 指定字符，按照规则去除，直到遇到第一个不符合规则的；
+     */
+    public static String stripStart(final String str, final String stripChars) {
+        int len;
+        if (null == str || (len = str.length()) == 0) {
+            return str;
+        }
+        int start = 0;
+        if (null == stripChars) {
+            while (start != len && Character.isWhitespace(str.charAt(start))) {
+                start++;
+            }
+        } else if (isEmpty(stripChars)) {
+            return str;
+        } else {
+            while (start != len && stripChars.indexOf(str.charAt(start)) != INDEX_NOT_FOUND) {
+                start++;
+            }
+        }
+        return str.substring(start);
+    }
+
+    /**
+     * 去除字符串尾部的指定字符（从尾部开始遍历，如果当前字符是指定字符 stripChars 中的任一字符，就去除）
+     *
+     * 1、如果 stripChars 为 null，则去除尾部的空格；
+     * 2、如果 stripChars 为 空字符串{@link EMPTY}，则什么也不做，即 不去除；
+     * 3、如果 stripChars 为 指定字符，按照规则去除，直到遇到第一个不符合规则的；
+     */
+    public static String stripEnd(final String str, final String stripChars) {
+        int len;
+        if (null == str || (len = str.length()) == 0) {
+            return str;
+        }
+        int start = 0;
+        int end = len;
+        if (null == stripChars) {
+            while (end != 0 && Character.isWhitespace(str.charAt(end - 1))) {
+                end--;
+            }
+        } else if (isEmpty(stripChars)) {
+            return str;
+        } else {
+            while (end != 0 && stripChars.indexOf(str.charAt(end - 1)) != INDEX_NOT_FOUND) {
+                end--;
+            }
+        }
+        // 注意：substring() 截取时是前闭后开，即 [start, end)，即 [start, end-1]
+        return str.substring(start, end);
+    }
+
+    /**
+     * 去除字符串头尾的空格
+     */
+    public static String strip(final String str) {
+        return strip(str, null);
+    }
+
+    /**
+     * 去除字符串头尾的空格。去除后，如果为 null 或 空字符串，则返回 null
+     */
+    public static String stripToNull(final String str) {
+        String stripStr = strip(str);
+        return isEmpty(stripStr) ? null : stripStr;
+    }
+
+    /**
+     * 去除字符串头尾的空格。去除后，如果为 null 或 空字符串，则返回空字符串
+     */
+    public static String stripToEmpty(final String str) {
+        String stripStr = strip(str);
+        return isEmpty(stripStr) ? EMPTY : stripStr;
+    }
+
+    /**
+     * 去除字符串数组中每一个字符串头尾的指定字符
+     */
+    public static String[] stripAll(final String[] strArr, final String stripChars) {
+        int len;
+        if (null == strArr || (len = strArr.length) == 0) {
+            return strArr;
+        }
+        String[] stripStrArr = new String[len];
+        for (int i = 0; i < len; ++i) {
+            stripStrArr[i] = strip(strArr[i], stripChars);
+        }
+        return stripStrArr;
+    }
+
+    /**
+     * 去除字符串数组中每一个字符串头尾的空格
+     */
+    public static String[] stripAll(final String... strs) {
+        return stripAll(strs, null);
+    }
+
+    /**
+     * todo 待定
+     */
+    public static String substring(final String str, int start, int end) {
+        if (null == str) {
+            return null;
+        }
+        int len = str.length();
+        if (start < 0) {
+            start = len + start;
+        }
+        if (end < 0) {
+            end = len + end;
+        }
+
+        if (end > len) {
+            end = len;
+        }
+
+        if (start > end) {
+            return EMPTY;
+        }
+
+        if (start < 0) {
+            start = 0;
+        }
+
+        if (end < 0) {
+            end = 0;
+        }
+
+
+        return str.substring(start, end);
+
+    }
 
 
 }

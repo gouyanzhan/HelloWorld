@@ -35,4 +35,19 @@ public final class ConstantX implements Serializable {
      */
     public static final String CR = "\r";
 
+    /**
+     * 找不到索引
+     */
+    public static final Integer INDEX_NOT_FOUND = -1;
+
+    /**
+     * 真 · 正确 · true
+     */
+    public static final Boolean TRUE = true;
+
+    /**
+     * 假 · 错误 · false
+     */
+    public static final Boolean FALSE = false;
+
 }

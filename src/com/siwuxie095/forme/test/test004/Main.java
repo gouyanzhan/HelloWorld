@@ -110,6 +110,11 @@ public class Main {
         PrintX.println(StringX.isBlank(cs1));
         //PrintX.println(StringX.equals(cs1, cs2));
 
+        String str = " abc ";
+        System.out.println(str.length());
+        String trim = StringX.trim(str);
+        PrintX.println(trim);
+        System.out.println(trim.length());
     }
 
 }
