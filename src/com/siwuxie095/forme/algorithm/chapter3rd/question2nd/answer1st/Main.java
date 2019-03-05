@@ -1,4 +1,4 @@
-package com.siwuxie095.forme.algorithm.chapter3rd.qustion2nd.answer1st;
+package com.siwuxie095.forme.algorithm.chapter3rd.question2nd.answer1st;
 
 /**
  * 打印二叉树的边界节点
