@@ -32,7 +32,7 @@ public final class ListX implements Serializable {
      * @param list 传入的 list
      * @return true 为空；false 不为空
      */
-    public static Boolean isEmpty(final List list) {
+    public static boolean isEmpty(final List list) {
         return null == list || list.size() == 0;
     }
 
@@ -42,7 +42,7 @@ public final class ListX implements Serializable {
      * @param list 传入的 list
      * @return true 不为空；false 为空
      */
-    public static Boolean nonEmpty(final List list) {
+    public static boolean nonEmpty(final List list) {
         return null != list && list.size() > 0;
     }
 

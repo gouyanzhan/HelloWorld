@@ -40,21 +40,21 @@ public final class StringX implements Serializable {
     /**
      * 找不到索引
      */
-    public static final Integer INDEX_NOT_FOUND = -1;
+    public static final int INDEX_NOT_FOUND = -1;
 
     private StringX() {
         throw new AssertionError("There is no StringX instance for you!");
     }
 
-    public static Boolean isEmpty(final CharSequence cs) {
+    public static boolean isEmpty(final CharSequence cs) {
         return null == cs || cs.length() == 0;
     }
 
-    public static Boolean nonEmpty(final CharSequence cs) {
+    public static boolean nonEmpty(final CharSequence cs) {
         return null != cs && cs.length() != 0;
     }
 
-    public static Boolean isAllEmpty(final CharSequence... css) {
+    public static boolean isAllEmpty(final CharSequence... css) {
         if (null == css || css.length == 0) {
             return true;
         }
@@ -66,7 +66,7 @@ public final class StringX implements Serializable {
         return true;
     }
 
-    public static Boolean isAnyEmpty(final CharSequence... css) {
+    public static boolean isAnyEmpty(final CharSequence... css) {
         if (null == css || css.length == 0) {
             return true;
         }
@@ -78,7 +78,7 @@ public final class StringX implements Serializable {
         return false;
     }
 
-    public static Boolean isNoneEmpty(final CharSequence... css) {
+    public static boolean isNoneEmpty(final CharSequence... css) {
         if (null == css || css.length == 0) {
             return false;
         }
@@ -90,7 +90,7 @@ public final class StringX implements Serializable {
         return true;
     }
 
-    public static Boolean isBlank(final CharSequence cs) {
+    public static boolean isBlank(final CharSequence cs) {
         int len;
         if (null == cs || (len = cs.length()) == 0) {
             return true;
@@ -103,7 +103,7 @@ public final class StringX implements Serializable {
         return true;
     }
 
-    public static Boolean nonBlank(final CharSequence cs) {
+    public static boolean nonBlank(final CharSequence cs) {
         int len;
         if (null == cs || (len = cs.length()) == 0) {
             return false;
@@ -117,7 +117,7 @@ public final class StringX implements Serializable {
         return flag;
     }
 
-    public static Boolean isAllBlank(final CharSequence... css) {
+    public static boolean isAllBlank(final CharSequence... css) {
         if (null == css || css.length == 0) {
             return true;
         }
@@ -129,7 +129,7 @@ public final class StringX implements Serializable {
         return true;
     }
 
-    public static Boolean isAnyBlank(final CharSequence... css) {
+    public static boolean isAnyBlank(final CharSequence... css) {
         if (null == css || css.length == 0) {
             return true;
         }
@@ -141,7 +141,7 @@ public final class StringX implements Serializable {
         return false;
     }
 
-    public static Boolean isNoneBlank(final CharSequence... css) {
+    public static boolean isNoneBlank(final CharSequence... css) {
         if (null == css || css.length == 0) {
             return false;
         }
@@ -153,26 +153,26 @@ public final class StringX implements Serializable {
         return true;
     }
 
-    public static Boolean equals(final String str1, final String str2) {
+    public static boolean equals(final String str1, final String str2) {
         if (str1 == str2) {
             return true;
         }
         return null != str1 && str1.equals(str2);
     }
 
-    public static Boolean nonEquals(final String str1, final String str2) {
+    public static boolean nonEquals(final String str1, final String str2) {
         if (str1 == str2) {
             return false;
         }
         return null != str1 && !str1.equals(str2);
     }
 
-    public static Boolean equals(final CharSequence cs1, final CharSequence cs2) {
+    public static boolean equals(final CharSequence cs1, final CharSequence cs2) {
         // todo ...
         return true;
     }
 
-    public static Boolean nonEquals(final CharSequence cs1, final CharSequence cs2) {
+    public static boolean nonEquals(final CharSequence cs1, final CharSequence cs2) {
         // todo ...
         return true;
     }
