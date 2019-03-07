@@ -1,6 +1,9 @@
 package com.siwuxie095.forme.util;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Array 相关的工具类
  *
@@ -8,6 +11,14 @@ package com.siwuxie095.forme.util;
  * @date 2019-01-18 11:39:55
  */
 public final class ArrayX {
+
+    /*
+     * 泛型 T 和对象 Object 作为参数的区别与联系：
+     * 1、使用泛型 T 不需要做强制类型转换，而使用对象 Object 则需要做强制类型转换。
+     * 2、使用泛型 T 在编译期更安全。因为在编译期就把问题给排除了，而使用对象 Object 则不能在编译期就保证没有任何问题。
+     * 3、建议：通常情况下，参数和返回值都有时，使用泛型 T，参数有而返回值没有时，使用对象 Object。
+     * 4、禁止：禁止在 Java 中使用泛型数组（虽然可以用，但不推荐）
+     */
 
 
     //region 常量
@@ -103,7 +114,7 @@ public final class ArrayX {
     /**
      * T 和 Object 都可以
      */
-    //public static <T> Boolean isEmpty(final T[] arr) {
+    //public static <T> boolean isEmpty(final T[] arr) {
     //    return null == arr || arr.length == 0;
     //}
 
@@ -190,6 +201,13 @@ public final class ArrayX {
     //endregion
 
     //region nullToEmpty() 方法
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> T[] nullToEmpty(final T[] arr) {
+    //    return isEmpty(arr) ? (T[]) EMPTY_OBJECT_ARRAY : arr;
+    //}
+
     public static Object[] nullToEmpty(final Object[] arr) {
         return isEmpty(arr) ? EMPTY_OBJECT_ARRAY : arr;
     }
@@ -583,7 +601,44 @@ public final class ArrayX {
     }
     //endregion
 
+
     //region indexOf() 方法
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> int indexOf(final T[] arr, final T objectToFind) {
+    //    int startIndex = 0;
+    //    return indexOf(arr, objectToFind, startIndex);
+    //}
+    //
+    //public static <T> int indexOf(final T[] arr, final T objectToFind, int startIndex) {
+    //    if (null == arr) {
+    //        return INDEX_NOT_FOUND;
+    //    }
+    //    if (startIndex < 0) {
+    //        startIndex = 0;
+    //    }
+    //    if (null == objectToFind) {
+    //        for (int i = startIndex; i < arr.length; ++i) {
+    //            if (null == arr[i]) {
+    //                return i;
+    //            }
+    //        }
+    //        /*
+    //         * 1、arr.getClass() 获取的是数组的类型 Object[]；
+    //         * 2、arr.getClass().getComponentType() 获取的是数组的组件类型 Object；
+    //         * 3、arr.getClass().getComponentType().isInstance(valueToFind) 判断类型是否一致，相当于 instanceOf；
+    //         */
+    //    } else if (arr.getClass().getComponentType().isInstance(objectToFind)) {
+    //        for (int i = startIndex; i < arr.length; ++i) {
+    //            if (objectToFind.equals(arr[i])) {
+    //                return i;
+    //            }
+    //        }
+    //    }
+    //    return INDEX_NOT_FOUND;
+    //}
+
     public static int indexOf(final Object[] arr, final Object objectToFind) {
         int startIndex = 0;
         return indexOf(arr, objectToFind, startIndex);
@@ -804,6 +859,44 @@ public final class ArrayX {
     //endregion
 
     //region lastIndexOf() 方法
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> int lastIndexOf(final T[] arr, final T objectToFind) {
+    //    int startIndex = Integer.MAX_VALUE;
+    //    return lastIndexOf(arr, objectToFind, startIndex);
+    //}
+    //
+    //public static <T> int lastIndexOf(final T[] arr, final T objectToFind, int startIndex) {
+    //    if (null == arr) {
+    //        return INDEX_NOT_FOUND;
+    //    }
+    //    if (startIndex < 0) {
+    //        return INDEX_NOT_FOUND;
+    //    } else if (startIndex >= arr.length) {
+    //        startIndex = arr.length - 1;
+    //    }
+    //    if (null == objectToFind) {
+    //        for (int i = startIndex; i >= 0; --i) {
+    //            if (null == arr[i]) {
+    //                return i;
+    //            }
+    //        }
+    //        /*
+    //         * 1、arr.getClass() 获取的是数组的类型 Object[]；
+    //         * 2、arr.getClass().getComponentType() 获取的是数组的组件类型 Object；
+    //         * 3、arr.getClass().getComponentType().isInstance(valueToFind) 判断类型是否一致，相当于 instanceOf；
+    //         */
+    //    } else if (arr.getClass().getComponentType().isInstance(objectToFind)) {
+    //        for (int i = startIndex; i >= 0; --i) {
+    //            if (objectToFind.equals(arr[i])) {
+    //                return i;
+    //            }
+    //        }
+    //    }
+    //    return INDEX_NOT_FOUND;
+    //}
+
     public static int lastIndexOf(final Object[] arr, final Object objectToFind) {
         int startIndex = Integer.MAX_VALUE;
         return lastIndexOf(arr, objectToFind, startIndex);
@@ -1119,6 +1212,87 @@ public final class ArrayX {
     }
     //endregion
 
+    //region clone() 方法
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> T[] clone(final T[] arr) {
+    //    return null == arr ? null : arr.clone();
+    //}
 
+    public static Object[] clone(final Object[] arr) {
+        return null == arr ? null : arr.clone();
+    }
+
+    public static byte[] clone(final byte[] arr) {
+        return null == arr ? null : arr.clone();
+    }
+
+    public static short[] clone(final short[] arr) {
+        return null == arr ? null : arr.clone();
+    }
+
+    public static int[] clone(final int[] arr) {
+        return null == arr ? null : arr.clone();
+    }
+
+    public static long[] clone(final long[] arr) {
+        return null == arr ? null : arr.clone();
+    }
+
+    public static float[] clone(final float[] arr) {
+        return null == arr ? null : arr.clone();
+    }
+
+    public static double[] clone(final double[] arr) {
+        return null == arr ? null : arr.clone();
+    }
+
+    public static char[] clone(final char[] arr) {
+        return null == arr ? null : arr.clone();
+    }
+
+    public static boolean[] clone(final boolean[] arr) {
+        return null == arr ? null : arr.clone();
+    }
+    //endregion
+
+    //region toArray() 方法
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> T[] toArray(final T... items) {
+    //    return items;
+    //}
+
+    public static Object[] toArray(final Object... items) {
+        return items;
+    }
+    //endregion
+
+    //region toMap() 方法
+    public static Map<Object, Object> toMap(final Object[] arr) {
+        if (null == arr) {
+            return null;
+        }
+        final Map<Object, Object> map = new HashMap<>((int) (arr.length * 1.5));
+        for (int i = 0; i < arr.length; ++i) {
+            final Object obj = arr[i];
+            if (obj instanceof Map.Entry<?, ?>) {
+                final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) obj;
+                map.put(entry.getKey(), entry.getValue());
+            } else if (obj instanceof Object[]) {
+                final Object[] entry = (Object[]) obj;
+                if (entry.length < 2) {
+                    throw new IllegalArgumentException("Array element " + i + ", '" + obj + "', has a length less than 2");
+                }
+                map.put(entry[0], entry[1]);
+            } else {
+                throw new IllegalArgumentException("Array element " + i + ", '" + obj + "', is neither of type Map.Entry nor an array");
+            }
+        }
+        return map;
+    }
+    //endregion
 
 }
