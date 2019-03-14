@@ -1,6 +1,7 @@
 package com.siwuxie095.forme.util;
 
 
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -1294,5 +1295,26 @@ public final class ArrayX {
         return map;
     }
     //endregion
+
+    public static <T> T[] subarray(final T[] arr, int startIndexInclusive, int endIndexExclusive) {
+        if (null == arr) {
+            return null;
+        }
+        if (startIndexInclusive < 0) {
+            startIndexInclusive = 0;
+        }
+        if (endIndexExclusive > arr.length) {
+            endIndexExclusive = arr.length;
+        }
+        final int newSize = endIndexExclusive - startIndexInclusive;
+        final Class<?> type = arr.getClass().getComponentType();
+        if (newSize <= 0) {
+            final T[] emptyArr = (T[]) Array.newInstance(type, 0);
+            return emptyArr;
+        }
+        final T[] subArr = (T[]) Array.newInstance(type, newSize);
+        System.arraycopy(arr, startIndexInclusive, subArr, 0, newSize);
+        return subArr;
+    }
 
 }
