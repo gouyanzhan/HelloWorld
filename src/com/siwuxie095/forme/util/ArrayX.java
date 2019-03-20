@@ -2,6 +2,7 @@ package com.siwuxie095.forme.util;
 
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -1296,7 +1297,32 @@ public final class ArrayX {
     }
     //endregion
 
-    public static <T> T[] subarray(final T[] arr, int startIndexInclusive, int endIndexExclusive) {
+    //region subarray() 方法
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> T[] subarray(final T[] arr, int startIndexInclusive, int endIndexExclusive) {
+    //    if (null == arr) {
+    //        return null;
+    //    }
+    //    if (startIndexInclusive < 0) {
+    //        startIndexInclusive = 0;
+    //    }
+    //    if (endIndexExclusive > arr.length) {
+    //        endIndexExclusive = arr.length;
+    //    }
+    //    final int newSize = endIndexExclusive - startIndexInclusive;
+    //    final Class<?> type = arr.getClass().getComponentType();
+    //    if (newSize <= 0) {
+    //        final T[] emptyArr = (T[]) Array.newInstance(type, 0);
+    //        return emptyArr;
+    //    }
+    //    final T[] subArr = (T[]) Array.newInstance(type, newSize);
+    //    System.arraycopy(arr, startIndexInclusive, subArr, 0, newSize);
+    //    return subArr;
+    //}
+
+    public static Object[] subarray(final Object[] arr, int startIndexInclusive, int endIndexExclusive) {
         if (null == arr) {
             return null;
         }
@@ -1307,14 +1333,169 @@ public final class ArrayX {
             endIndexExclusive = arr.length;
         }
         final int newSize = endIndexExclusive - startIndexInclusive;
-        final Class<?> type = arr.getClass().getComponentType();
+        Class type = arr.getClass().getComponentType();
         if (newSize <= 0) {
-            final T[] emptyArr = (T[]) Array.newInstance(type, 0);
+            final Object[] emptyArr =  (Object[]) Array.newInstance(type, 0);
             return emptyArr;
         }
-        final T[] subArr = (T[]) Array.newInstance(type, newSize);
+        final Object[] subArr = (Object[]) Array.newInstance(type, newSize);
         System.arraycopy(arr, startIndexInclusive, subArr, 0, newSize);
         return subArr;
     }
+
+    public static byte[] subarray(final byte[] arr, int startIndexInclusive, int endIndexExclusive) {
+        if (null == arr) {
+            return null;
+        }
+        if (startIndexInclusive < 0) {
+            startIndexInclusive = 0;
+        }
+        if (endIndexExclusive > arr.length) {
+            endIndexExclusive = arr.length;
+        }
+        final int newSize = endIndexExclusive - startIndexInclusive;
+        if (newSize <= 0) {
+            return EMPTY_BYTE_ARRAY;
+        }
+        final byte[] subArr = new byte[newSize];
+        System.arraycopy(arr, startIndexInclusive, subArr, 0, newSize);
+        return subArr;
+    }
+
+    public static short[] subarray(final short[] arr, int startIndexInclusive, int endIndexExclusive) {
+        if (null == arr) {
+            return null;
+        }
+        if (startIndexInclusive < 0) {
+            startIndexInclusive = 0;
+        }
+        if (endIndexExclusive > arr.length) {
+            endIndexExclusive = arr.length;
+        }
+        final int newSize = endIndexExclusive - startIndexInclusive;
+        if (newSize <= 0) {
+            return EMPTY_SHORT_ARRAY;
+        }
+        final short[] subArr = new short[newSize];
+        System.arraycopy(arr, startIndexInclusive, subArr, 0, newSize);
+        return subArr;
+    }
+
+    public static int[] subarray(final int[] arr, int startIndexInclusive, int endIndexExclusive) {
+        if (null == arr) {
+            return null;
+        }
+        if (startIndexInclusive < 0) {
+            startIndexInclusive = 0;
+        }
+        if (endIndexExclusive > arr.length) {
+            endIndexExclusive = arr.length;
+        }
+        final int newSize = endIndexExclusive - startIndexInclusive;
+        if (newSize <= 0) {
+            return EMPTY_INT_ARRAY;
+        }
+        final int[] subArr = new int[newSize];
+        System.arraycopy(arr, startIndexInclusive, subArr, 0, newSize);
+        return subArr;
+    }
+
+    public static long[] subarray(final long[] arr, int startIndexInclusive, int endIndexExclusive) {
+        if (null == arr) {
+            return null;
+        }
+        if (startIndexInclusive < 0) {
+            startIndexInclusive = 0;
+        }
+        if (endIndexExclusive > arr.length) {
+            endIndexExclusive = arr.length;
+        }
+        final int newSize = endIndexExclusive - startIndexInclusive;
+        if (newSize <= 0) {
+            return EMPTY_LONG_ARRAY;
+        }
+        final long[] subArr = new long[newSize];
+        System.arraycopy(arr, startIndexInclusive, subArr, 0, newSize);
+        return subArr;
+    }
+
+    public static float[] subarray(final float[] arr, int startIndexInclusive, int endIndexExclusive) {
+        if (null == arr) {
+            return null;
+        }
+        if (startIndexInclusive < 0) {
+            startIndexInclusive = 0;
+        }
+        if (endIndexExclusive > arr.length) {
+            endIndexExclusive = arr.length;
+        }
+        final int newSize = endIndexExclusive - startIndexInclusive;
+        if (newSize <= 0) {
+            return EMPTY_FLOAT_ARRAY;
+        }
+        final float[] subArr = new float[newSize];
+        System.arraycopy(arr, startIndexInclusive, subArr, 0, newSize);
+        return subArr;
+    }
+
+    public static double[] subarray(final double[] arr, int startIndexInclusive, int endIndexExclusive) {
+        if (null == arr) {
+            return null;
+        }
+        if (startIndexInclusive < 0) {
+            startIndexInclusive = 0;
+        }
+        if (endIndexExclusive > arr.length) {
+            endIndexExclusive = arr.length;
+        }
+        final int newSize = endIndexExclusive - startIndexInclusive;
+        if (newSize <= 0) {
+            return EMPTY_DOUBLE_ARRAY;
+        }
+        final double[] subArr = new double[newSize];
+        System.arraycopy(arr, startIndexInclusive, subArr, 0, newSize);
+        return subArr;
+    }
+
+    public static char[] subarray(final char[] arr, int startIndexInclusive, int endIndexExclusive) {
+        if (null == arr) {
+            return null;
+        }
+        if (startIndexInclusive < 0) {
+            startIndexInclusive = 0;
+        }
+        if (endIndexExclusive > arr.length) {
+            endIndexExclusive = arr.length;
+        }
+        final int newSize = endIndexExclusive - startIndexInclusive;
+        if (newSize <= 0) {
+            return EMPTY_CHAR_ARRAY;
+        }
+        final char[] subArr = new char[newSize];
+        System.arraycopy(arr, startIndexInclusive, subArr, 0, newSize);
+        return subArr;
+    }
+
+    public static boolean[] subarray(final boolean[] arr, int startIndexInclusive, int endIndexExclusive) {
+        if (null == arr) {
+            return null;
+        }
+        if (startIndexInclusive < 0) {
+            startIndexInclusive = 0;
+        }
+        if (endIndexExclusive > arr.length) {
+            endIndexExclusive = arr.length;
+        }
+        final int newSize = endIndexExclusive - startIndexInclusive;
+        if (newSize <= 0) {
+            return EMPTY_BOOLEAN_ARRAY;
+        }
+        final boolean[] subArr = new boolean[newSize];
+        System.arraycopy(arr, startIndexInclusive, subArr, 0, newSize);
+        return subArr;
+    }
+    //endregion
+
+
 
 }
