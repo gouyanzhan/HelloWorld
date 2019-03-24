@@ -1496,6 +1496,916 @@ public final class ArrayX {
     }
     //endregion
 
+    //region isSameLength() 方法
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> boolean isSameLength(final T[] arr1, final T[] arr2) {
+    //    if ((null == arr1 && null != arr2 && arr2.length > 0)
+    //    || (null == arr2 && null != arr1 && arr1.length > 0)
+    //    || (null != arr1 && null != arr2 && arr1.length != arr2.length)) {
+    //        return false;
+    //    }
+    //    return true;
+    //}
+
+    public static boolean isSameLength(final Object[] arr1, final Object[] arr2) {
+        if ((null == arr1 && null != arr2 && arr2.length > 0)
+                || (null == arr2 && null != arr1 && arr1.length > 0)
+                || (null != arr1 && null != arr2 && arr1.length != arr2.length)) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isSameLength(final byte[] arr1, final byte[] arr2) {
+        if ((null == arr1 && null != arr2 && arr2.length > 0)
+                || (null == arr2 && null != arr1 && arr1.length > 0)
+                || (null != arr1 && null != arr2 && arr1.length != arr2.length)) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isSameLength(final short[] arr1, final short[] arr2) {
+        if ((null == arr1 && null != arr2 && arr2.length > 0)
+                || (null == arr2 && null != arr1 && arr1.length > 0)
+                || (null != arr1 && null != arr2 && arr1.length != arr2.length)) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isSameLength(final int[] arr1, final int[] arr2) {
+        if ((null == arr1 && null != arr2 && arr2.length > 0)
+                || (null == arr2 && null != arr1 && arr1.length > 0)
+                || (null != arr1 && null != arr2 && arr1.length != arr2.length)) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isSameLength(final long[] arr1, final long[] arr2) {
+        if ((null == arr1 && null != arr2 && arr2.length > 0)
+                || (null == arr2 && null != arr1 && arr1.length > 0)
+                || (null != arr1 && null != arr2 && arr1.length != arr2.length)) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isSameLength(final float[] arr1, final float[] arr2) {
+        if ((null == arr1 && null != arr2 && arr2.length > 0)
+                || (null == arr2 && null != arr1 && arr1.length > 0)
+                || (null != arr1 && null != arr2 && arr1.length != arr2.length)) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isSameLength(final double[] arr1, final double[] arr2) {
+        if ((null == arr1 && null != arr2 && arr2.length > 0)
+                || (null == arr2 && null != arr1 && arr1.length > 0)
+                || (null != arr1 && null != arr2 && arr1.length != arr2.length)) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isSameLength(final char[] arr1, final char[] arr2) {
+        if ((null == arr1 && null != arr2 && arr2.length > 0)
+                || (null == arr2 && null != arr1 && arr1.length > 0)
+                || (null != arr1 && null != arr2 && arr1.length != arr2.length)) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isSameLength(final boolean[] arr1, final boolean[] arr2) {
+        if ((null == arr1 && null != arr2 && arr2.length > 0)
+                || (null == arr2 && null != arr1 && arr1.length > 0)
+                || (null != arr1 && null != arr2 && arr1.length != arr2.length)) {
+            return false;
+        }
+        return true;
+    }
+    //endregion
+
+    //region getLength() 方法
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> int getLength(final T arr) {
+    //    if (null == arr) {
+    //        return 0;
+    //    }
+    //    return Array.getLength(arr);
+    //}
+
+    public static int getLength(final Object arr) {
+        if (null == arr) {
+            return 0;
+        }
+        return Array.getLength(arr);
+    }
+    //endregion
+
+    //region isSameType() 方法
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> boolean isSameType(final T arr1, final T arr2) {
+    //    if (null == arr1 || null == arr2) {
+    //        throw new IllegalArgumentException("The Array must not be null");
+    //    }
+    //    return arr1.getClass().getName().equals(arr2.getClass().getName());
+    //}
+
+    public static boolean isSameType(final Object arr1, final Object arr2) {
+        if (null == arr1 || null == arr2) {
+            throw new IllegalArgumentException("The Array must not be null");
+        }
+        return arr1.getClass().getName().equals(arr2.getClass().getName());
+    }
+    //endregion
+
+    //region reverse() 方法
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> void reverse(final T[] arr) {
+    //    if (null == arr) {
+    //        return;
+    //    }
+    //    final int startIndexInclusive = 0;
+    //    final int endIndexExclusive = arr.length;
+    //    reverse(arr, startIndexInclusive, endIndexExclusive);
+    //}
+
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> void reverse(final T[] arr, final int startIndexInclusive, final int endIndexExclusive) {
+    //    if (null == arr) {
+    //        return;
+    //    }
+    //    int i = (startIndexInclusive < 0) ? 0 : startIndexInclusive;
+    //    int j = Math.min(arr.length, endIndexExclusive) - 1;
+    //    T tmp;
+    //    while (j > i) {
+    //        tmp = arr[j];
+    //        arr[j] = arr[i];
+    //        arr[i] = tmp;
+    //        j--;
+    //        i++;
+    //    }
+    //}
+
+    public static void reverse(final Object[] arr) {
+        if (null == arr) {
+            return;
+        }
+        final int startIndexInclusive = 0;
+        final int endIndexExclusive = arr.length;
+        reverse(arr, startIndexInclusive, endIndexExclusive);
+    }
+
+    public static void reverse(final Object[] arr, final int startIndexInclusive, final int endIndexExclusive) {
+        if (null == arr) {
+            return;
+        }
+        int i = (startIndexInclusive < 0) ? 0 : startIndexInclusive;
+        int j = Math.min(arr.length, endIndexExclusive) - 1;
+        Object tmp;
+        while (j > i) {
+            tmp = arr[j];
+            arr[j] = arr[i];
+            arr[i] = tmp;
+            j--;
+            i++;
+        }
+    }
+
+    public static void reverse(final byte[] arr) {
+        if (null == arr) {
+            return;
+        }
+        final int startIndexInclusive = 0;
+        final int endIndexExclusive = arr.length;
+        reverse(arr, startIndexInclusive, endIndexExclusive);
+    }
+
+    public static void reverse(final byte[] arr, final int startIndexInclusive, final int endIndexExclusive) {
+        if (null == arr) {
+            return;
+        }
+        int i = (startIndexInclusive < 0) ? 0 : startIndexInclusive;
+        int j = Math.min(arr.length, endIndexExclusive) - 1;
+        byte tmp;
+        while (j > i) {
+            tmp = arr[j];
+            arr[j] = arr[i];
+            arr[i] = tmp;
+            j--;
+            i++;
+        }
+    }
+
+    public static void reverse(final short[] arr) {
+        if (null == arr) {
+            return;
+        }
+        final int startIndexInclusive = 0;
+        final int endIndexExclusive = arr.length;
+        reverse(arr, startIndexInclusive, endIndexExclusive);
+    }
+
+    public static void reverse(final short[] arr, final int startIndexInclusive, final int endIndexExclusive) {
+        if (null == arr) {
+            return;
+        }
+        int i = (startIndexInclusive < 0) ? 0 : startIndexInclusive;
+        int j = Math.min(arr.length, endIndexExclusive) - 1;
+        short tmp;
+        while (j > i) {
+            tmp = arr[j];
+            arr[j] = arr[i];
+            arr[i] = tmp;
+            j--;
+            i++;
+        }
+    }
+
+    public static void reverse(final int[] arr) {
+        if (null == arr) {
+            return;
+        }
+        final int startIndexInclusive = 0;
+        final int endIndexExclusive = arr.length;
+        reverse(arr, startIndexInclusive, endIndexExclusive);
+    }
+
+    public static void reverse(final int[] arr, final int startIndexInclusive, final int endIndexExclusive) {
+        if (null == arr) {
+            return;
+        }
+        int i = (startIndexInclusive < 0) ? 0 : startIndexInclusive;
+        int j = Math.min(arr.length, endIndexExclusive) - 1;
+        int tmp;
+        while (j > i) {
+            tmp = arr[j];
+            arr[j] = arr[i];
+            arr[i] = tmp;
+            j--;
+            i++;
+        }
+    }
+
+    public static void reverse(final long[] arr) {
+        if (null == arr) {
+            return;
+        }
+        final int startIndexInclusive = 0;
+        final int endIndexExclusive = arr.length;
+        reverse(arr, startIndexInclusive, endIndexExclusive);
+    }
+
+    public static void reverse(final long[] arr, final int startIndexInclusive, final int endIndexExclusive) {
+        if (null == arr) {
+            return;
+        }
+        int i = (startIndexInclusive < 0) ? 0 : startIndexInclusive;
+        int j = Math.min(arr.length, endIndexExclusive) - 1;
+        long tmp;
+        while (j > i) {
+            tmp = arr[j];
+            arr[j] = arr[i];
+            arr[i] = tmp;
+            j--;
+            i++;
+        }
+    }
+
+    public static void reverse(final float[] arr) {
+        if (null == arr) {
+            return;
+        }
+        final int startIndexInclusive = 0;
+        final int endIndexExclusive = arr.length;
+        reverse(arr, startIndexInclusive, endIndexExclusive);
+    }
+
+    public static void reverse(final float[] arr, final int startIndexInclusive, final int endIndexExclusive) {
+        if (null == arr) {
+            return;
+        }
+        int i = (startIndexInclusive < 0) ? 0 : startIndexInclusive;
+        int j = Math.min(arr.length, endIndexExclusive) - 1;
+        float tmp;
+        while (j > i) {
+            tmp = arr[j];
+            arr[j] = arr[i];
+            arr[i] = tmp;
+            j--;
+            i++;
+        }
+    }
+
+    public static void reverse(final double[] arr) {
+        if (null == arr) {
+            return;
+        }
+        final int startIndexInclusive = 0;
+        final int endIndexExclusive = arr.length;
+        reverse(arr, startIndexInclusive, endIndexExclusive);
+    }
+
+    public static void reverse(final double[] arr, final int startIndexInclusive, final int endIndexExclusive) {
+        if (null == arr) {
+            return;
+        }
+        int i = (startIndexInclusive < 0) ? 0 : startIndexInclusive;
+        int j = Math.min(arr.length, endIndexExclusive) - 1;
+        double tmp;
+        while (j > i) {
+            tmp = arr[j];
+            arr[j] = arr[i];
+            arr[i] = tmp;
+            j--;
+            i++;
+        }
+    }
+
+    public static void reverse(final char[] arr) {
+        if (null == arr) {
+            return;
+        }
+        final int startIndexInclusive = 0;
+        final int endIndexExclusive = arr.length;
+        reverse(arr, startIndexInclusive, endIndexExclusive);
+    }
+
+    public static void reverse(final char[] arr, final int startIndexInclusive, final int endIndexExclusive) {
+        if (null == arr) {
+            return;
+        }
+        int i = (startIndexInclusive < 0) ? 0 : startIndexInclusive;
+        int j = Math.min(arr.length, endIndexExclusive) - 1;
+        char tmp;
+        while (j > i) {
+            tmp = arr[j];
+            arr[j] = arr[i];
+            arr[i] = tmp;
+            j--;
+            i++;
+        }
+    }
+
+    public static void reverse(final boolean[] arr) {
+        if (null == arr) {
+            return;
+        }
+        final int startIndexInclusive = 0;
+        final int endIndexExclusive = arr.length;
+        reverse(arr, startIndexInclusive, endIndexExclusive);
+    }
+
+    public static void reverse(final boolean[] arr, final int startIndexInclusive, final int endIndexExclusive) {
+        if (null == arr) {
+            return;
+        }
+        int i = (startIndexInclusive < 0) ? 0 : startIndexInclusive;
+        int j = Math.min(arr.length, endIndexExclusive) - 1;
+        boolean tmp;
+        while (j > i) {
+            tmp = arr[j];
+            arr[j] = arr[i];
+            arr[i] = tmp;
+            j--;
+            i++;
+        }
+    }
+    //endregion
+
+    //region add() 方法
+    /**
+     * T 和 Object 都可以
+     */
+    //private static <T> T copyArrayGrowOne(final T arr, final Class<?> type) {
+    //    if (null != arr) {
+    //        final int arrLen = Array.getLength(arr);
+    //        final T newArr = (T) Array.newInstance(arr.getClass().getComponentType(), arrLen + 1);
+    //        System.arraycopy(arr, 0, newArr, 0, arrLen);
+    //    }
+    //    return (T) Array.newInstance(type, 1);
+    //}
+
+    /**
+     * 公共私有方法 copyArrayGrowOne()
+     */
+    private static Object copyArrayGrowOne(final Object arr, final Class<?> type) {
+        if (null != arr) {
+            final int arrLen = Array.getLength(arr);
+            final Object newArr = Array.newInstance(arr.getClass().getComponentType(), arrLen + 1);
+            System.arraycopy(arr, 0, newArr, 0, arrLen);
+        }
+        return Array.newInstance(type, 1);
+    }
+
+    /**
+     * T 和 Object 都可以
+     */
+    //private static <T> T add(final T arr, final int index, final T element, Class<?> type) {
+    //    if (null == arr) {
+    //        if (index != 0) {
+    //            throw new IndexOutOfBoundsException("Index: " + index + ", Length: 0");
+    //        }
+    //        final T joinedArr = (T) Array.newInstance(type, 1);
+    //        Array.set(joinedArr, 0, element);
+    //        return joinedArr;
+    //    }
+    //    final int length = Array.getLength(arr);
+    //    if (index < 0 || index > length) {
+    //        throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + length);
+    //    }
+    //    final T result = (T) Array.newInstance(type, length + 1);
+    //    System.arraycopy(arr, 0, result, 0, index);
+    //    if (index < length) {
+    //        System.arraycopy(arr, index, result, index + 1, length - index);
+    //    }
+    //    return result;
+    //}
+
+    /**
+     * 公共私有方法 add()
+     */
+    private static Object add(final Object arr, final int index, final Object element, Class<?> type) {
+        if (null == arr) {
+            if (index != 0) {
+                throw new IndexOutOfBoundsException("Index: " + index + ", Length: 0");
+            }
+            final Object joinedArr = Array.newInstance(type, 1);
+            Array.set(joinedArr, 0, element);
+            return joinedArr;
+        }
+        final int length = getLength(arr);
+        if (index < 0 || index > length) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + length);
+        }
+        final Object result = Array.newInstance(type, length + 1);
+        System.arraycopy(arr, 0, result, 0, index);
+        if (index < length) {
+            System.arraycopy(arr, index, result, index + 1, length - index);
+        }
+        return result;
+    }
+
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> T[] add(final T[] arr, final T element) {
+    //    Class<?> type;
+    //    if (null != arr) {
+    //        type = arr.getClass().getComponentType();
+    //    } else if (null != element) {
+    //        type = element.getClass();
+    //    } else {
+    //        throw new IllegalArgumentException("Arguments cannot be null");
+    //    }
+    //    final T[] newArr = copyArrayGrowOne(arr, type);
+    //    newArr[newArr.length - 1] = element;
+    //    return newArr;
+    //}
+
+    public static Object[] add(final Object[] arr, final Object element) {
+        Class<?> type;
+        if (null != arr) {
+            type = arr.getClass().getComponentType();
+        } else if (null != element) {
+            type = element.getClass();
+        } else {
+            throw new IllegalArgumentException("Arguments cannot be null");
+        }
+        final Object[] newArr = (Object[]) copyArrayGrowOne(arr, type);
+        newArr[newArr.length - 1] = element;
+        return newArr;
+    }
+
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> T[] add(final T[] arr, final int index, final T element) {
+    //    Class<?> type = null;
+    //    if (null != arr) {
+    //        type = arr.getClass().getComponentType();
+    //    } else if (null != element) {
+    //        type = element.getClass();
+    //    } else {
+    //        throw new IllegalArgumentException("Array and element cannot both be null");
+    //    }
+    //    final T[] newArr = (T[]) add(arr, index, element, type);
+    //    return newArr;
+    //}
+
+    public static Object[] add(final Object[] arr, final int index, final Object element) {
+        Class<?> type = null;
+        if (null != arr) {
+            type = arr.getClass().getComponentType();
+        } else if (null != element) {
+            type = element.getClass();
+        } else {
+            throw new IllegalArgumentException("Array and element cannot both be null");
+        }
+        final Object[] newArr = (Object[]) add(arr, index, element, type);
+        return newArr;
+    }
+
+    public static byte[] add(final byte[] arr, final byte element) {
+        final byte[] newArr = (byte[]) copyArrayGrowOne(arr, Byte.TYPE);
+        newArr[newArr.length - 1] = element;
+        return newArr;
+    }
+
+    public static byte[] add(final byte[] arr, final int index, final byte element) {
+        return (byte[]) add(arr, index, element, Byte.TYPE);
+    }
+
+    public static short[] add(final short[] arr, final short element) {
+        final short[] newArr = (short[]) copyArrayGrowOne(arr, Short.TYPE);
+        newArr[newArr.length - 1] = element;
+        return newArr;
+    }
+
+    public static short[] add(final short[] arr, final int index, final short element) {
+        return (short[]) add(arr, index, element, Short.TYPE);
+    }
+
+    public static int[] add(final int[] arr, final int element) {
+        final int[] newArr = (int[]) copyArrayGrowOne(arr, Integer.TYPE);
+        newArr[newArr.length - 1] = element;
+        return newArr;
+    }
+
+    public static int[] add(final int[] arr, final int index, final int element) {
+        return (int[]) add(arr, index, element, Integer.TYPE);
+    }
+
+    public static long[] add(final long[] arr, final long element) {
+        final long[] newArr = (long[]) copyArrayGrowOne(arr, Long.TYPE);
+        newArr[newArr.length - 1] = element;
+        return newArr;
+    }
+
+    public static long[] add(final long[] arr, final int index, final long element) {
+        return (long[]) add(arr, index, element, Long.TYPE);
+    }
+
+    public static float[] add(final float[] arr, final float element) {
+        final float[] newArr = (float[]) copyArrayGrowOne(arr, Float.TYPE);
+        newArr[newArr.length - 1] = element;
+        return newArr;
+    }
+
+    public static float[] add(final float[] arr, final int index, final float element) {
+        return (float[]) add(arr, index, element, Float.TYPE);
+    }
+
+    public static double[] add(final double[] arr, final double element) {
+        final double[] newArr = (double[]) copyArrayGrowOne(arr, Double.TYPE);
+        newArr[newArr.length - 1] = element;
+        return newArr;
+    }
+
+    public static double[] add(final double[] arr, final int index, final double element) {
+        return (double[]) add(arr, index, element, Double.TYPE);
+    }
+
+    public static char[] add(final char[] arr, final char element) {
+        final char[] newArr = (char[]) copyArrayGrowOne(arr, Character.TYPE);
+        newArr[newArr.length - 1] = element;
+        return newArr;
+    }
+
+    public static char[] add(final char[] arr, final int index, final char element) {
+        return (char[]) add(arr, index, element, Character.TYPE);
+    }
+
+    public static boolean[] add(final boolean[] arr, final boolean element) {
+        final boolean[] newArr = (boolean[]) copyArrayGrowOne(arr, Boolean.TYPE);
+        newArr[newArr.length - 1] = element;
+        return newArr;
+    }
+
+    public static boolean[] add(final boolean[] arr, final int index, final boolean element) {
+        return (boolean[]) add(arr, index, element, Boolean.TYPE);
+    }
+    //endregion
+
+    //region addAll() 方法
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> T[] addAll(final T[] arr1, T... arr2) {
+    //    if (null == arr1) {
+    //        return (T[]) clone(arr2);
+    //    } else if (null == arr2) {
+    //        return (T[]) clone(arr1);
+    //    }
+    //    final Class<?> type1 = arr1.getClass().getComponentType();
+    //    final T[] joinedArr = (T[]) Array.newInstance(type1, arr1.length + arr2.length);
+    //    System.arraycopy(arr1, 0, joinedArr, 0, arr1.length);
+    //    try {
+    //        System.arraycopy(arr2, 0, joinedArr, arr1.length, arr2.length);
+    //    } catch (final ArrayStoreException ase) {
+    //        final Class<?> type2 = arr2.getClass().getComponentType();
+    //        if (!type1.isAssignableFrom(type2)) {
+    //            throw new IllegalArgumentException("Cannot store " + type2.getName() + " in an array of " + type1.getName(), ase);
+    //        }
+    //        throw ase;
+    //    }
+    //    return joinedArr;
+    //}
+
+    public static Object[] addAll(final Object[] arr1, Object... arr2) {
+        if (null == arr1) {
+            return clone(arr2);
+        } else if (null == arr2) {
+            return clone(arr1);
+        }
+        final Class<?> type1 = arr1.getClass().getComponentType();
+        final Object[] joinedArr = (Object[]) Array.newInstance(type1, arr1.length + arr2.length);
+        System.arraycopy(arr1, 0, joinedArr, 0, arr1.length);
+        try {
+            System.arraycopy(arr2, 0, joinedArr, arr1.length, arr2.length);
+        } catch (final ArrayStoreException ase) {
+            final Class<?> type2 = arr2.getClass().getComponentType();
+            if (!type1.isAssignableFrom(type2)) {
+                throw new IllegalArgumentException("Cannot store " + type2.getName() + " in an array of " + type1.getName(), ase);
+            }
+            throw ase;
+        }
+        return joinedArr;
+    }
+
+    public static byte[] addAll(final byte[] arr1, final byte... arr2) {
+        if (null == arr1) {
+            return clone(arr2);
+        } else if (null == arr2) {
+            return clone(arr1);
+        }
+        final byte[] joinedArr = new byte[arr1.length + arr2.length];
+        System.arraycopy(arr1, 0, joinedArr, 0, arr1.length);
+        System.arraycopy(arr2, 0, joinedArr, arr1.length, arr2.length);
+        return joinedArr;
+    }
+
+    public static short[] addAll(final short[] arr1, final short... arr2) {
+        if (null == arr1) {
+            return clone(arr2);
+        } else if (null == arr2) {
+            return clone(arr1);
+        }
+        final short[] joinedArr = new short[arr1.length + arr2.length];
+        System.arraycopy(arr1, 0, joinedArr, 0, arr1.length);
+        System.arraycopy(arr2, 0, joinedArr, arr1.length, arr2.length);
+        return joinedArr;
+    }
+
+    public static int[] addAll(final int[] arr1, final int... arr2) {
+        if (null == arr1) {
+            return clone(arr2);
+        } else if (null == arr2) {
+            return clone(arr1);
+        }
+        final int[] joinedArr = new int[arr1.length + arr2.length];
+        System.arraycopy(arr1, 0, joinedArr, 0, arr1.length);
+        System.arraycopy(arr2, 0, joinedArr, arr1.length, arr2.length);
+        return joinedArr;
+    }
+
+    public static long[] addAll(final long[] arr1, final long... arr2) {
+        if (null == arr1) {
+            return clone(arr2);
+        } else if (null == arr2) {
+            return clone(arr1);
+        }
+        final long[] joinedArr = new long[arr1.length + arr2.length];
+        System.arraycopy(arr1, 0, joinedArr, 0, arr1.length);
+        System.arraycopy(arr2, 0, joinedArr, arr1.length, arr2.length);
+        return joinedArr;
+    }
+
+    public static float[] addAll(final float[] arr1, final float... arr2) {
+        if (null == arr1) {
+            return clone(arr2);
+        } else if (null == arr2) {
+            return clone(arr1);
+        }
+        final float[] joinedArr = new float[arr1.length + arr2.length];
+        System.arraycopy(arr1, 0, joinedArr, 0, arr1.length);
+        System.arraycopy(arr2, 0, joinedArr, arr1.length, arr2.length);
+        return joinedArr;
+    }
+
+    public static double[] addAll(final double[] arr1, final double... arr2) {
+        if (null == arr1) {
+            return clone(arr2);
+        } else if (null == arr2) {
+            return clone(arr1);
+        }
+        final double[] joinedArr = new double[arr1.length + arr2.length];
+        System.arraycopy(arr1, 0, joinedArr, 0, arr1.length);
+        System.arraycopy(arr2, 0, joinedArr, arr1.length, arr2.length);
+        return joinedArr;
+    }
+
+    public static char[] addAll(final char[] arr1, final char... arr2) {
+        if (null == arr1) {
+            return clone(arr2);
+        } else if (null == arr2) {
+            return clone(arr1);
+        }
+        final char[] joinedArr = new char[arr1.length + arr2.length];
+        System.arraycopy(arr1, 0, joinedArr, 0, arr1.length);
+        System.arraycopy(arr2, 0, joinedArr, arr1.length, arr2.length);
+        return joinedArr;
+    }
+
+    public static boolean[] addAll(final boolean[] arr1, final boolean... arr2) {
+        if (null == arr1) {
+            return clone(arr2);
+        } else if (null == arr2) {
+            return clone(arr1);
+        }
+        final boolean[] joinedArr = new boolean[arr1.length + arr2.length];
+        System.arraycopy(arr1, 0, joinedArr, 0, arr1.length);
+        System.arraycopy(arr2, 0, joinedArr, arr1.length, arr2.length);
+        return joinedArr;
+    }
+    //endregion
+
+    //region remove() 方法
+    /**
+     * T 和 Object 都可以
+     */
+    //private static <T> T remove(final T arr, final int index) {
+    //    final int length = getLength(arr);
+    //    if (index < 0 || index >= length) {
+    //        throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + length);
+    //    }
+    //    final T result = (T) Array.newInstance(arr.getClass().getComponentType(), length - 1);
+    //    System.arraycopy(arr, 0, result, 0, index);
+    //    if (index < length - 1) {
+    //        System.arraycopy(arr, index + 1, result, index, length - index - 1);
+    //    }
+    //    return result;
+    //}
+
+    /**
+     * 公共私有方法 remove()
+     */
+    private static Object remove(final Object arr, final int index) {
+        final int length = getLength(arr);
+        if (index < 0 || index >= length) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + length);
+        }
+        final Object result = Array.newInstance(arr.getClass().getComponentType(), length - 1);
+        System.arraycopy(arr, 0, result, 0, index);
+        if (index < length - 1) {
+            System.arraycopy(arr, index + 1, result, index, length - index - 1);
+        }
+        return result;
+    }
+
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> T[] remove(final T[] arr, final int index) {
+    //    return (T[]) remove((Object) arr, index);
+    //}
+
+    public static Object[] remove(final Object[] arr, final int index) {
+        return (Object[]) remove((Object) arr, index);
+    }
+
+    public static byte[] remove(final byte[] arr, final int index) {
+        return (byte[]) remove((Object) arr, index);
+    }
+
+    public static short[] remove(final short[] arr, final int index) {
+        return (short[]) remove((Object) arr, index);
+    }
+
+    public static int[] remove(final int[] arr, final int index) {
+        return (int[]) remove((Object) arr, index);
+    }
+
+    public static long[] remove(final long[] arr, final int index) {
+        return (long[]) remove((Object) arr, index);
+    }
+
+    public static float[] remove(final float[] arr, final int index) {
+        return (float[]) remove((Object) arr, index);
+    }
+
+    public static double[] remove(final double[] arr, final int index) {
+        return (double[]) remove((Object) arr, index);
+    }
+
+    public static char[] remove(final char[] arr, final int index) {
+        return (char[]) remove((Object) arr, index);
+    }
+
+    public static boolean[] remove(final boolean[] arr, final int index) {
+        return (boolean[]) remove((Object) arr, index);
+    }
+    //endregion
+
+    //region removeElement() 方法
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> T[] removeElement(final T[] arr, final T element) {
+    //    final int index = indexOf(arr, element);
+    //    if (index == INDEX_NOT_FOUND) {
+    //        return (T[]) clone(arr);
+    //    }
+    //    return (T[]) remove(arr, index);
+    //}
+
+    public static Object[] removeElement(final Object[] arr, final Object element) {
+        final int index = indexOf(arr, element);
+        if (index == INDEX_NOT_FOUND) {
+            return clone(arr);
+        }
+        return remove(arr, index);
+    }
+
+    public static byte[] removeElement(final byte[] arr, final byte element) {
+        final int index = indexOf(arr, element);
+        if (index == INDEX_NOT_FOUND) {
+            return clone(arr);
+        }
+        return remove(arr, index);
+    }
+
+    public static short[] removeElement(final short[] arr, final short element) {
+        final int index = indexOf(arr, element);
+        if (index == INDEX_NOT_FOUND) {
+            return clone(arr);
+        }
+        return remove(arr, index);
+    }
+
+    public static int[] removeElement(final int[] arr, final int element) {
+        final int index = indexOf(arr, element);
+        if (index == INDEX_NOT_FOUND) {
+            return clone(arr);
+        }
+        return remove(arr, index);
+    }
+
+    public static long[] removeElement(final long[] arr, final long element) {
+        final int index = indexOf(arr, element);
+        if (index == INDEX_NOT_FOUND) {
+            return clone(arr);
+        }
+        return remove(arr, index);
+    }
+
+    public static float[] removeElement(final float[] arr, final float element) {
+        final int index = indexOf(arr, element);
+        if (index == INDEX_NOT_FOUND) {
+            return clone(arr);
+        }
+        return remove(arr, index);
+    }
+
+    public static double[] removeElement(final double[] arr, final double element) {
+        final int index = indexOf(arr, element);
+        if (index == INDEX_NOT_FOUND) {
+            return clone(arr);
+        }
+        return remove(arr, index);
+    }
+
+    public static char[] removeElement(final char[] arr, final char element) {
+        final int index = indexOf(arr, element);
+        if (index == INDEX_NOT_FOUND) {
+            return clone(arr);
+        }
+        return remove(arr, index);
+    }
+
+    public static boolean[] removeElement(final boolean[] arr, final boolean element) {
+        final int index = indexOf(arr, element);
+        if (index == INDEX_NOT_FOUND) {
+            return clone(arr);
+        }
+        return remove(arr, index);
+    }
+    //endregion
+
 
 
 }
