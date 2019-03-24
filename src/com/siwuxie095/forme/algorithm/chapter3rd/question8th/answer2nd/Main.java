@@ -1,4 +1,4 @@
-package com.siwuxie095.forme.algorithm.chapter3rd.qustion8th.answer2nd;
+package com.siwuxie095.forme.algorithm.chapter3rd.question8th.answer2nd;
 
 /**
  * 找到二叉树中符合搜索二叉树条件的最大拓扑结构

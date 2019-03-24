@@ -1,8 +1,8 @@
-package com.siwuxie095.forme.algorithm.chapter3rd.qustion8th.answer1st;
+package com.siwuxie095.forme.algorithm.chapter3rd.question8th.answer2nd;
 
 /**
  * @author Jiajing Li
- * @date 2019-03-21 22:32:27
+ * @date 2019-03-21 22:39:41
  */
 public class Node {
 

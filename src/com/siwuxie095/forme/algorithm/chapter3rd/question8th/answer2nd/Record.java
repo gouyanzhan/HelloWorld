@@ -1,4 +1,4 @@
-package com.siwuxie095.forme.algorithm.chapter3rd.qustion8th.answer2nd;
+package com.siwuxie095.forme.algorithm.chapter3rd.question8th.answer2nd;
 
 /**
  * @author Jiajing Li
