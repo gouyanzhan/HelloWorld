@@ -2,9 +2,7 @@ package com.siwuxie095.forme.util;
 
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Array 相关的工具类
@@ -2406,6 +2404,434 @@ public final class ArrayX {
     }
     //endregion
 
+    //region removeAll() 方法
+    /**
+     * T 和 Object 都可以
+     */
+    //private static <T> T removeAll(final T arr, final int... indices) {
+    //    final int length = getLength(arr);
+    //    int diff = 0;
+    //
+    //    if (nonEmpty(indices)) {
+    //        Arrays.sort(indices);
+    //        int i = indices.length;
+    //        int prevIndex = length;
+    //        while (--i >= 0) {
+    //            final int index = indices[i];
+    //            if (index < 0 || index >= length) {
+    //                throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + length);
+    //            }
+    //            if (index >= prevIndex) {
+    //                continue;
+    //            }
+    //            diff++;
+    //            prevIndex = index;
+    //        }
+    //    }
+    //    final T result = (T) Array.newInstance(arr.getClass().getComponentType(), length - diff);
+    //    if (diff < length) {
+    //        int end = length;
+    //        int dest = length - diff;
+    //        for (int i = indices.length - 1; i >= 0; --i) {
+    //            final int index = indices[i];
+    //            if (end - index > 1) {
+    //                final int cp = end - index - 1;
+    //                dest -= cp;
+    //                System.arraycopy(arr, index + 1, result, dest, cp);
+    //            }
+    //            end = index;
+    //        }
+    //        if (end > 0) {
+    //            System.arraycopy(arr, 0, result, 0, end);
+    //        }
+    //    }
+    //    return result;
+    //}
 
+    /**
+     * 公共私有方法 removeAll()
+     */
+    private static Object removeAll(final Object arr, final int... indices) {
+        final int length = getLength(arr);
+        int diff = 0;
+
+        if (nonEmpty(indices)) {
+            Arrays.sort(indices);
+            int i = indices.length;
+            int prevIndex = length;
+            while (--i >= 0) {
+                final int index = indices[i];
+                if (index < 0 || index >= length) {
+                    throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + length);
+                }
+                if (index >= prevIndex) {
+                    continue;
+                }
+                diff++;
+                prevIndex = index;
+            }
+        }
+        final Object result = Array.newInstance(arr.getClass().getComponentType(), length - diff);
+        if (diff < length) {
+            int end = length;
+            int dest = length - diff;
+            for (int i = indices.length - 1; i >= 0; --i) {
+                final int index = indices[i];
+                if (end - index > 1) {
+                    final int cp = end - index - 1;
+                    dest -= cp;
+                    System.arraycopy(arr, index + 1, result, dest, cp);
+                }
+                end = index;
+            }
+            if (end > 0) {
+                System.arraycopy(arr, 0, result, 0, end);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * T 和 Object 都可以
+     */
+    //private static <T> T removeAll(final T arr, final BitSet indices) {
+    //    final int srcLength = getLength(arr);
+    //    final int removals = indices.cardinality();
+    //    final T result = (T) Array.newInstance(arr.getClass().getComponentType(), srcLength - removals);
+    //    int srcIndex = 0;
+    //    int destIndex = 0;
+    //    int count;
+    //    int set;
+    //    while ((set = indices.nextSetBit(srcIndex)) != -1) {
+    //        count = set - srcIndex;
+    //        if (count > 0) {
+    //            System.arraycopy(arr, srcIndex, result, destIndex, count);
+    //            destIndex += count;
+    //        }
+    //        srcIndex = indices.nextClearBit(set);
+    //    }
+    //    count = srcLength - srcIndex;
+    //    if (count > 0) {
+    //        System.arraycopy(arr, srcIndex, result, destIndex, count);
+    //    }
+    //    return result;
+    //}
+
+    /**
+     * 公共私有方法 removeAll()
+     */
+    private static Object removeAll(final Object arr, final BitSet indices) {
+        final int srcLength = getLength(arr);
+        final int removals = indices.cardinality();
+        final Object result = Array.newInstance(arr.getClass().getComponentType(), srcLength - removals);
+        int srcIndex = 0;
+        int destIndex = 0;
+        int count;
+        int set;
+        while ((set = indices.nextSetBit(srcIndex)) != -1) {
+            count = set - srcIndex;
+            if (count > 0) {
+                System.arraycopy(arr, srcIndex, result, destIndex, count);
+                destIndex += count;
+            }
+            srcIndex = indices.nextClearBit(set);
+        }
+        count = srcLength - srcIndex;
+        if (count > 0) {
+            System.arraycopy(arr, srcIndex, result, destIndex, count);
+        }
+        return result;
+    }
+
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <T> T[] removeAll(T[] arr, final int... indices) {
+    //    return (T[]) removeAll((Object) arr, clone(indices));
+    //}
+
+    public static Object[] removeAll(final Object[] arr, final int... indices) {
+        return (Object[]) removeAll((Object) arr, clone(indices));
+    }
+
+    public static byte[] removeAll(final byte[] arr, final int... indices) {
+        return (byte[]) removeAll((Object) arr, clone(indices));
+    }
+
+    public static short[] removeAll(final short[] arr, final int... indices) {
+        return (short[]) removeAll((Object) arr, clone(indices));
+    }
+
+    public static int[] removeAll(final int[] arr, final int... indices) {
+        return (int[]) removeAll((Object) arr, clone(indices));
+    }
+
+    public static long[] removeAll(final long[] arr, final int... indices) {
+        return (long[]) removeAll((Object) arr, clone(indices));
+    }
+
+    public static float[] removeAll(final float[] arr, final int... indices) {
+        return (float[]) removeAll((Object) arr, clone(indices));
+    }
+
+    public static double[] removeAll(final double[] arr, final int... indices) {
+        return (double[]) removeAll((Object) arr, clone(indices));
+    }
+
+    public static char[] removeAll(final char[] arr, final int... indices) {
+        return (char[]) removeAll((Object) arr, clone(indices));
+    }
+
+    public static boolean[] removeAll(final boolean[] arr, final int... indices) {
+        return (boolean[]) removeAll((Object) arr, clone(indices));
+    }
+    //endregion
+
+    //region isSorted() 方法
+    /**
+     * T 和 Object 都可以
+     */
+    //public static <Object extends Comparable<? super Object>> boolean isSorted(final Object[] arr) {
+    //    return isSorted(arr, new Comparator<Object>() {
+    //        @Override
+    //        public int compare(Object o1, Object o2) {
+    //            return o1.compareTo(o2);
+    //        }
+    //    });
+    //}
+
+    public static <T extends Comparable<? super T>> boolean isSorted(final T[] arr) {
+        return isSorted(arr, new Comparator<T>() {
+            @Override
+            public int compare(T o1, T o2) {
+                return o1.compareTo(o2);
+            }
+        });
+    }
+
+    /**
+     * 用 lambda 表达式替代
+     */
+    //public static <T extends Comparable<? super T>> boolean isSorted(final T[] arr) {
+    //    return isSorted(arr, (o1, o2) -> o1.compareTo(o2));
+    //}
+
+    /**
+     * T 和 Object 都可以
+     */
+    //public static boolean isSorted(final Object[] arr, final Comparator<Object> comparator) {
+    //    if (null == comparator) {
+    //        throw new IllegalArgumentException("Comparator should not be null.");
+    //    }
+    //    if (null == arr || arr.length < 2) {
+    //        return true;
+    //    }
+    //    Object previous = arr[0];
+    //    final int n = arr.length;
+    //    for (int i = 1; i < n; ++i) {
+    //        final Object current = arr[i];
+    //        if (comparator.compare(previous, current) > 0) {
+    //            return false;
+    //        }
+    //        previous = current;
+    //    }
+    //    return true;
+    //}
+
+    public static <T> boolean isSorted(final T[] arr, final Comparator<T> comparator) {
+        if (null == comparator) {
+            throw new IllegalArgumentException("Comparator should not be null.");
+        }
+        if (null == arr || arr.length < 2) {
+            return true;
+        }
+        T previous = arr[0];
+        final int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            final T current = arr[i];
+            if (comparator.compare(previous, current) > 0) {
+                return false;
+            }
+            previous = current;
+        }
+        return true;
+    }
+
+    public static boolean isSorted(final byte[] arr) {
+        if (null == arr || arr.length < 2) {
+            return true;
+        }
+        byte previous = arr[0];
+        final int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            final byte current = arr[i];
+            if (compare(previous, current) > 0) {
+                return false;
+            }
+            previous = current;
+        }
+        return true;
+    }
+
+    private static int compare(byte x, byte y) {
+        return x - y;
+    }
+
+    public static boolean isSorted(final short[] arr) {
+        if (null == arr || arr.length < 2) {
+            return true;
+        }
+        short previous = arr[0];
+        final int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            final short current = arr[i];
+            if (compare(previous, current) > 0) {
+                return false;
+            }
+            previous = current;
+        }
+        return true;
+    }
+
+    private static int compare(short x, short y) {
+        if (x == y) {
+            return 0;
+        } else if (x < y) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+
+    public static boolean isSorted(final int[] arr) {
+        if (null == arr || arr.length < 2) {
+            return true;
+        }
+        int previous = arr[0];
+        final int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            final int current = arr[i];
+            if (compare(previous, current) > 0) {
+                return false;
+            }
+            previous = current;
+        }
+        return true;
+    }
+
+    private static int compare(int x, int y) {
+        if (x == y) {
+            return 0;
+        } else if (x < y) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+
+    public static boolean isSorted(final long[] arr) {
+        if (null == arr || arr.length < 2) {
+            return true;
+        }
+        long previous = arr[0];
+        final int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            final long current = arr[i];
+            if (compare(previous, current) > 0) {
+                return false;
+            }
+            previous = current;
+        }
+        return true;
+    }
+
+    private static int compare(long x, long y) {
+        if (x == y) {
+            return 0;
+        } else if (x < y) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+
+    public static boolean isSorted(final float[] arr) {
+        if (null == arr || arr.length < 2) {
+            return true;
+        }
+        float previous = arr[0];
+        final int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            final float current = arr[i];
+            if (Float.compare(previous, current) > 0) {
+                return false;
+            }
+            previous = current;
+        }
+        return true;
+    }
+
+    public static boolean isSorted(final double[] arr) {
+        if (null == arr || arr.length < 2) {
+            return true;
+        }
+        double previous = arr[0];
+        final int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            final double current = arr[i];
+            if (Double.compare(previous, current) > 0) {
+                return false;
+            }
+            previous = current;
+        }
+        return true;
+    }
+
+    public static boolean isSorted(final char[] arr) {
+        if (null == arr || arr.length < 2) {
+            return true;
+        }
+        char previous = arr[0];
+        final int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            final char current = arr[i];
+            if (compare(previous, current) > 0) {
+                return false;
+            }
+            previous = current;
+        }
+        return true;
+    }
+
+    private static int compare(char x, char y) {
+        return x - y;
+    }
+
+    public static boolean isSorted(final boolean[] arr) {
+        if (null == arr || arr.length < 2) {
+            return true;
+        }
+        boolean previous = arr[0];
+        final int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            final boolean current = arr[i];
+            if (compare(previous, current) > 0) {
+                return false;
+            }
+            previous = current;
+        }
+        return true;
+    }
+
+    private static int compare(boolean x, boolean y) {
+        if (x == y) {
+            return 0;
+        } else if (x) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+    //endregion
 
 }
