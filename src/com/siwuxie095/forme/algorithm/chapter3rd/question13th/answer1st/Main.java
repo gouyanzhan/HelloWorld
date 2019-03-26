@@ -24,6 +24,9 @@ package com.siwuxie095.forme.algorithm.chapter3rd.question13th.answer1st;
  * 平衡二叉树的性质，递归过程会迅速退出，此时返回什么根本不重要。boolean[] res
  * 长度为 1，其功能相当于一个全局的 boolean 变量。
  *
+ * 整个后序遍历的过程中，每个节点最多遍历一次，如果中途发现不满足平衡二叉树的性质，
+ * 整个过程会迅速退出，没遍历到的节点也不用遍历了，所以时间复杂度为 O(N)。
+ *
  * @author Jiajing Li
  * @date 2019-03-26 09:14:33
  */
