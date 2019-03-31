@@ -60,6 +60,8 @@ public class ToTree {
 
     /**
      * 先序数组和后序数组结合重构二叉树
+     *
+     * 每个节点的孩子数为 0 或 2 的二叉树才能被先序与后序重构出来
      */
     public static Node prePostToTree(int[] preArr, int[] postArr) {
         if (null == preArr || null == postArr) {
