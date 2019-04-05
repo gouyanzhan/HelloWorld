@@ -8,6 +8,9 @@ public class Coin {
 
     //region 原问题
 
+    /**
+     * 动态规划方法
+     */
     public static int minCoins1(int[] arr, int aim) {
         if (null == arr || arr.length == 0 || aim < 0) {
             return -1;
@@ -34,7 +37,9 @@ public class Coin {
         return dp[n - 1][aim] != max ? dp[n - 1][aim] : -1;
     }
 
-
+    /**
+     * 动态规划方法 + 空间压缩
+     */
     public static int minCoins2(int[] arr, int aim) {
         if (null == arr || arr.length == 0 || aim < 0) {
             return -1;
@@ -65,6 +70,9 @@ public class Coin {
 
     //region 补充问题
 
+    /**
+     * 动态规划方法
+     */
     public static int minCoins3(int[] arr, int aim) {
         if (null == arr || arr.length == 0 || aim < 0) {
             return -1;
@@ -92,7 +100,9 @@ public class Coin {
         return dp[n - 1][aim] != max ? dp[n - 1][aim] : -1;
     }
 
-
+    /**
+     * 动态规划方法 + 空间压缩
+     */
     public static int minCoins4(int[] arr, int aim) {
         int n = arr.length;
         int max = Integer.MAX_VALUE;
