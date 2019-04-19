@@ -11,6 +11,11 @@ import java.util.stream.Collectors;
  */
 public class Main {
 
+    /**
+     * 说明的问题：
+     *
+     * 测试一个全是 null 的 List，mapToInt 后再 sum 的值是多少。
+     */
     public static void main(String[] args) {
         List<Integer> list = new ArrayList<>();
         list.add(null);

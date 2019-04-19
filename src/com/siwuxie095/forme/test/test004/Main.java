@@ -14,6 +14,12 @@ import java.util.List;
  */
 public class Main {
 
+    /**
+     * 说明的问题：
+     *
+     * 测试工具类
+     */
+
     @Test
     public void testListX() {
         List<Integer> intList = ListX.newArrayList();
