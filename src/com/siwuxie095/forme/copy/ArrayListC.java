@@ -10,13 +10,12 @@ import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
 
 /**
  * @author Jiajing Li
  * @date 2019-04-18 14:47:38
  */
-public class ArrayListC<E> extends AbstractList<E> implements List<E>, RandomAccess, Cloneable, Serializable {
+public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAccess, Cloneable, Serializable {
 
     /**
      * 默认容量（初始容量）
@@ -731,14 +730,14 @@ public class ArrayListC<E> extends AbstractList<E> implements List<E>, RandomAcc
     /**
      * 第三个内部类 SubList
      */
-    private class SubList extends AbstractList<E> implements RandomAccess {
+    private class SubList extends AbstractListC<E> implements RandomAccess {
 
-        private final AbstractList<E> parent;
+        private final AbstractListC<E> parent;
         private final int parentOffset;
         private final int offset;
         int size;
 
-        SubList(AbstractList<E> parent, int offset, int fromIndex, int toIndex) {
+        SubList(AbstractListC<E> parent, int offset, int fromIndex, int toIndex) {
             this.parent = parent;
             this.parentOffset = fromIndex;
             this.offset = offset + fromIndex;
@@ -768,51 +767,51 @@ public class ArrayListC<E> extends AbstractList<E> implements List<E>, RandomAcc
             return this.size;
         }
 
-        //@Override
-        //public void add(int index, E element) {
-        //    rangeCheckForAdd(index);
-        //    checkForComodification();
-        //    parent.add(parentOffset + index, element);
-        //    this.modCount = parent.modCount;
-        //    this.size++;
-        //}
+        @Override
+        public void add(int index, E element) {
+            rangeCheckForAdd(index);
+            checkForComodification();
+            parent.add(parentOffset + index, element);
+            this.modCount = parent.modCount;
+            this.size++;
+        }
 
-        //@Override
-        //public E remove(int index) {
-        //    rangeCheck(index);
-        //    checkForComodification();
-        //    E result = parent.remove(parentOffset + index);
-        //    this.modCount = parent.modCount;
-        //    this.size--;
-        //    return result;
-        //}
+        @Override
+        public E remove(int index) {
+            rangeCheck(index);
+            checkForComodification();
+            E result = parent.remove(parentOffset + index);
+            this.modCount = parent.modCount;
+            this.size--;
+            return result;
+        }
 
-        //@Override
-        //protected void removeRange(int fromIndex, int toIndex) {
-        //    checkForComodification();
-        //    parent.removeRange(parentOffset + fromIndex, parentOffset + toIndex);
-        //    this.modCount = parent.modCount;
-        //    this.size = toIndex - fromIndex;
-        //}
+        @Override
+        protected void removeRange(int fromIndex, int toIndex) {
+            checkForComodification();
+            parent.removeRange(parentOffset + fromIndex, parentOffset + toIndex);
+            this.modCount = parent.modCount;
+            this.size = toIndex - fromIndex;
+        }
 
         @Override
         public boolean addAll(Collection<? extends E> coll) {
             return addAll(this.size, coll);
         }
 
-        //@Override
-        //public boolean addAll(int index, Collection<? extends E> coll) {
-        //    rangeCheckForAdd(index);
-        //    int cSize = coll.size();
-        //    if (cSize == 0) {
-        //        return false;
-        //    }
-        //    checkForComodification();
-        //    parent.addAll(parentOffset + index, coll);
-        //    this.modCount = parent.modCount;
-        //    this.size += cSize;
-        //    return true;
-        //}
+        @Override
+        public boolean addAll(int index, Collection<? extends E> coll) {
+            rangeCheckForAdd(index);
+            int cSize = coll.size();
+            if (cSize == 0) {
+                return false;
+            }
+            checkForComodification();
+            parent.addAll(parentOffset + index, coll);
+            this.modCount = parent.modCount;
+            this.size += cSize;
+            return true;
+        }
 
         @Override
         public Iterator<E> iterator() {
