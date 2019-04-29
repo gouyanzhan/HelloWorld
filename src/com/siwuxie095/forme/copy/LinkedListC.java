@@ -1,6 +1,10 @@
 package com.siwuxie095.forme.copy;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.function.Consumer;
 
@@ -480,12 +484,90 @@ public class LinkedListC<E> extends AbstractSequentialList<E> implements List<E>
 
     @Override
     public ListIterator<E> listIterator(int index) {
-        return null;
+        checkPositionIndex(index);
+        return new ListItr(index);
     }
 
     @Override
     public Iterator<E> descendingIterator() {
-        return null;
+        return new DescendingIterator();
+    }
+
+    private LinkedListC<E> superClone() {
+        try {
+            return (LinkedListC<E>) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new InternalError(e);
+        }
+    }
+
+    @Override
+    public Object clone() {
+        LinkedListC<E> clone = superClone();
+
+        clone.first = clone.last = null;
+        clone.size = 0;
+        clone.modCount = 0;
+
+        for (Node<E> x = first; null != x; x = x.next) {
+            clone.add(x.item);
+        }
+
+        return clone;
+    }
+
+    @Override
+    public Object[] toArray() {
+        Object[] result = new Object[size];
+        int i = 0;
+        for (Node<E> x = first; null != x; x = x.next) {
+            result[i++] = x.item;
+        }
+        return result;
+    }
+
+    @Override
+    public <T> T[] toArray(T[] arr) {
+        if (arr.length < size) {
+            arr = (T[]) Array.newInstance(arr.getClass().getComponentType(), size);
+        }
+
+        int i = 0;
+        Object[] result = arr;
+        for (Node<E> x = first; null != x; x = x.next) {
+            result[i++] = x.item;
+        }
+
+        if (arr.length > size) {
+            arr[size] = null;
+        }
+
+        return arr;
+    }
+
+    private void writeObject(ObjectOutputStream stream) throws IOException {
+        stream.defaultWriteObject();
+
+        stream.writeInt(size);
+
+        for (Node<E> x = first; null != x; x = x.next) {
+            stream.writeObject(x.item);
+        }
+    }
+
+    private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
+        stream.defaultReadObject();
+
+        int size = stream.readInt();
+
+        for (int i = 0; i < size; i++) {
+            linkLast((E) stream.readObject());
+        }
+    }
+
+    @Override
+    public Spliterator<E> spliterator() {
+        return new LLSpliterator<>(this, -1, 0);
     }
 
     /**
