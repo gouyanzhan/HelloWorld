@@ -1,5 +1,6 @@
 package com.siwuxie095.forme.copy;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -287,6 +288,148 @@ public abstract class AbstractMapC<K, V> implements MapC<K, V> {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        Iterator<Entry<K, V>> itr = entrySet().iterator();
+        if (!itr.hasNext()) {
+            return "{}";
+        }
+        StringBuilder builder = new StringBuilder();
+        builder.append("{");
+        for (;;) {
+            Entry<K, V> entry = itr.next();
+            K key = entry.getKey();
+            V value = entry.getValue();
+            builder.append(key == this ? "(this Map)" : key);
+            builder.append("=");
+            builder.append(value == this ? "(this Map)" : value);
+            if (!itr.hasNext()) {
+                return builder.append("}").toString();
+            }
+            builder.append(",").append(" ");
+        }
+    }
+
+    private static boolean eq(Object o1, Object o2) {
+        return null == o1 ? null == o2 : o1.equals(o2);
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        AbstractMapC<?, ?> result = (AbstractMapC<?, ?>) super.clone();
+        result.keySet = null;
+        result.values = null;
+        return result;
+    }
+
+    public static class SimpleEntry<K, V> implements Entry<K, V>, Serializable {
+        private final K key;
+        private V value;
+
+        public SimpleEntry(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        public SimpleEntry(Entry<? extends K, ? extends V> entry) {
+            this.key = entry.getKey();
+            this.value = entry.getValue();
+        }
+
+        @Override
+        public K getKey() {
+            return key;
+        }
+
+        @Override
+        public V getValue() {
+            return value;
+        }
+
+        @Override
+        public V setValue(V value) {
+            V oldValue = this.value;
+            this.value = value;
+            return oldValue;
+        }
+
+        @Override
+        public int hashCode() {
+            return (null == key ? 0 : key.hashCode()) ^ (null == value ? 0 : value.hashCode());
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (!(o instanceof MapC.Entry)) {
+                return false;
+            }
+            MapC.Entry<?, ?> entry = (Entry<?, ?>) o;
+            return eq(key, entry.getKey()) && eq(value, entry.getValue());
+        }
+
+        @Override
+        public String toString() {
+            return key + "=" + value;
+        }
+
+    }
+
+
+    public static class SimpleImmutableEntry<K, V> implements Entry<K, V>, Serializable {
+
+        private final K key;
+        private final V value;
+
+        public SimpleImmutableEntry(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        public SimpleImmutableEntry(Entry<? extends K, ? extends V> entry) {
+            this.key = entry.getKey();
+            this.value = entry.getValue();
+        }
+
+        @Override
+        public K getKey() {
+            return key;
+        }
+
+        @Override
+        public V getValue() {
+            return value;
+        }
+
+        @Override
+        public V setValue(V value) {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        public int hashCode() {
+            return (null == key ? 0 : key.hashCode()) ^ (null == value ? 0 : value.hashCode());
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (!(o instanceof MapC.Entry)) {
+                return false;
+            }
+            MapC.Entry<?, ?> entry = (Entry<?, ?>) o;
+            return eq(key, entry.getKey()) && eq(value, entry.getValue());
+
+        }
+
+        @Override
+        public String toString() {
+            return key + "=" + value;
+        }
+    }
+
+
+
+
 
 
 
