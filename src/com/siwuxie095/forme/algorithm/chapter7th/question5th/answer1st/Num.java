@@ -17,17 +17,17 @@ public class Num {
 
     public static void printOddTimesNum2(int[] arr) {
         int eO = 0;
-        int eOhasOne = 0;
+        int eOHasOne = 0;
         for (int curr : arr) {
             eO ^= curr;
         }
         int rightOne = eO & (~eO + 1);
         for (int curr : arr) {
             if ((curr & rightOne) != 0) {
-                eOhasOne ^= curr;
+                eOHasOne ^= curr;
             }
         }
-        System.out.println(eOhasOne + " " + (eO ^ eOhasOne));
+        System.out.println(eOHasOne + " " + (eO ^ eOHasOne));
     }
 
 }

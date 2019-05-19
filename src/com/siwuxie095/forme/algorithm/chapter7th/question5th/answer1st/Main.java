@@ -28,9 +28,9 @@ package com.siwuxie095.forme.algorithm.chapter7th.question5th.answer1st;
  * 如果只有 a 和 b 出现了奇数次，那么最后的异或结果 eO 就是 a^b。所以，如果数组中有两个出
  * 现奇数次的数，最终的 eO 一定不等于 0。那么肯定能在 32 位整数 eO 上找到一个不等于 0 的
  * bit 位，假设第 k 位不等于 0。eO 在第 k 位不等于 0，说明 a 和 b 的第 k 位肯定一个是 1
- * 另一个是 0。接下来再设置一个变量记为 eOhasOne，然后再遍历一次数组。在这次遍历时，eOhasOne
- * 只与第 k 位上是 1 的整数异或，其他的数忽略。那么在第二次遍历结束后，eOhasOne 就是 a 或
- * b 中的一个，而 eO^eOhasOne 就是另外一个出现奇数次的数。具体代码请参看 printOddTimesNum2()
+ * 另一个是 0。接下来再设置一个变量记为 eOHasOne，然后再遍历一次数组。在这次遍历时，eOHasOne
+ * 只与第 k 位上是 1 的整数异或，其他的数忽略。那么在第二次遍历结束后，eOHasOne 就是 a 或
+ * b 中的一个，而 eO^eOHasOne 就是另外一个出现奇数次的数。具体代码请参看 printOddTimesNum2()
  * 方法。
  *
  * @author Jiajing Li
