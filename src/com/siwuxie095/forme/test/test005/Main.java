@@ -9,6 +9,12 @@ import java.util.List;
  */
 public class Main {
 
+    /**
+     * 说明的问题：
+     *
+     * 测试 double 的精度问题。
+     */
+
     public static void main(String[] args) {
         demo(5);
     }

@@ -10,6 +10,12 @@ import java.util.stream.Collectors;
  */
 public class Main {
 
+    /**
+     * 说明的问题：
+     *
+     * 测试 Stream 的 distinct。
+     */
+
     public static void main(String[] args) {
         List<Integer> intList = Arrays.asList(1, 1, 1, 2, 3);
         System.out.println(intList);
