@@ -26,4 +26,36 @@ public class Overload {
     public void testOverload(String val) {
         System.out.println("String - " + val);
     }
+
+    public void printThing(){
+        System.out.println("hhhhh");
+    }
+
+    public void printInt(int a){
+        System.out.println(a);
+    }
+
+    public void printDouble(double b){
+        System.out.println(b);
+    }
+
+    public void printString(String c){
+        System.out.println(c);
+    }
+
+    public void print(){
+        System.out.println("hhhhh");
+    }
+
+    public void print(int a){
+        System.out.println(a);
+    }
+
+    public void print(double b){
+        System.out.println(b);
+    }
+
+    public void print(String c){
+        System.out.println(c);
+    }
 }

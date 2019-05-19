@@ -23,7 +23,7 @@ public class PassByValue {
 
     public void passByValue(Human human) {
          // 看下面一行注释与否的区别
-        //human = new Human();
+        human = new Human();
         human.name = "缑延展";
         System.out.println("human.name in passByValue = " + human.name);
     }
