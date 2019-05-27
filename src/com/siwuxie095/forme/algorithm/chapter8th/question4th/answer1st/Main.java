@@ -1,4 +1,4 @@
-package com.siwuxie095.forme.algorithm.chapter8th.question4th;
+package com.siwuxie095.forme.algorithm.chapter8th.question4th.answer1st;
 
 /**
  * 找到无序数组中最小的 k 个数
