@@ -1,4 +1,4 @@
-package com.gouyanzhan.assignment;
+package com.gouyanzhan.assignment.assign;
 
 /**
  * @author Yanzhan Gou
