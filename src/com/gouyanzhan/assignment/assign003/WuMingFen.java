@@ -9,11 +9,25 @@ public class WuMingFen {
     int quantity;
     boolean likeSoup;
     public WuMingFen(String theMa,int quantity,boolean likeSoup){
-        
+        this.theMa = theMa;
+        this.quantity = quantity;
+        this.likeSoup = likeSoup;
+    }
+    public WuMingFen(String theMa,int quantity){
+        this.theMa = theMa;
+        this.quantity = quantity;
+    }
+    public WuMingFen(){
+        this.theMa = "酸辣";
+        this.quantity = 2;
+        this.likeSoup = true;
+    }
+    public void Check(){
+        System.out.println("面码："+theMa+" 粉量："+ quantity + " 是否带汤：" + likeSoup);
+
     }
 
 }
-
 //12、为“无名的粉”写一个类class WuMingFen 要求：
 // 1.有三个属性 面码:String theMa 粉的分量(两) int quantity  是否带汤 boolean likeSoup
 // 2.写一个构造方法 以便于简化初始化过程 如 WuMingFen f1 = new WuMingFen(“牛肉”,3,true);
