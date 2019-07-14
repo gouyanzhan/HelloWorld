@@ -5,8 +5,7 @@ package com.gouyanzhan.assignment.assign001;
  * @date 2019-05-20 15:47:06
  */
 public class MyMath {
-    int a;
-    int b;
+
     int p;
     int m;
     int j;
@@ -32,7 +31,6 @@ public class MyMath {
         }
     }
 
-
-
-
 }
+
+//4.定义一个类MyMath,提供基本的加减乘除功能，然后进行测试
