@@ -1,4 +1,4 @@
-package com.gouyanzhan.six;
+package com.gouyanzhan.six.example1;
 
 /**
  * @author Yanzhan Gou
@@ -20,8 +20,8 @@ public class TigerDemo {
         System.out.println("Animal属性：名字="+tiger.name);
         System.out.println("Animal属性：年龄="+tiger.age);
         System.out.println("Animal属性：体重="+tiger.weight);
-        System.out.println("Animal属性：老虎种类="+tiger.tigerType);
-        System.out.println("Animal属性：产地="+tiger.from);
+        System.out.println("Tiger属性：老虎种类="+tiger.tigerType);
+        System.out.println("Tiger属性：产地="+tiger.from);
         //是用tiger调用方法
         System.out.println("Animal 方法：呼吸");
         tiger.breath();
@@ -29,17 +29,9 @@ public class TigerDemo {
         tiger.eat();
         System.out.println("Animal 方法：睡觉");
         tiger.sleep();
-        System.out.println("Animal 方法：奔跑");
+        System.out.println("Tiger 方法：奔跑");
         tiger.tigerRun();
 
     }
-
 }
-    //声明tiger类来继承animal类
-    class Tiger extends Animal{
-        String tigerType;
-        String from;
-        void tigerRun(){
-            System.out.println("the tiger tun");
-        }
-    }
+
