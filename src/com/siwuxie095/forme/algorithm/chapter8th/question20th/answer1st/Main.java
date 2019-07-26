@@ -1,7 +1,7 @@
 package com.siwuxie095.forme.algorithm.chapter8th.question20th.answer1st;
 
 /**
- * 打印 N 个数组整体最大的 Top K
+ * 打印 N 个数组整体最大的 TopK K
  *
  * 题目：
  * 有 N 个长度不一的数组，所有的数组都是有序的，请从小到大打印这 N 个数组整体最大的前 K 个数。
@@ -10,7 +10,7 @@ package com.siwuxie095.forme.algorithm.chapter8th.question20th.answer1st;
  * 148, 558
  * 52, 88, 348, 691
  * 再输入整数 k = 5，则打印：
- * Top 5: 971, 845, 691, 558, 538
+ * TopK 5: 971, 845, 691, 558, 538
  *
  * 要求：
  * 1、如果所有数组的元素个数小于 K，则从大到小打印所有的数。
@@ -25,7 +25,7 @@ package com.siwuxie095.forme.algorithm.chapter8th.question20th.answer1st;
  * 的头部，也就是用 a[i-1] 替换原本的堆顶，然后从堆的头部开始调整堆，使其重新变为大根堆（heapify
  * 过程）。
  * 4、这样每次都可以得到一个堆顶元素 max，在打印完成后都经历步骤 3 的调整过程。整体打印 k 次，
- * 就是从大到小全部的 Top K。
+ * 就是从大到小全部的 TopK K。
  * 5、在重复步骤 3 的过程中，如果 max 来自的那个数组（仍假设是 a 数组）已经没有元素。也就是说，
  * max 已经是 a[0]，再往左没有数了。那么就把 heap 中最后一个元素放在 heap 头部的位置，然后把
  * heap 的大小减 1（heapSize - 1），最后依然是从堆的头部开始调整堆，使其重新变为大根堆（堆大
