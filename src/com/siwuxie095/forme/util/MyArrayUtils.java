@@ -10,7 +10,7 @@ import java.util.*;
  * @author Jiajing Li
  * @date 2019-01-18 11:39:55
  */
-public final class ArrayX {
+public final class MyArrayUtils {
 
     /*
      * 泛型 T 和对象 Object 作为参数的区别与联系：
@@ -104,9 +104,9 @@ public final class ArrayX {
     public static final Boolean[] EMPTY_BOOLEAN_OBJECT_ARRAY = new Boolean[0];
     //endregion
 
-    //region ArrayX() 方法
-    private ArrayX() {
-        throw new AssertionError("There is no ArrayX instance for you!");
+    //region MyArrayUtils() 方法
+    private MyArrayUtils() {
+        throw new AssertionError("There is no MyArrayUtils instance for you!");
     }
     //endregion
 

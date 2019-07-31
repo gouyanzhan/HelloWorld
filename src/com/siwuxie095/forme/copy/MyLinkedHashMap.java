@@ -11,42 +11,42 @@ import java.util.function.Consumer;
  * @author Jiajing Li
  * @date 2019-04-28 16:37:59
  */
-public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
+public class MyLinkedHashMap<K, V> extends MyHashMap<K, V> implements MyMap<K, V> {
 
-    transient LinkedHashMapC.Entry<K, V> head;
+    transient MyLinkedHashMap.Entry<K, V> head;
 
-    transient LinkedHashMapC.Entry<K, V> tail;
+    transient MyLinkedHashMap.Entry<K, V> tail;
 
     final boolean accessOrder;
 
-    public LinkedHashMapC(int initialCapacity, float loadFactor) {
+    public MyLinkedHashMap(int initialCapacity, float loadFactor) {
         super(initialCapacity, loadFactor);
         accessOrder = false;
     }
 
-    public LinkedHashMapC(int initialCapacity) {
+    public MyLinkedHashMap(int initialCapacity) {
         super(initialCapacity);
         accessOrder = false;
     }
 
-    public LinkedHashMapC() {
+    public MyLinkedHashMap() {
         super();
         accessOrder = false;
     }
 
-    public LinkedHashMapC(MapC<? extends K, ? extends V> m) {
+    public MyLinkedHashMap(MyMap<? extends K, ? extends V> m) {
         super();
         accessOrder = false;
         putMapEntries(m, false);
     }
 
-    public LinkedHashMapC(int initialCapacity, float loadFactor, boolean accessOrder) {
+    public MyLinkedHashMap(int initialCapacity, float loadFactor, boolean accessOrder) {
         super(initialCapacity, loadFactor);
         this.accessOrder = accessOrder;
     }
 
-    private void linkNodeLast(LinkedHashMapC.Entry<K, V> p) {
-        LinkedHashMapC.Entry<K, V> last = tail;
+    private void linkNodeLast(MyLinkedHashMap.Entry<K, V> p) {
+        MyLinkedHashMap.Entry<K, V> last = tail;
         tail = p;
         if (null == last) {
             head = p;
@@ -56,9 +56,9 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
         }
     }
 
-    private void transferLinks(LinkedHashMapC.Entry<K, V> src, LinkedHashMapC.Entry<K, V> dst) {
-        LinkedHashMapC.Entry<K, V> b = dst.before = src.before;
-        LinkedHashMapC.Entry<K, V> a = dst.after = src.after;
+    private void transferLinks(MyLinkedHashMap.Entry<K, V> src, MyLinkedHashMap.Entry<K, V> dst) {
+        MyLinkedHashMap.Entry<K, V> b = dst.before = src.before;
+        MyLinkedHashMap.Entry<K, V> a = dst.after = src.after;
         if (null == b) {
             head = dst;
         } else {
@@ -79,15 +79,15 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
 
     @Override
     Node<K, V> newNode(int hash, K key, V value, Node<K, V> e) {
-        LinkedHashMapC.Entry<K, V> p = new LinkedHashMapC.Entry<>(hash, key, value, e);
+        MyLinkedHashMap.Entry<K, V> p = new MyLinkedHashMap.Entry<>(hash, key, value, e);
         linkNodeLast(p);
         return p;
     }
 
     @Override
     Node<K, V> replacementNode(Node<K, V> p, Node<K, V> next) {
-        LinkedHashMapC.Entry<K, V> q = (LinkedHashMapC.Entry<K, V>) p;
-        LinkedHashMapC.Entry<K, V> t = new LinkedHashMapC.Entry<>(q.hash, q.key, q.value, next);
+        MyLinkedHashMap.Entry<K, V> q = (MyLinkedHashMap.Entry<K, V>) p;
+        MyLinkedHashMap.Entry<K, V> t = new MyLinkedHashMap.Entry<>(q.hash, q.key, q.value, next);
         transferLinks(q, t);
         return t;
     }
@@ -101,7 +101,7 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
 
     @Override
     TreeNode<K, V> replacementTreeNode(Node<K, V> p, Node<K, V> next) {
-        LinkedHashMapC.Entry<K, V> q = (LinkedHashMapC.Entry<K, V>) p;
+        MyLinkedHashMap.Entry<K, V> q = (MyLinkedHashMap.Entry<K, V>) p;
         TreeNode<K, V> t = new TreeNode<>(q.hash, q.key, q.value, next);
         transferLinks(q, t);
         return t;
@@ -109,9 +109,9 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
 
     @Override
     void afterNodeRemoval(Node<K, V> e) {
-        LinkedHashMapC.Entry<K, V> p = (LinkedHashMapC.Entry<K, V>) e;
-        LinkedHashMapC.Entry<K, V> b = p.before;
-        LinkedHashMapC.Entry<K, V> a = p.after;
+        MyLinkedHashMap.Entry<K, V> p = (MyLinkedHashMap.Entry<K, V>) e;
+        MyLinkedHashMap.Entry<K, V> b = p.before;
+        MyLinkedHashMap.Entry<K, V> a = p.after;
         p.before = p.after = null;
         if (null == b) {
             head = a;
@@ -127,24 +127,24 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
 
     @Override
     void afterNodeInsertion(boolean evict) {
-        LinkedHashMapC.Entry<K, V> first;
+        MyLinkedHashMap.Entry<K, V> first;
         if (evict && null != (first = head) && removeEldestEntry(first)) {
             K key = first.key;
             removeNode(hash(key), key, null, false, true);
         }
     }
 
-    protected boolean removeEldestEntry(MapC.Entry<K, V> eldest) {
+    protected boolean removeEldestEntry(MyMap.Entry<K, V> eldest) {
         return false;
     }
 
     @Override
     void afterNodeAccess(Node<K, V> e) {
-        LinkedHashMapC.Entry<K, V> last;
+        MyLinkedHashMap.Entry<K, V> last;
         if (accessOrder && (last = tail) != e) {
-            LinkedHashMapC.Entry<K, V> p = (LinkedHashMapC.Entry<K, V>) e;
-            LinkedHashMapC.Entry<K, V> b = p.before;
-            LinkedHashMapC.Entry<K, V> a = p.after;
+            MyLinkedHashMap.Entry<K, V> p = (MyLinkedHashMap.Entry<K, V>) e;
+            MyLinkedHashMap.Entry<K, V> b = p.before;
+            MyLinkedHashMap.Entry<K, V> a = p.after;
             p.after = null;
             if (null == b) {
                 head = a;
@@ -169,7 +169,7 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
 
     @Override
     void internalWriteEntries(ObjectOutputStream stream) throws IOException {
-        for (LinkedHashMapC.Entry<K, V> e = head; null != e; e = e.after) {
+        for (MyLinkedHashMap.Entry<K, V> e = head; null != e; e = e.after) {
             stream.writeObject(e.key);
             stream.writeObject(e.value);
         }
@@ -177,7 +177,7 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
 
     @Override
     public boolean containsValue(Object value) {
-        for (LinkedHashMapC.Entry<K, V> e = head; null != e; e = e.after) {
+        for (MyLinkedHashMap.Entry<K, V> e = head; null != e; e = e.after) {
             V v = e.value;
             if (v == value || (null != value && value.equals(e))) {
                 return true;
@@ -237,8 +237,8 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
     }
 
     @Override
-    public Set<MapC.Entry<K, V>> entrySet() {
-        Set<MapC.Entry<K, V>> es;
+    public Set<MyMap.Entry<K, V>> entrySet() {
+        Set<MyMap.Entry<K, V>> es;
         return null == (es = entrySet) ? entrySet = new LinkedEntrySet() : es;
     }
 
@@ -248,7 +248,7 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
             throw new NullPointerException();
         }
         int mc = modCount;
-        for (LinkedHashMapC.Entry<K, V> e = head; null != e; e = e.after) {
+        for (MyLinkedHashMap.Entry<K, V> e = head; null != e; e = e.after) {
             action.accept(e.key, e.value);
         }
         if (modCount != mc) {
@@ -262,7 +262,7 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
             throw new NullPointerException();
         }
         int mc = modCount;
-        for (LinkedHashMapC.Entry<K, V> e = head; null != e; e = e.after) {
+        for (MyLinkedHashMap.Entry<K, V> e = head; null != e; e = e.after) {
             e.value = function.apply(e.key, e.value);
         }
         if (modCount != mc) {
@@ -273,7 +273,7 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
     /**
      * 第一个内部类 Entry
      */
-    static class Entry<K, V> extends HashMapC.Node<K, V> {
+    static class Entry<K, V> extends MyHashMap.Node<K, V> {
         Entry<K, V> before;
         Entry<K, V> after;
         Entry(int hash, K key, V value, Node<K, V> next) {
@@ -293,7 +293,7 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
 
         @Override
         public final void clear() {
-            LinkedHashMapC.this.clear();
+            MyLinkedHashMap.this.clear();
         }
 
         @Override
@@ -322,7 +322,7 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
                 throw new NullPointerException();
             }
             int mc = modCount;
-            for (LinkedHashMapC.Entry<K, V> e = head; null != e; e = e.after) {
+            for (MyLinkedHashMap.Entry<K, V> e = head; null != e; e = e.after) {
                 action.accept(e.key);
             }
             if (modCount != mc) {
@@ -343,7 +343,7 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
 
         @Override
         public final void clear() {
-            LinkedHashMapC.this.clear();
+            MyLinkedHashMap.this.clear();
         }
 
         @Override
@@ -367,7 +367,7 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
                 throw new NullPointerException();
             }
             int mc = modCount;
-            for (LinkedHashMapC.Entry<K, V> e = head; null != e; e = e.after) {
+            for (MyLinkedHashMap.Entry<K, V> e = head; null != e; e = e.after) {
                 action.accept(e.value);
             }
             if (modCount != mc) {
@@ -379,7 +379,7 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
     /**
      * 第四个内部类
      */
-    final class LinkedEntrySet extends AbstractSet<MapC.Entry<K, V>> {
+    final class LinkedEntrySet extends AbstractSet<MyMap.Entry<K, V>> {
 
         @Override
         public final int size() {
@@ -388,20 +388,20 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
 
         @Override
         public final void clear() {
-            LinkedHashMapC.this.clear();
+            MyLinkedHashMap.this.clear();
         }
 
         @Override
-        public final Iterator<MapC.Entry<K, V>> iterator() {
+        public final Iterator<MyMap.Entry<K, V>> iterator() {
             return new LinkedEntryIterator();
         }
 
         @Override
         public final boolean contains(Object o) {
-            if (!(o instanceof MapC.Entry)) {
+            if (!(o instanceof MyMap.Entry)) {
                 return false;
             }
-            MapC.Entry<?, ?> e = (MapC.Entry<?, ?>) o;
+            MyMap.Entry<?, ?> e = (MyMap.Entry<?, ?>) o;
             Object key = e.getKey();
             Node<K, V> candidate = getNode(hash(key), key);
             return null != candidate && candidate.equals(e);
@@ -409,8 +409,8 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
 
         @Override
         public final boolean remove(Object o) {
-            if (o instanceof MapC.Entry) {
-                MapC.Entry<?, ?> e = (MapC.Entry<?, ?>) o;
+            if (o instanceof MyMap.Entry) {
+                MyMap.Entry<?, ?> e = (MyMap.Entry<?, ?>) o;
                 Object key = e.getKey();
                 Object value = e.getValue();
                 return null != removeNode(hash(key), key, value, true, true);
@@ -419,17 +419,17 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
         }
 
         @Override
-        public final Spliterator<MapC.Entry<K, V>> spliterator() {
+        public final Spliterator<MyMap.Entry<K, V>> spliterator() {
             return Spliterators.spliterator(this, Spliterator.SIZED | Spliterator.ORDERED | Spliterator.DISTINCT);
         }
 
         @Override
-        public final void forEach(Consumer<? super MapC.Entry<K, V>> action) {
+        public final void forEach(Consumer<? super MyMap.Entry<K, V>> action) {
             if (null == action) {
                 throw new NullPointerException();
             }
             int mc = modCount;
-            for (LinkedHashMapC.Entry<K, V> e = head; null != e; e = e.after) {
+            for (MyLinkedHashMap.Entry<K, V> e = head; null != e; e = e.after) {
                 action.accept(e);
             }
             if (modCount != mc) {
@@ -443,8 +443,8 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
      * 第五个内部类 LinkedHashIterator
      */
     abstract class LinkedHashIterator {
-        LinkedHashMapC.Entry<K, V> next;
-        LinkedHashMapC.Entry<K, V> current;
+        MyLinkedHashMap.Entry<K, V> next;
+        MyLinkedHashMap.Entry<K, V> current;
         int expectedModCount;
 
         LinkedHashIterator() {
@@ -457,8 +457,8 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
             return null != next;
         }
 
-        final LinkedHashMapC.Entry<K, V> nextNode() {
-            LinkedHashMapC.Entry<K, V> e = next;
+        final MyLinkedHashMap.Entry<K, V> nextNode() {
+            MyLinkedHashMap.Entry<K, V> e = next;
             if (modCount != expectedModCount) {
                 throw new ConcurrentModificationException();
             }
@@ -513,10 +513,10 @@ public class LinkedHashMapC<K, V> extends HashMapC<K, V> implements MapC<K, V> {
     /**
      * 第八个内部类 LinkedEntryIterator
      */
-    final class LinkedEntryIterator extends LinkedHashIterator implements Iterator<MapC.Entry<K, V>> {
+    final class LinkedEntryIterator extends LinkedHashIterator implements Iterator<MyMap.Entry<K, V>> {
 
         @Override
-        public final MapC.Entry<K, V> next() {
+        public final MyMap.Entry<K, V> next() {
             return nextNode();
         }
     }

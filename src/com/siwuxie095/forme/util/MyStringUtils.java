@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @author Jiajing Li
  * @date 2019-01-18 10:13:23
  */
-public final class StringX implements Serializable {
+public final class MyStringUtils implements Serializable {
 
     /*
      * 1、String 继承自 CharSequence，所以 String is a CharSequence，所以可以将 CharSequence 作为方法参数
@@ -42,8 +42,8 @@ public final class StringX implements Serializable {
      */
     public static final int INDEX_NOT_FOUND = -1;
 
-    private StringX() {
-        throw new AssertionError("There is no StringX instance for you!");
+    private MyStringUtils() {
+        throw new AssertionError("There is no MyStringUtils instance for you!");
     }
 
     public static boolean isEmpty(final CharSequence cs) {

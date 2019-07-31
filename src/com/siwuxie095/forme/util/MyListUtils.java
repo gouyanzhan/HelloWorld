@@ -10,10 +10,10 @@ import java.util.List;
  * @author Jiajing Li
  * @date 2019-01-18 10:13:36
  */
-public final class ListX implements Serializable {
+public final class MyListUtils implements Serializable {
 
-    private ListX() {
-        throw new AssertionError("There is no ListX instance for you!");
+    private MyListUtils() {
+        throw new AssertionError("There is no MyListUtils instance for you!");
     }
 
     /**

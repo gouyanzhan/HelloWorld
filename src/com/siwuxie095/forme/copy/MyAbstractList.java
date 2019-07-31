@@ -7,11 +7,11 @@ import java.util.*;
  * @author Jiajing Li
  * @date 2019-04-24 14:22:52
  */
-public abstract class AbstractListC<E> extends AbstractCollection<E> implements List<E> {
+public abstract class MyAbstractList<E> extends AbstractCollection<E> implements List<E> {
 
     protected transient int modCount = 0;
 
-    protected AbstractListC() {}
+    protected MyAbstractList() {}
 
     @Override
     public abstract int size();
@@ -203,7 +203,7 @@ public abstract class AbstractListC<E> extends AbstractCollection<E> implements 
             checkForComodification();
 
             try {
-                AbstractListC.this.remove(lastRet);
+                MyAbstractList.this.remove(lastRet);
                 if (lastRet < cursor) {
                     cursor--;
                 }
@@ -267,7 +267,7 @@ public abstract class AbstractListC<E> extends AbstractCollection<E> implements 
             checkForComodification();
 
             try {
-                AbstractListC.this.set(lastRet, element);
+                MyAbstractList.this.set(lastRet, element);
                 expectedModCount = modCount;
             } catch (IndexOutOfBoundsException e) {
                 throw new ConcurrentModificationException();
@@ -280,7 +280,7 @@ public abstract class AbstractListC<E> extends AbstractCollection<E> implements 
 
             try {
                 int i  = cursor;
-                AbstractListC.this.add(i, element);
+                MyAbstractList.this.add(i, element);
                 lastRet = -1;
                 cursor = i + 1;
                 expectedModCount = modCount;
@@ -295,13 +295,13 @@ public abstract class AbstractListC<E> extends AbstractCollection<E> implements 
 /**
  * 同级类 SubList
  */
-class SubList<E> extends AbstractListC<E> {
+class SubList<E> extends MyAbstractList<E> {
 
-    private final AbstractListC<E> list;
+    private final MyAbstractList<E> list;
     private final int offset;
     private int size;
 
-    SubList(AbstractListC<E> list, int fromIndex, int toIndex) {
+    SubList(MyAbstractList<E> list, int fromIndex, int toIndex) {
         if (fromIndex < 0) {
             throw new IndexOutOfBoundsException("fromIndex = " + fromIndex);
         }
@@ -487,7 +487,7 @@ class SubList<E> extends AbstractListC<E> {
  * 同级类 RandomAccessSubList
  */
 class RandomAccessSubList<E> extends SubList<E> implements RandomAccess {
-    RandomAccessSubList(AbstractListC<E> list, int fromIndex, int toIndex) {
+    RandomAccessSubList(MyAbstractList<E> list, int fromIndex, int toIndex) {
         super(list, fromIndex, toIndex);
     }
 

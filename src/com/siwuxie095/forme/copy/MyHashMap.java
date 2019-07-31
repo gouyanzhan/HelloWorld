@@ -15,7 +15,7 @@ import java.util.function.Function;
  * @author Jiajing Li
  * @date 2019-04-28 15:27:56
  */
-public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cloneable, Serializable {
+public class MyHashMap<K, V> extends MyAbstractMap<K, V> implements MyMap<K, V>, Cloneable, Serializable {
 
     /**
      * 默认初始容量，aka 16，即 2^4
@@ -81,7 +81,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
 
     transient Node<K, V>[] table;
 
-    transient Set<MapC.Entry<K, V>> entrySet;
+    transient Set<MyMap.Entry<K, V>> entrySet;
 
     transient int size;
 
@@ -91,7 +91,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
 
     final float loadFactor;
 
-    public HashMapC(int initialCapacity, float loadFactor) {
+    public MyHashMap(int initialCapacity, float loadFactor) {
         if (initialCapacity < 0) {
             throw new IllegalArgumentException("Illegal initial capacity: " + initialCapacity);
         }
@@ -105,20 +105,20 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
         this.threshold = tableSizeFor(initialCapacity);
     }
 
-    public HashMapC(int initialCapacity) {
+    public MyHashMap(int initialCapacity) {
         this(initialCapacity, DEFAULT_LOAD_FACTOR);
     }
 
-    public HashMapC() {
+    public MyHashMap() {
         this.loadFactor = DEFAULT_LOAD_FACTOR;
     }
 
-    public HashMapC(MapC<? extends K, ? extends V> map) {
+    public MyHashMap(MyMap<? extends K, ? extends V> map) {
         this.loadFactor = DEFAULT_LOAD_FACTOR;
         putMapEntries(map, false);
     }
 
-    final void putMapEntries(MapC<? extends K, ? extends V> map, boolean evict) {
+    final void putMapEntries(MyMap<? extends K, ? extends V> map, boolean evict) {
         int size = map.size();
         if (size > 0) {
             if (null == table) {
@@ -130,7 +130,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
             } else if (size > threshold) {
                 resize();
             }
-            for (MapC.Entry<? extends K, ? extends V> entry : map.entrySet()) {
+            for (MyMap.Entry<? extends K, ? extends V> entry : map.entrySet()) {
                 K key = entry.getKey();
                 V value = entry.getValue();
                 putVal(hash(key), key, value, false, evict);
@@ -364,7 +364,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
     void afterNodeRemoval(Node<K, V> p) {}
 
     @Override
-    public void putAll(MapC<? extends K, ? extends V> m) {
+    public void putAll(MyMap<? extends K, ? extends V> m) {
         putMapEntries(m, true);
     }
 
@@ -470,8 +470,8 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
     }
 
     @Override
-    public Set<MapC.Entry<K, V>> entrySet() {
-        Set<MapC.Entry<K, V>> es;
+    public Set<MyMap.Entry<K, V>> entrySet() {
+        Set<MyMap.Entry<K, V>> es;
         return null == (es = entrySet) ? (entrySet = new EntrySet()) : es;
     }
 
@@ -753,9 +753,9 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
 
     @Override
     public Object clone() {
-        HashMapC<K, V> result;
+        MyHashMap<K, V> result;
         try {
-            result = (HashMapC<K, V>) super.clone();
+            result = (MyHashMap<K, V>) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new InternalError(e);
         }
@@ -807,7 +807,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
             float ft = (float) cap * lf;
             threshold = cap < MAXIMUM_CAPACITY && ft < MAXIMUM_CAPACITY ? (int) ft : Integer.MAX_VALUE;
 
-            SharedSecrets.getJavaOISAccess().checkArray(stream, MapC.Entry[].class, cap);
+            SharedSecrets.getJavaOISAccess().checkArray(stream, MyMap.Entry[].class, cap);
             Node<K, V>[] tab = (Node<K, V>[]) new Node[cap];
             table = tab;
 
@@ -828,7 +828,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
 
         @Override
         public final void clear() {
-            HashMapC.this.clear();
+            MyHashMap.this.clear();
         }
 
         @Override
@@ -883,7 +883,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
 
         @Override
         public final void clear() {
-            HashMapC.this.clear();
+            MyHashMap.this.clear();
         }
 
         @Override
@@ -923,7 +923,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
         }
     }
 
-    final class EntrySet extends AbstractSet<MapC.Entry<K, V>> {
+    final class EntrySet extends AbstractSet<MyMap.Entry<K, V>> {
 
         @Override
         public final int size() {
@@ -932,21 +932,21 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
 
         @Override
         public final void clear() {
-            HashMapC.this.clear();
+            MyHashMap.this.clear();
         }
 
         @Override
-        public final Iterator<MapC.Entry<K, V>> iterator() {
+        public final Iterator<MyMap.Entry<K, V>> iterator() {
             return null;
             // todo
         }
 
         @Override
         public final boolean contains(Object o) {
-            if (!(o instanceof MapC.Entry)) {
+            if (!(o instanceof MyMap.Entry)) {
                 return false;
             }
-            MapC.Entry<?, ?> e = (Entry<?, ?>) o;
+            MyMap.Entry<?, ?> e = (Entry<?, ?>) o;
             Object key = e.getKey();
             Node<K, V> candidate = getNode(hash(key), key);
             return null != candidate && candidate.equals(e);
@@ -954,8 +954,8 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
 
         @Override
         public final boolean remove(Object o) {
-            if (o instanceof MapC.Entry) {
-                MapC.Entry<?, ?> e = (Entry<?, ?>) o;
+            if (o instanceof MyMap.Entry) {
+                MyMap.Entry<?, ?> e = (Entry<?, ?>) o;
                 Object key = e.getKey();
                 Object value = e.getValue();
                 return null != removeNode(hash(key), key, value, true, true);
@@ -964,13 +964,13 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
         }
 
         @Override
-        public final Spliterator<MapC.Entry<K, V>> spliterator() {
+        public final Spliterator<MyMap.Entry<K, V>> spliterator() {
             return null;
             // todo
         }
 
         @Override
-        public final void forEach(Consumer<? super MapC.Entry<K, V>> action) {
+        public final void forEach(Consumer<? super MyMap.Entry<K, V>> action) {
             Node<K, V>[] tab;
             if (null == action) {
                 throw new NullPointerException();
@@ -1058,24 +1058,24 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
 
     }
 
-    final class EntryIterator extends HashIterator implements Iterator<MapC.Entry<K, V>> {
+    final class EntryIterator extends HashIterator implements Iterator<MyMap.Entry<K, V>> {
 
         @Override
-        public final MapC.Entry<K, V> next() {
+        public final MyMap.Entry<K, V> next() {
             return nextNode();
         }
 
     }
 
     static class HashMapSpliterator<K, V> {
-        final HashMapC<K, V> map;
+        final MyHashMap<K, V> map;
         Node<K, V> current;
         int index;
         int fence;
         int est;
         int expectedModCount;
 
-        HashMapSpliterator(HashMapC<K, V> m, int origin, int fence, int est, int expectedModCount) {
+        HashMapSpliterator(MyHashMap<K, V> m, int origin, int fence, int est, int expectedModCount) {
             this.map = m;
             this.index = origin;
             this.fence = fence;
@@ -1086,7 +1086,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
         final int getFence() {
             int hi;
             if ((hi = fence) < 0) {
-                HashMapC<K, V> m = map;
+                MyHashMap<K, V> m = map;
                 est = m.size;
                 expectedModCount = m.modCount;
                 Node<K, V>[] tab = m.table;
@@ -1104,7 +1104,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
 
     static final class KeySpliterator<K, V> extends HashMapSpliterator<K, V> implements Spliterator<K> {
 
-        KeySpliterator(HashMapC<K, V> m, int origin, int fence, int est, int expectedModCount) {
+        KeySpliterator(MyHashMap<K, V> m, int origin, int fence, int est, int expectedModCount) {
             super(m, origin, fence, est, expectedModCount);
         }
         @Override
@@ -1123,7 +1123,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
             if (null == action) {
                 throw new NullPointerException();
             }
-            HashMapC<K, V> m = map;
+            MyHashMap<K, V> m = map;
             Node<K, V>[] tab = m.table;
             if ((hi = fence) < 0) {
                 mc = expectedModCount = m.modCount;
@@ -1182,7 +1182,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
 
     static final class ValueSpliterator<K, V> extends HashMapSpliterator<K, V> implements Spliterator<V> {
 
-        ValueSpliterator(HashMapC<K, V> m, int origin, int fence, int est, int expectedModCount) {
+        ValueSpliterator(MyHashMap<K, V> m, int origin, int fence, int est, int expectedModCount) {
             super(m, origin, fence, est, expectedModCount);
         }
 
@@ -1202,7 +1202,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
             if (null == action) {
                 throw new NullPointerException();
             }
-            HashMapC<K, V> m = map;
+            MyHashMap<K, V> m = map;
             Node<K, V>[] tab = m.table;
             if ((hi = fence) < 0) {
                 mc = expectedModCount = m.modCount;
@@ -1259,9 +1259,9 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
 
     }
 
-    static final class EntrySpliterator<K, V> extends HashMapSpliterator<K, V> implements Spliterator<MapC.Entry<K, V>> {
+    static final class EntrySpliterator<K, V> extends HashMapSpliterator<K, V> implements Spliterator<MyMap.Entry<K, V>> {
 
-        EntrySpliterator(HashMapC<K, V> m, int origin, int fence, int est, int expectedModCount) {
+        EntrySpliterator(MyHashMap<K, V> m, int origin, int fence, int est, int expectedModCount) {
             super(m, origin, fence, est, expectedModCount);
         }
 
@@ -1274,14 +1274,14 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
         }
 
         @Override
-        public void forEachRemaining(Consumer<? super MapC.Entry<K, V>> action) {
+        public void forEachRemaining(Consumer<? super MyMap.Entry<K, V>> action) {
             int i;
             int hi;
             int mc;
             if (null == action) {
                 throw new NullPointerException();
             }
-            HashMapC<K, V> m = map;
+            MyHashMap<K, V> m = map;
             Node<K, V>[] tab = m.table;
             if ((hi = fence) < 0) {
                 mc = expectedModCount = m.modCount;
@@ -1307,7 +1307,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
         }
 
         @Override
-        public boolean tryAdvance(Consumer<? super MapC.Entry<K, V>> action) {
+        public boolean tryAdvance(Consumer<? super MyMap.Entry<K, V>> action) {
             int hi;
             if (null == action) {
                 throw new NullPointerException();
@@ -1339,7 +1339,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
     }
 
 
-    static class Node<K, V> implements MapC.Entry<K, V> {
+    static class Node<K, V> implements MyMap.Entry<K, V> {
         final int hash;
         final K key;
         V value;
@@ -1384,8 +1384,8 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
             if (obj == this) {
                 return true;
             }
-            if (obj instanceof MapC.Entry) {
-                MapC.Entry<K, V> entry = (MapC.Entry<K, V>) obj;
+            if (obj instanceof MyMap.Entry) {
+                MyMap.Entry<K, V> entry = (MyMap.Entry<K, V>) obj;
                 if (Objects.equals(key, entry.getKey()) && Objects.equals(value, entry.getValue())) {
                     return true;
                 }
@@ -1395,7 +1395,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
 
     }
 
-    static final class TreeNode<K, V> extends LinkedHashMapC.Entry<K, V> {
+    static final class TreeNode<K, V> extends MyLinkedHashMap.Entry<K, V> {
 
         TreeNode<K, V> parent;
         TreeNode<K, V> left;
@@ -1524,7 +1524,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
             moveRootToFront(tab, root);
         }
 
-        final Node<K, V> untreeify(HashMapC<K, V> map) {
+        final Node<K, V> untreeify(MyHashMap<K, V> map) {
             Node<K, V> hd = null;
             Node<K, V> tl = null;
             for (Node<K, V> q = this; null != q; q = q.next) {
@@ -1540,7 +1540,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
             return hd;
         }
 
-        final TreeNode<K, V> putTreeVal(HashMapC<K, V> map, Node<K, V>[] tab, int h, K k, V v) {
+        final TreeNode<K, V> putTreeVal(MyHashMap<K, V> map, Node<K, V>[] tab, int h, K k, V v) {
             Class<?> kc = null;
             boolean searched = false;
             TreeNode<K, V> root = null != parent ? root() : this;
@@ -1587,7 +1587,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
             }
         }
 
-        final void removeTreeNode(HashMapC<K, V> map, Node<K, V>[] tab, boolean movable) {
+        final void removeTreeNode(MyHashMap<K, V> map, Node<K, V>[] tab, boolean movable) {
             int n;
             if (null == tab || (n = tab.length) == 0) {
                 return;
@@ -1703,7 +1703,7 @@ public class HashMapC<K, V> extends AbstractMapC<K, V> implements MapC<K, V>, Cl
             }
         }
 
-        final void split(HashMapC<K, V> map, Node<K, V>[] tab, int index, int bit) {
+        final void split(MyHashMap<K, V> map, Node<K, V>[] tab, int index, int bit) {
             TreeNode<K, V> b = this;
             TreeNode<K, V> loHead = null;
             TreeNode<K, V> loTail = null;

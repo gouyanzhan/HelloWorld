@@ -11,7 +11,7 @@ import java.util.List;
  * @author Jiajing Li
  * @date 2019-01-09 16:00:44
  */
-public class ScannerX {
+public class MyScannerUtils {
 
     public static void main(String[] args) {
         /*

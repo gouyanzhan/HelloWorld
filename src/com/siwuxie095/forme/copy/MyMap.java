@@ -10,7 +10,7 @@ import java.util.function.Function;
  * @author Jiajing Li
  * @date 2019-04-26 17:20:41
  */
-public interface MapC<K, V> {
+public interface MyMap<K, V> {
 
     int size();
 
@@ -26,7 +26,7 @@ public interface MapC<K, V> {
 
     V remove(Object key);
 
-    void putAll(MapC<? extends K, ? extends V> m);
+    void putAll(MyMap<? extends K, ? extends V> m);
 
     void clear();
 
@@ -34,7 +34,7 @@ public interface MapC<K, V> {
 
     Collection<V> values();
 
-    Set<MapC.Entry<K, V>> entrySet();
+    Set<MyMap.Entry<K, V>> entrySet();
 
     @Override
     boolean equals(Object o);
@@ -49,7 +49,7 @@ public interface MapC<K, V> {
 
     default void forEach(BiConsumer<? super K, ? super V> action) {
         Objects.requireNonNull(action);
-        for (MapC.Entry<K, V> entry : entrySet()) {
+        for (MyMap.Entry<K, V> entry : entrySet()) {
             K k;
             V v;
             try {
@@ -64,7 +64,7 @@ public interface MapC<K, V> {
 
     default void replaceAll(BiFunction<? super K, ? super V, ? extends V> function) {
         Objects.requireNonNull(function);
-        for (MapC.Entry<K, V> entry : entrySet()) {
+        for (MyMap.Entry<K, V> entry : entrySet()) {
             K k;
             V v;
             try {
@@ -193,21 +193,21 @@ public interface MapC<K, V> {
         @Override
         int hashCode();
 
-        public static <K extends Comparable<? super K>, V> Comparator<MapC.Entry<K, V>> comparingByKey() {
-            return (Comparator<MapC.Entry<K, V>> & Serializable) (c1, c2) -> c1.getKey().compareTo(c2.getKey());
+        public static <K extends Comparable<? super K>, V> Comparator<MyMap.Entry<K, V>> comparingByKey() {
+            return (Comparator<MyMap.Entry<K, V>> & Serializable) (c1, c2) -> c1.getKey().compareTo(c2.getKey());
         }
 
-        public static <K, V extends Comparable<? super V>> Comparator<MapC.Entry<K, V>> comparingByValue() {
-            return (Comparator<MapC.Entry<K, V>> & Serializable) (c1, c2) -> c1.getValue().compareTo(c2.getValue());
+        public static <K, V extends Comparable<? super V>> Comparator<MyMap.Entry<K, V>> comparingByValue() {
+            return (Comparator<MyMap.Entry<K, V>> & Serializable) (c1, c2) -> c1.getValue().compareTo(c2.getValue());
         }
 
-        public static <K, V> Comparator<MapC.Entry<K, V>> comparingByKey(Comparator<? super K> cmp) {
+        public static <K, V> Comparator<MyMap.Entry<K, V>> comparingByKey(Comparator<? super K> cmp) {
             Objects.requireNonNull(cmp);
-            return (Comparator<MapC.Entry<K, V>> & Serializable) (c1, c2) -> cmp.compare(c1.getKey(), c2.getKey());
+            return (Comparator<MyMap.Entry<K, V>> & Serializable) (c1, c2) -> cmp.compare(c1.getKey(), c2.getKey());
         }
 
-        public static <K, V> Comparator<MapC.Entry<K, V>> comparingByValue(Comparator<? super V> cmp) {
-            return (Comparator<MapC.Entry<K, V>> & Serializable) (c1, c2) -> cmp.compare(c1.getValue(), c2.getValue());
+        public static <K, V> Comparator<MyMap.Entry<K, V>> comparingByValue(Comparator<? super V> cmp) {
+            return (Comparator<MyMap.Entry<K, V>> & Serializable) (c1, c2) -> cmp.compare(c1.getValue(), c2.getValue());
         }
 
 

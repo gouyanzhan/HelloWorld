@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author Jiajing Li
  * @date 2019-03-01 11:14:32
  */
-public final class ConstantX implements Serializable {
+public final class MyConstant implements Serializable {
 
     /**
      * 空格 space

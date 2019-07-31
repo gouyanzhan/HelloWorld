@@ -16,10 +16,10 @@ import java.util.function.Supplier;
  * @author Jiajing Li
  * @date 2019-01-18 11:15:40
  */
-public final class ObjectX implements Serializable {
+public final class MyObjectUtils implements Serializable {
 
-    private ObjectX() {
-        throw new AssertionError("There is no ObjectX instance for you!");
+    private MyObjectUtils() {
+        throw new AssertionError("There is no MyObjectUtils instance for you!");
     }
 
     /**
@@ -126,7 +126,7 @@ public final class ObjectX implements Serializable {
     /**
      * @deprecated
      *
-     * 被 com.siwuxie095.forme.util.ObjectX#hash(java.lang.Object...) 代替
+     * 被 com.siwuxie095.forme.util.MyObjectUtils#hash(java.lang.Object...) 代替
      */
     public static int hashCodeMulti(final Object... objs) {
         int hash = 1;

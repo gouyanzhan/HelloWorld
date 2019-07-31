@@ -12,7 +12,7 @@ import java.util.function.Consumer;
  * @author Jiajing Li
  * @date 2019-04-24 17:46:13
  */
-public class LinkedListC<E> extends AbstractSequentialList<E> implements List<E>, Deque<E>, Cloneable, Serializable {
+public class MyLinkedList<E> extends AbstractSequentialList<E> implements List<E>, Deque<E>, Cloneable, Serializable {
 
     transient int size = 0;
 
@@ -20,9 +20,9 @@ public class LinkedListC<E> extends AbstractSequentialList<E> implements List<E>
 
     transient Node<E> last;
 
-    public LinkedListC() {}
+    public MyLinkedList() {}
 
-    public LinkedListC(Collection<? extends E> coll) {
+    public MyLinkedList(Collection<? extends E> coll) {
         this();
         addAll(coll);
     }
@@ -493,9 +493,9 @@ public class LinkedListC<E> extends AbstractSequentialList<E> implements List<E>
         return new DescendingIterator();
     }
 
-    private LinkedListC<E> superClone() {
+    private MyLinkedList<E> superClone() {
         try {
-            return (LinkedListC<E>) super.clone();
+            return (MyLinkedList<E>) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new InternalError(e);
         }
@@ -503,7 +503,7 @@ public class LinkedListC<E> extends AbstractSequentialList<E> implements List<E>
 
     @Override
     public Object clone() {
-        LinkedListC<E> clone = superClone();
+        MyLinkedList<E> clone = superClone();
 
         clone.first = clone.last = null;
         clone.size = 0;
@@ -728,13 +728,13 @@ public class LinkedListC<E> extends AbstractSequentialList<E> implements List<E>
     static final class LLSpliterator<E> implements Spliterator<E> {
         static final int BATCH_UNIT = 1 << 10;
         static final int MAX_BATCH = 1 << 25;
-        final LinkedListC<E> list;
+        final MyLinkedList<E> list;
         Node<E> current;
         int est;
         int expectedModCount;
         int batch;
 
-        LLSpliterator(LinkedListC<E> list, int est, int expectedModCount) {
+        LLSpliterator(MyLinkedList<E> list, int est, int expectedModCount) {
             this.list = list;
             this.est = est;
             this.expectedModCount = expectedModCount;
@@ -742,7 +742,7 @@ public class LinkedListC<E> extends AbstractSequentialList<E> implements List<E>
 
         final int getEst() {
             int s;
-            final LinkedListC<E> lst;
+            final MyLinkedList<E> lst;
             if ((s = est) < 0) {
                 if ((lst = list) == null) {
                     s = est = 0;

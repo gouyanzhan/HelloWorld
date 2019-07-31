@@ -15,7 +15,7 @@ import java.util.function.UnaryOperator;
  * @author Jiajing Li
  * @date 2019-04-18 14:47:38
  */
-public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAccess, Cloneable, Serializable {
+public class MyArrayList<E> extends MyAbstractList<E> implements List<E>, RandomAccess, Cloneable, Serializable {
 
     /**
      * 默认容量（初始容量）
@@ -55,7 +55,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
     /**
      * 有参构造器，参数是 List 的容量
      */
-    public ArrayListC(int initialCapacity) {
+    public MyArrayList(int initialCapacity) {
         if (initialCapacity > 0) {
             this.elementData = new Object[initialCapacity];
         } else if (initialCapacity == 0) {
@@ -68,14 +68,14 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
     /**
      * 无参构造器
      */
-    public ArrayListC() {
+    public MyArrayList() {
         this.elementData = DEFAULT_CAPACITY_EMPTY_EMPTY_ELEMENT_DATA;
     }
 
     /**
      * 有参构造器，参数是一个集合
      */
-    public ArrayListC(Collection<? extends E> coll) {
+    public MyArrayList(Collection<? extends E> coll) {
         elementData = coll.toArray();
         if ((size = elementData.length) != 0) {
             if (elementData.getClass() != Object[].class) {
@@ -211,7 +211,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
     @Override
     public Object clone() {
         try {
-            ArrayListC<?> list = (ArrayListC<?>) super.clone();
+            MyArrayList<?> list = (MyArrayList<?>) super.clone();
             list.elementData = Arrays.copyOf(elementData, size);
             list.modCount = 0;
             return list;
@@ -605,7 +605,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
             if (i >= size) {
                 throw new NoSuchElementException();
             }
-            Object[] elementData = ArrayListC.this.elementData;
+            Object[] elementData = MyArrayList.this.elementData;
             if (i > elementData.length) {
                 throw new ConcurrentModificationException();
             }
@@ -620,7 +620,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
             }
             checkForComodification();
             try {
-                ArrayListC.this.remove(lastRet);
+                MyArrayList.this.remove(lastRet);
                 cursor = lastRet;
                 lastRet = -1;
                 expectedModCount = modCount;
@@ -632,12 +632,12 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
         @Override
         public void forEachRemaining(Consumer<? super E> consumer) {
             Objects.requireNonNull(consumer);
-            final int size = ArrayListC.this.size;
+            final int size = MyArrayList.this.size;
             int i = cursor;
             if (i >= size) {
                 return;
             }
-            final Object[] elementData = ArrayListC.this.elementData;
+            final Object[] elementData = MyArrayList.this.elementData;
             if (i >= elementData.length) {
                 throw new ConcurrentModificationException();
             }
@@ -690,7 +690,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
             if (i < 0) {
                 throw new NoSuchElementException();
             }
-            Object[] elementData = ArrayListC.this.elementData;
+            Object[] elementData = MyArrayList.this.elementData;
             if (i >= elementData.length) {
                 throw new ConcurrentModificationException();
             }
@@ -705,7 +705,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
             }
             checkForComodification();
             try {
-                ArrayListC.this.set(lastRet, element);
+                MyArrayList.this.set(lastRet, element);
             } catch (IndexOutOfBoundsException e) {
                 throw new ConcurrentModificationException();
             }
@@ -717,7 +717,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
 
             try {
                 int i = cursor;
-                ArrayListC.this.add(i, element);
+                MyArrayList.this.add(i, element);
                 cursor = i + 1;
                 lastRet = -1;
                 expectedModCount = modCount;
@@ -730,27 +730,27 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
     /**
      * 第三个内部类 SubList
      */
-    private class SubList extends AbstractListC<E> implements RandomAccess {
+    private class SubList extends MyAbstractList<E> implements RandomAccess {
 
-        private final AbstractListC<E> parent;
+        private final MyAbstractList<E> parent;
         private final int parentOffset;
         private final int offset;
         int size;
 
-        SubList(AbstractListC<E> parent, int offset, int fromIndex, int toIndex) {
+        SubList(MyAbstractList<E> parent, int offset, int fromIndex, int toIndex) {
             this.parent = parent;
             this.parentOffset = fromIndex;
             this.offset = offset + fromIndex;
             this.size = toIndex - fromIndex;
-            this.modCount = ArrayListC.this.modCount;
+            this.modCount = MyArrayList.this.modCount;
         }
 
         @Override
         public E set(int index, E element) {
             rangeCheck(index);
             checkForComodification();
-            E oldValue = ArrayListC.this.elementData(offset + index);
-            ArrayListC.this.elementData[offset + index] = element;
+            E oldValue = MyArrayList.this.elementData(offset + index);
+            MyArrayList.this.elementData[offset + index] = element;
             return oldValue;
         }
 
@@ -758,7 +758,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
         public E get(int index) {
             rangeCheck(index);
             checkForComodification();
-            return ArrayListC.this.elementData(offset + index);
+            return MyArrayList.this.elementData(offset + index);
         }
 
         @Override
@@ -827,7 +827,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
             return new ListIterator<E>() {
                 int cursor = index;
                 int lastRet = -1;
-                int expectedModCount = ArrayListC.this.modCount;
+                int expectedModCount = MyArrayList.this.modCount;
 
                 @Override
                 public boolean hasNext() {
@@ -841,7 +841,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
                     if (i >= SubList.this.size) {
                         throw new NoSuchElementException();
                     }
-                    Object[] elementData = ArrayListC.this.elementData;
+                    Object[] elementData = MyArrayList.this.elementData;
                     if (offset + i >= elementData.length) {
                         throw new ConcurrentModificationException();
                     }
@@ -861,7 +861,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
                     if (i < 0) {
                         throw new NoSuchElementException();
                     }
-                    Object[] elementData = ArrayListC.this.elementData;
+                    Object[] elementData = MyArrayList.this.elementData;
                     if (offset + i >= elementData.length) {
                         throw new ConcurrentModificationException();
                     }
@@ -890,7 +890,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
                         SubList.this.remove(lastRet);
                         cursor = lastRet;
                         lastRet = -1;
-                        expectedModCount = ArrayListC.this.modCount;
+                        expectedModCount = MyArrayList.this.modCount;
                     } catch (IndexOutOfBoundsException e) {
                         throw new ConcurrentModificationException();
                     }
@@ -904,7 +904,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
                     checkForComodification();
 
                     try {
-                        ArrayListC.this.set(offset + lastRet, element);
+                        MyArrayList.this.set(offset + lastRet, element);
                     } catch (IndexOutOfBoundsException e) {
                         throw new ConcurrentModificationException();
                     }
@@ -919,7 +919,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
                         SubList.this.add(i, element);
                         cursor = i + 1;
                         lastRet = -1;
-                        expectedModCount = ArrayListC.this.modCount;
+                        expectedModCount = MyArrayList.this.modCount;
                     } catch (IndexOutOfBoundsException e) {
                         throw new ConcurrentModificationException();
                     }
@@ -933,7 +933,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
                     if (i >= size) {
                         return;
                     }
-                    final Object[] elementData = ArrayListC.this.elementData;
+                    final Object[] elementData = MyArrayList.this.elementData;
                     if (offset + i >= elementData.length) {
                         throw new ConcurrentModificationException();
                     }
@@ -946,7 +946,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
                 }
 
                 final void checkForComodification() {
-                    if (expectedModCount != ArrayListC.this.modCount) {
+                    if (expectedModCount != MyArrayList.this.modCount) {
                         throw new ConcurrentModificationException();
                     }
                 }
@@ -977,7 +977,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
         }
 
         private void checkForComodification() {
-            if (ArrayListC.this.modCount != this.modCount) {
+            if (MyArrayList.this.modCount != this.modCount) {
                 throw new ConcurrentModificationException();
             }
         }
@@ -985,7 +985,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
         @Override
         public Spliterator<E> spliterator() {
             checkForComodification();
-            return new ArrayListSpliterator<E>(ArrayListC.this, offset, offset + this.size, this.modCount);
+            return new ArrayListSpliterator<E>(MyArrayList.this, offset, offset + this.size, this.modCount);
         }
 
     }
@@ -995,12 +995,12 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
      */
     static final class ArrayListSpliterator<E> implements Spliterator<E> {
 
-        private final ArrayListC<E> list;
+        private final MyArrayList<E> list;
         private int index;
         private int fence;
         private int expectedModCount;
 
-        ArrayListSpliterator(ArrayListC<E> list, int origin, int fence, int expectedModCount) {
+        ArrayListSpliterator(MyArrayList<E> list, int origin, int fence, int expectedModCount) {
             this.list = list;
             this.index = origin;
             this.fence = fence;
@@ -1009,7 +1009,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
 
         private int getFence() {
             int hi;
-            ArrayListC<E> lst;
+            MyArrayList<E> lst;
             if ((hi = fence) < 0) {
                 if ((lst = list) == null) {
                     hi = fence = 0;
@@ -1053,7 +1053,7 @@ public class ArrayListC<E> extends AbstractListC<E> implements List<E>, RandomAc
             int i;
             int hi;
             int mc;
-            ArrayListC<E> lst;
+            MyArrayList<E> lst;
             Object[] arr;
             if (null == action) {
                 throw new NullPointerException();

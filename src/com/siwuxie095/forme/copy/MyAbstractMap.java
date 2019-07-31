@@ -7,9 +7,9 @@ import java.util.*;
  * @author Jiajing Li
  * @date 2019-04-28 16:38:24
  */
-public abstract class AbstractMapC<K, V> implements MapC<K, V> {
+public abstract class MyAbstractMap<K, V> implements MyMap<K, V> {
 
-    protected AbstractMapC() {}
+    protected MyAbstractMap() {}
 
     @Override
     public int size() {
@@ -23,7 +23,7 @@ public abstract class AbstractMapC<K, V> implements MapC<K, V> {
 
     @Override
     public boolean containsKey(Object key) {
-        Iterator<MapC.Entry<K, V>> itr = entrySet().iterator();
+        Iterator<MyMap.Entry<K, V>> itr = entrySet().iterator();
         if (null == key) {
             while (itr.hasNext()) {
                 Entry<K, V> entry = itr.next();
@@ -44,7 +44,7 @@ public abstract class AbstractMapC<K, V> implements MapC<K, V> {
 
     @Override
     public boolean containsValue(Object value) {
-        Iterator<MapC.Entry<K, V>> itr = entrySet().iterator();
+        Iterator<MyMap.Entry<K, V>> itr = entrySet().iterator();
         if (null == value) {
             while (itr.hasNext()) {
                 Entry<K, V> entry = itr.next();
@@ -65,7 +65,7 @@ public abstract class AbstractMapC<K, V> implements MapC<K, V> {
 
     @Override
     public V get(Object key) {
-        Iterator<MapC.Entry<K, V>> itr = entrySet().iterator();
+        Iterator<MyMap.Entry<K, V>> itr = entrySet().iterator();
         if (null == key) {
             while (itr.hasNext()) {
                 Entry<K, V> entry = itr.next();
@@ -90,16 +90,16 @@ public abstract class AbstractMapC<K, V> implements MapC<K, V> {
     }
 
     @Override
-    public void putAll(MapC<? extends K, ? extends V> map) {
-        for (MapC.Entry<? extends K, ? extends V> entry : map.entrySet()) {
+    public void putAll(MyMap<? extends K, ? extends V> map) {
+        for (MyMap.Entry<? extends K, ? extends V> entry : map.entrySet()) {
             put(entry.getKey(), entry.getValue());
         }
     }
 
     @Override
     public V remove(Object key) {
-        Iterator<MapC.Entry<K, V>> itr = entrySet().iterator();
-        MapC.Entry<K, V> correctEntry = null;
+        Iterator<MyMap.Entry<K, V>> itr = entrySet().iterator();
+        MyMap.Entry<K, V> correctEntry = null;
         if (null == key) {
             while (null == correctEntry && itr.hasNext()) {
                 Entry<K, V> entry = itr.next();
@@ -163,22 +163,22 @@ public abstract class AbstractMapC<K, V> implements MapC<K, V> {
 
                 @Override
                 public int size() {
-                    return AbstractMapC.this.size();
+                    return MyAbstractMap.this.size();
                 }
 
                 @Override
                 public boolean isEmpty() {
-                    return AbstractMapC.this.isEmpty();
+                    return MyAbstractMap.this.isEmpty();
                 }
 
                 @Override
                 public void clear() {
-                    AbstractMapC.this.clear();
+                    MyAbstractMap.this.clear();
                 }
 
                 @Override
                 public boolean contains(Object k) {
-                    return AbstractMapC.this.containsKey(k);
+                    return MyAbstractMap.this.containsKey(k);
                 }
             };
             keySet = ks;
@@ -215,22 +215,22 @@ public abstract class AbstractMapC<K, V> implements MapC<K, V> {
 
                 @Override
                 public int size() {
-                    return AbstractMapC.this.size();
+                    return MyAbstractMap.this.size();
                 }
 
                 @Override
                 public boolean isEmpty() {
-                    return AbstractMapC.this.isEmpty();
+                    return MyAbstractMap.this.isEmpty();
                 }
 
                 @Override
                 public void clear() {
-                    AbstractMapC.this.clear();
+                    MyAbstractMap.this.clear();
                 }
 
                 @Override
                 public boolean contains(Object v) {
-                    return AbstractMapC.this.containsValue(v);
+                    return MyAbstractMap.this.containsValue(v);
                 }
             };
             values = vals;
@@ -257,10 +257,10 @@ public abstract class AbstractMapC<K, V> implements MapC<K, V> {
             return true;
         }
 
-        if (!(o instanceof MapC)) {
+        if (!(o instanceof MyMap)) {
             return false;
         }
-        MapC<?, ?> m = (MapC<?, ?>) o;
+        MyMap<?, ?> m = (MyMap<?, ?>) o;
         if (m.size() != size()) {
             return false;
         }
@@ -317,7 +317,7 @@ public abstract class AbstractMapC<K, V> implements MapC<K, V> {
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        AbstractMapC<?, ?> result = (AbstractMapC<?, ?>) super.clone();
+        MyAbstractMap<?, ?> result = (MyAbstractMap<?, ?>) super.clone();
         result.keySet = null;
         result.values = null;
         return result;
@@ -361,10 +361,10 @@ public abstract class AbstractMapC<K, V> implements MapC<K, V> {
 
         @Override
         public boolean equals(Object o) {
-            if (!(o instanceof MapC.Entry)) {
+            if (!(o instanceof MyMap.Entry)) {
                 return false;
             }
-            MapC.Entry<?, ?> entry = (Entry<?, ?>) o;
+            MyMap.Entry<?, ?> entry = (Entry<?, ?>) o;
             return eq(key, entry.getKey()) && eq(value, entry.getValue());
         }
 
@@ -413,10 +413,10 @@ public abstract class AbstractMapC<K, V> implements MapC<K, V> {
 
         @Override
         public boolean equals(Object o) {
-            if (!(o instanceof MapC.Entry)) {
+            if (!(o instanceof MyMap.Entry)) {
                 return false;
             }
-            MapC.Entry<?, ?> entry = (Entry<?, ?>) o;
+            MyMap.Entry<?, ?> entry = (Entry<?, ?>) o;
             return eq(key, entry.getKey()) && eq(value, entry.getValue());
 
         }

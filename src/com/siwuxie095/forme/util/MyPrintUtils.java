@@ -8,10 +8,10 @@ package com.siwuxie095.forme.util;
  * @author Jiajing Li
  * @date 2019-01-09 17:17:27
  */
-public final class PrintX {
+public final class MyPrintUtils {
 
-    private PrintX() {
-        throw new AssertionError("There is no PrintX instance for you!");
+    private MyPrintUtils() {
+        throw new AssertionError("There is no MyPrintUtils instance for you!");
     }
 
     ///**

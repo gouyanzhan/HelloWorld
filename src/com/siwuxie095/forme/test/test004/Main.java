@@ -1,9 +1,9 @@
 package com.siwuxie095.forme.test.test004;
 
-import com.siwuxie095.forme.util.ArrayX;
-import com.siwuxie095.forme.util.ListX;
-import com.siwuxie095.forme.util.PrintX;
-import com.siwuxie095.forme.util.StringX;
+import com.siwuxie095.forme.util.MyArrayUtils;
+import com.siwuxie095.forme.util.MyListUtils;
+import com.siwuxie095.forme.util.MyPrintUtils;
+import com.siwuxie095.forme.util.MyStringUtils;
 import org.junit.Test;
 
 import java.util.List;
@@ -22,23 +22,23 @@ public class Main {
 
     @Test
     public void testListX() {
-        List<Integer> intList = ListX.newArrayList();
+        List<Integer> intList = MyListUtils.newArrayList();
         intList.add(1);
         intList.add(2);
         intList.add(3);
-        PrintX.println(intList);
-        PrintX.println(ListX.isEmpty(intList));
-        PrintX.println(ListX.nonEmpty(intList));
-        PrintX.printSplitLine();
+        MyPrintUtils.println(intList);
+        MyPrintUtils.println(MyListUtils.isEmpty(intList));
+        MyPrintUtils.println(MyListUtils.nonEmpty(intList));
+        MyPrintUtils.printSplitLine();
 
-        List<String> strList = ListX.newArrayList();
+        List<String> strList = MyListUtils.newArrayList();
         strList.add("红");
         strList.add("黄");
         strList.add("蓝");
-        PrintX.println(strList);
-        PrintX.println(ListX.isEmpty(strList));
-        PrintX.println(ListX.nonEmpty(strList));
-        PrintX.printSplitLine();
+        MyPrintUtils.println(strList);
+        MyPrintUtils.println(MyListUtils.isEmpty(strList));
+        MyPrintUtils.println(MyListUtils.nonEmpty(strList));
+        MyPrintUtils.printSplitLine();
 
         User user1 = new User();
         user1.setId(111);
@@ -49,21 +49,21 @@ public class Main {
         User user3 = new User();
         user3.setId(333);
         user3.setName("小蓝");
-        List<User> userList = ListX.newArrayList();
+        List<User> userList = MyListUtils.newArrayList();
         userList.add(user1);
         userList.add(user2);
         userList.add(user3);
-        PrintX.println(userList);
-        PrintX.println(ListX.isEmpty(userList));
-        PrintX.println(ListX.nonEmpty(userList));
+        MyPrintUtils.println(userList);
+        MyPrintUtils.println(MyListUtils.isEmpty(userList));
+        MyPrintUtils.println(MyListUtils.nonEmpty(userList));
     }
 
     @Test
     public void testArrayX() {
         int[] intArr = {1, 2};
-        PrintX.println(ArrayX.isEmpty(intArr));
+        MyPrintUtils.println(MyArrayUtils.isEmpty(intArr));
         Integer[] boxedIntArr = {1, 2};
-        PrintX.println(ArrayX.isEmpty(boxedIntArr));
+        MyPrintUtils.println(MyArrayUtils.isEmpty(boxedIntArr));
     }
 
     @Test
@@ -72,54 +72,54 @@ public class Main {
         String str2 = "2";
         String[] strArr1 = {"1", "1"};
         String[] strArr2 = {"1", null};
-        PrintX.println(StringX.isEmpty(str1));
-        PrintX.println(StringX.nonEmpty(str1));
-        PrintX.printSplitLine();
+        MyPrintUtils.println(MyStringUtils.isEmpty(str1));
+        MyPrintUtils.println(MyStringUtils.nonEmpty(str1));
+        MyPrintUtils.printSplitLine();
 
-        PrintX.println(StringX.isAllEmpty());
-        PrintX.println(StringX.isAnyEmpty());
-        PrintX.println(StringX.isNoneEmpty());
-        PrintX.printSplitLine();
+        MyPrintUtils.println(MyStringUtils.isAllEmpty());
+        MyPrintUtils.println(MyStringUtils.isAnyEmpty());
+        MyPrintUtils.println(MyStringUtils.isNoneEmpty());
+        MyPrintUtils.printSplitLine();
 
-        PrintX.println(StringX.isAllEmpty(null));
-        PrintX.println(StringX.isAnyEmpty(null));
-        PrintX.println(StringX.isNoneEmpty(null));
-        PrintX.printSplitLine();
+        MyPrintUtils.println(MyStringUtils.isAllEmpty(null));
+        MyPrintUtils.println(MyStringUtils.isAnyEmpty(null));
+        MyPrintUtils.println(MyStringUtils.isNoneEmpty(null));
+        MyPrintUtils.printSplitLine();
 
-        PrintX.println(StringX.isAllEmpty(null, null));
-        PrintX.println(StringX.isAnyEmpty(null, null));
-        PrintX.println(StringX.isNoneEmpty(null, null));
-        PrintX.printSplitLine();
+        MyPrintUtils.println(MyStringUtils.isAllEmpty(null, null));
+        MyPrintUtils.println(MyStringUtils.isAnyEmpty(null, null));
+        MyPrintUtils.println(MyStringUtils.isNoneEmpty(null, null));
+        MyPrintUtils.printSplitLine();
 
-        PrintX.println(StringX.isAllEmpty(null, str1));
-        PrintX.println(StringX.isAnyEmpty(null, str1));
-        PrintX.println(StringX.isNoneEmpty(null, str1));
-        PrintX.printSplitLine();
+        MyPrintUtils.println(MyStringUtils.isAllEmpty(null, str1));
+        MyPrintUtils.println(MyStringUtils.isAnyEmpty(null, str1));
+        MyPrintUtils.println(MyStringUtils.isNoneEmpty(null, str1));
+        MyPrintUtils.printSplitLine();
 
-        PrintX.println(StringX.isAllEmpty(str1, str2));
-        PrintX.println(StringX.isAnyEmpty(str1, str2));
-        PrintX.println(StringX.isNoneEmpty(str1, str2));
-        PrintX.printSplitLine();
+        MyPrintUtils.println(MyStringUtils.isAllEmpty(str1, str2));
+        MyPrintUtils.println(MyStringUtils.isAnyEmpty(str1, str2));
+        MyPrintUtils.println(MyStringUtils.isNoneEmpty(str1, str2));
+        MyPrintUtils.printSplitLine();
 
-        PrintX.println(StringX.isAllEmpty(strArr1));
-        PrintX.println(StringX.isAnyEmpty(strArr1));
-        PrintX.println(StringX.isNoneEmpty(strArr1));
-        PrintX.printSplitLine();
+        MyPrintUtils.println(MyStringUtils.isAllEmpty(strArr1));
+        MyPrintUtils.println(MyStringUtils.isAnyEmpty(strArr1));
+        MyPrintUtils.println(MyStringUtils.isNoneEmpty(strArr1));
+        MyPrintUtils.printSplitLine();
 
-        PrintX.println(StringX.isAllEmpty(strArr2));
-        PrintX.println(StringX.isAnyEmpty(strArr2));
-        PrintX.println(StringX.isNoneEmpty(strArr2));
-        PrintX.printSplitLine();
+        MyPrintUtils.println(MyStringUtils.isAllEmpty(strArr2));
+        MyPrintUtils.println(MyStringUtils.isAnyEmpty(strArr2));
+        MyPrintUtils.println(MyStringUtils.isNoneEmpty(strArr2));
+        MyPrintUtils.printSplitLine();
 
         CharSequence cs1 = "123";
         CharSequence cs2 = "1234";
-        PrintX.println(StringX.isBlank(cs1));
-        //PrintX.println(StringX.equals(cs1, cs2));
+        MyPrintUtils.println(MyStringUtils.isBlank(cs1));
+        //MyPrintUtils.println(MyStringUtils.equals(cs1, cs2));
 
         String str = " abc ";
         System.out.println(str.length());
-        String trim = StringX.trim(str);
-        PrintX.println(trim);
+        String trim = MyStringUtils.trim(str);
+        MyPrintUtils.println(trim);
         System.out.println(trim.length());
     }
 
