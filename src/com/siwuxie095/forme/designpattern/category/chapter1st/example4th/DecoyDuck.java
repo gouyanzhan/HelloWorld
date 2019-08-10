@@ -8,7 +8,7 @@ package com.siwuxie095.forme.designpattern.category.chapter1st.example4th;
  */
 class DecoyDuck extends Duck {
 
-    public DecoyDuck() {
+    DecoyDuck() {
         flyBehavior = new FlyNoWay();
         quackBehavior = new MuteQuack();
     }

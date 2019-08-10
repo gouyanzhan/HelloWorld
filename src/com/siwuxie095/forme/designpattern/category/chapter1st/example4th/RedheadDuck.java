@@ -8,7 +8,7 @@ package com.siwuxie095.forme.designpattern.category.chapter1st.example4th;
  */
 class RedheadDuck extends Duck {
 
-    public RedheadDuck() {
+    RedheadDuck() {
         flyBehavior = new FlyWithWings();
         quackBehavior = new Quack();
     }

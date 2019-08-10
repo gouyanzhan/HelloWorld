@@ -8,7 +8,7 @@ package com.siwuxie095.forme.designpattern.category.chapter1st.example4th;
  */
 class RubberDuck extends Duck {
 
-    public RubberDuck() {
+    RubberDuck() {
         flyBehavior = new FlyNoWay();
         quackBehavior = new Squeak();
     }

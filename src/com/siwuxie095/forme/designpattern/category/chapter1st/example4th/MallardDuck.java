@@ -8,7 +8,7 @@ package com.siwuxie095.forme.designpattern.category.chapter1st.example4th;
  */
 class MallardDuck extends Duck {
 
-    public MallardDuck() {
+    MallardDuck() {
         flyBehavior = new FlyWithWings();
         quackBehavior = new Quack();
     }
