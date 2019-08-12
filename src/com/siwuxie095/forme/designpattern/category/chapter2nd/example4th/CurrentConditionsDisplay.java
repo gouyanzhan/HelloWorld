@@ -9,7 +9,7 @@ import java.util.Observer;
  * @author Jiajing Li
  * @date 2019-08-11 17:07:39
  */
-public class CurrentConditionsDisplay implements Observer, DisplayElement {
+class CurrentConditionsDisplay implements Observer, DisplayElement {
 
     private Observable observable;
 

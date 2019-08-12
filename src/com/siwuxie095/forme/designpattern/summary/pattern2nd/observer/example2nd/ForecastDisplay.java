@@ -1,4 +1,4 @@
-package com.siwuxie095.forme.designpattern.category.chapter2nd.example4th;
+package com.siwuxie095.forme.designpattern.summary.pattern2nd.observer.example2nd;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -7,7 +7,7 @@ import java.util.Observer;
  * 天气预报布告
  *
  * @author Jiajing Li
- * @date 2019-08-11 17:16:14
+ * @date 2019-08-12 23:41:05
  */
 class ForecastDisplay implements Observer, DisplayElement {
 
@@ -39,3 +39,4 @@ class ForecastDisplay implements Observer, DisplayElement {
                 + "\nAvg/Max/Min temperature = " + temperature);
     }
 }
+

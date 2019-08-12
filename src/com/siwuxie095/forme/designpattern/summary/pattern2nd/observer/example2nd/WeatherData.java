@@ -1,4 +1,4 @@
-package com.siwuxie095.forme.designpattern.category.chapter2nd.example4th;
+package com.siwuxie095.forme.designpattern.summary.pattern2nd.observer.example2nd;
 
 import java.util.Observable;
 
@@ -6,7 +6,7 @@ import java.util.Observable;
  * 气象站的天气数据
  *
  * @author Jiajing Li
- * @date 2019-08-11 16:39:01
+ * @date 2019-08-12 23:29:59
  */
 class WeatherData extends Observable {
 
@@ -44,3 +44,4 @@ class WeatherData extends Observable {
         return pressure;
     }
 }
+
