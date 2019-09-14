@@ -16,7 +16,7 @@ class Tiger extends Animal {
     @Override   //方法覆写
     void breath() {
         //通过super关键字调用父类的breath方法
-        super.breath();  //调用动物类的呼吸方法
+     //   super.breath();  //调用动物类的呼吸方法
         System.out.println("老虎是用肺呼吸的");
     }
 }

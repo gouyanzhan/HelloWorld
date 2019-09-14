@@ -6,19 +6,25 @@ package com.gouyanzhan.six.example3;
  */
 public class DynamicMethodDemo2 {
     public static void main(String[] args){
-        Animal []animal = new Animal[3];
+        Animal[] animal = new Animal[3];
         animal[0] = new Animal();
         animal[1] = new Tiger();
         animal[2] = new Fish();
         DynamicMethodDemo2 dm  = new DynamicMethodDemo2();
         dm.move(animal[0]);
+        System.out.println();
         dm.move(animal[1]);
+        System.out.println();
         dm.move(animal[2]);
+    //    Animal1 z = new Animal1();
+
     }
     void move(Animal animal){
         //进行对象类型的判断
-        if (animal instanceof Tiger){
+        if (animal  instanceof Tiger){
+            animal.breath();
             ((Tiger)animal).tigerRun();
+        //    ((Tiger)animal).tigerRun();
         }
         else if (animal instanceof Fish) {
             ((Fish) animal).swim();
