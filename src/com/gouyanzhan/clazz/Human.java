@@ -5,6 +5,7 @@ package com.gouyanzhan.clazz;
  * @date 2019-03-09 17:06:29
  */
 public class Human {
+    // 1
     //声明各类变量来描述类的属性
     String name;
     String sex;
