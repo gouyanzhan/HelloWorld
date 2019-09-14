@@ -25,6 +25,10 @@ class C extends B{
 public class CallConstructor {
     public static void main(String[] args){
         C c = new C();
+        System.out.println();
+        B b = new B();
+        System.out.println();
+        A a = new A();
     }
     
 

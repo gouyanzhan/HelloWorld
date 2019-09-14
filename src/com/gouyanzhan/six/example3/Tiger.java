@@ -10,6 +10,7 @@ class Tiger extends Animal {
 
     //Tiger自己的方法
     void tigerRun() {
+       // super.eat();
         System.out.println("老虎在奔跑");
     }
 
@@ -17,6 +18,7 @@ class Tiger extends Animal {
     void breath() {
         //通过super关键字调用父类的breath方法
         super.breath();  //调用动物类的呼吸方法
+        super.sleep();
         System.out.println("老虎是用肺呼吸的");
     }
 }
