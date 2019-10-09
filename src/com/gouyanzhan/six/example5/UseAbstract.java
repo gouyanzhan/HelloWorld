@@ -23,7 +23,8 @@ public class UseAbstract {
         int h = Integer.parseInt("123-");
         Integer i = Integer.valueOf("123");
 
-
+        // 2
+        // 1
         //b.toString
         Animal animal2 = new Tiger();
         animal2.breath();
