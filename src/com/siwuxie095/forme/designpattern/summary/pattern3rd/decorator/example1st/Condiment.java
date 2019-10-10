@@ -1,4 +1,4 @@
-package com.siwuxie095.forme.designpattern.category.chapter3rd.example5th;
+package com.siwuxie095.forme.designpattern.summary.pattern3rd.decorator.example1st;
 
 /**
  * 调料（装饰者）
@@ -28,8 +28,6 @@ abstract class Condiment extends Beverage {
     public abstract String getDescription();
 
     /**
-     * 将 getSize() 方法传播到被包装的饮料，以获取容量
-     *
      * 递归调用，获取最终结果
      */
     @Override

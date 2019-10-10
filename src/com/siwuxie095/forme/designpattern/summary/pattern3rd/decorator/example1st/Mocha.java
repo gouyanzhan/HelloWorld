@@ -1,4 +1,4 @@
-package com.siwuxie095.forme.designpattern.category.chapter3rd.example5th;
+package com.siwuxie095.forme.designpattern.summary.pattern3rd.decorator.example1st;
 
 /**
  * 摩卡（具体装饰者）
@@ -24,4 +24,5 @@ class Mocha extends Condiment {
     public double cost() {
         return beverage.cost() + 2.5 + getCostBySize();
     }
+
 }

@@ -1,4 +1,4 @@
-package com.siwuxie095.forme.designpattern.category.chapter3rd.example5th;
+package com.siwuxie095.forme.designpattern.summary.pattern3rd.decorator.example1st;
 
 /**
  * 豆浆（具体装饰者）

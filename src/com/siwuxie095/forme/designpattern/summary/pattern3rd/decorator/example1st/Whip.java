@@ -1,4 +1,4 @@
-package com.siwuxie095.forme.designpattern.category.chapter3rd.example5th;
+package com.siwuxie095.forme.designpattern.summary.pattern3rd.decorator.example1st;
 
 /**
  * 奶泡（具体装饰者）
@@ -8,13 +8,13 @@ package com.siwuxie095.forme.designpattern.category.chapter3rd.example5th;
  */
 class Whip extends Condiment {
 
+    /**
+     * 递归调用，获取最终结果
+     */
     Whip(Beverage beverage) {
         this.beverage = beverage;
     }
 
-    /**
-     * 递归调用，获取最终结果
-     */
     @Override
     public String getDescription() {
         return beverage.getDescription() + ", Whip";
