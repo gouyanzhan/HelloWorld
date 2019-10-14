@@ -57,7 +57,8 @@ public class Main {
      * （5）工厂方法模式：创建一个产品；抽象工厂模式：创建产品家族。
      */
     public static void main(String[] args) {
-
+        AbstractFactory factory = new ConcreteFactory1st();
+        Client client = new Client(factory);
     }
 
 }
