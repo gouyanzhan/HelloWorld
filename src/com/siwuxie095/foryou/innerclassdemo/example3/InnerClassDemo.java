@@ -7,6 +7,8 @@ package com.siwuxie095.foryou.innerclassdemo.example3;
  */
 public class InnerClassDemo {
 
+
+
     public static void main(String[] args) {
         print();
     }

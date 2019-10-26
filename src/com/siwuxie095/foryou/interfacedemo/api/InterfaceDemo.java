@@ -55,6 +55,7 @@ public interface InterfaceDemo {
 
     public static final double CONST_C = 3.0;
 
+
     String getDemo(int i);
 
     void setDemo(int i);

@@ -13,12 +13,25 @@ public class Main {
         user.setAge(20);
         user.setAddress("China");
         System.out.println("Jack's info: " + user);
+        //System.out.println("Jack's info: " + user.toString());
 
         System.out.println();
         User user0 = user;
         user0.setName("Tom");
         System.out.println("Tom's info: " + user0);
         System.out.println("Jack's info: " + user);
+
+        User user1 = new User();
+        user1.setId(user.getId());
+        user1.setName(user.getName());
+        user1.setAge(user.getAge());
+        user1.setAddress(user.getAddress());
+
+        user1.setName("Jim");
+
+        //Integer i = 1;
+        //System.out.println(i);
+        //System.out.println(i.toString());
     }
 
 }

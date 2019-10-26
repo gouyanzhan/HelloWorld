@@ -55,7 +55,9 @@ public class InterfaceDemoTest {
         String param = "123";
         boolean result = interfaceDemo.saveDemo(param);
         Assert.assertTrue(result);
+        //Assert.assertEquals(true, result);
         //Assert.assertFalse(result);
+
     }
 
     @Test
