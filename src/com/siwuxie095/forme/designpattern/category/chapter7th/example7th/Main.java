@@ -24,7 +24,7 @@ public class Main {
      *
      *
      * 九个 OO 原则之第七个设计原则：
-     * 只和你的密友谈话
+     * 只和你的密友谈话。
      *
      * 也即 最少知识（Least Knowledge）原则
      *
