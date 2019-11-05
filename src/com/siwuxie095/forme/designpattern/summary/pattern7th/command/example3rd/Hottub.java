@@ -6,7 +6,7 @@ package com.siwuxie095.forme.designpattern.summary.pattern7th.command.example3rd
  * @author Jiajing Li
  * @date 2019-10-29 17:40:41
  */
-public class Hottub {
+class Hottub {
 
     /**
      * 温度

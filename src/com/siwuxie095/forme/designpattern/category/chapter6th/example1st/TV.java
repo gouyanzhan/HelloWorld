@@ -6,7 +6,7 @@ package com.siwuxie095.forme.designpattern.category.chapter6th.example1st;
  * @author Jiajing Li
  * @date 2019-10-27 16:05:04
  */
-public class TV {
+class TV {
 
     /**
      * 输入信道
