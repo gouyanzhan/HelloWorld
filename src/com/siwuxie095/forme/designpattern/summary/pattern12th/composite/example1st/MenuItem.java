@@ -25,13 +25,16 @@ class MenuItem extends MenuComponent {
     private String description;
 
     /**
-     *
+     * 是否素食
      */
     private boolean vegetarian;
 
+    /**
+     * 价格
+     */
     private double price;
 
-    public MenuItem(String name,
+    MenuItem(String name,
                     String description,
                     boolean vegetarian,
                     double price) {

@@ -28,7 +28,7 @@ class MenuItem {
      */
     private double price;
 
-    public MenuItem(String name,
+    MenuItem(String name,
                     String description,
                     boolean vegetarian,
                     double price) {
