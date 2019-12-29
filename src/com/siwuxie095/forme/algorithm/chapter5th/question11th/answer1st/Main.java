@@ -8,7 +8,7 @@ package com.siwuxie095.forme.algorithm.chapter5th.question11th.answer1st;
  *
  * 比如：
  * 如果把 charArr 看作字符串 "dog loves pig"，调整成 "pig loves dog"。
- * 如果把 charArr 看作字符串 "I'm a student."，调整成 "student. a I'm"。
+ * 如果把 charArr 看作字符串 "I'm a studentInfo."，调整成 "studentInfo. a I'm"。
  *
  * 补充题目：
  * 给定一个字符类型的数组 charArr 和一个整数 size，请把大小为 size 的左半区整体移到右半区，右半区整体移到
@@ -58,7 +58,7 @@ public class Main {
 
     public static void main(String[] args) {
         Rotate.rotateWord("dog loves pig".toCharArray());
-        Rotate.rotateWord("I'm a student.".toCharArray());
+        Rotate.rotateWord("I'm a studentInfo.".toCharArray());
         System.out.println();
         Rotate.rotate1("1234567ABCD".toCharArray(), 7);
         Rotate.rotate2("1234567ABCD".toCharArray(), 7);

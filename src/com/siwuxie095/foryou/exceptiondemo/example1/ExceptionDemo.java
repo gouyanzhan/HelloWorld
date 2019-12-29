@@ -36,7 +36,7 @@ public class ExceptionDemo {
      * （5）...
      */
     public static void main(String[] args) {
-        
+
         uncheckedEx();
         
         checkedEx();
@@ -46,9 +46,9 @@ public class ExceptionDemo {
     }
 
     private static void uncheckedEx() {
-        //nullPointer();
+        nullPointer();
         //arithmetic();
-        arrayIndexOutOfBounds();
+        //arrayIndexOutOfBounds();
     }
 
     private static void nullPointer() {

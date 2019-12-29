@@ -99,6 +99,8 @@ public class ExceptionDemo {
         } catch (Exception e) {
             System.out.println("fileNotFound 中产生了异常，无法打印");
             e.printStackTrace();
+        } finally {
+
         }
 
     }
