@@ -13,7 +13,7 @@ public class Main {
 
     /**
      * 说明的问题：
-     * 虽然在 forEach 中无法使用 continue/break 语句，但是可以使用 return 作为替代。
+     * 1、虽然在 forEach 中无法使用 continue/break 语句，但是可以使用 return 作为替代。
      */
     public static void main(String[] args) {
         List<String> outerList = Arrays.asList("1", "2", "3", null, "4", "5");

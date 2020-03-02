@@ -8,7 +8,7 @@ public class Main {
 
     /**
      * 说明的问题：
-     * 静态代码块的加载顺序，以及在继承中，构造函数的加载顺序。
+     * 1、静态代码块的加载顺序，以及在继承中，构造函数的加载顺序。
      */
     public static void main(String[] args) {
         A a = new B();
