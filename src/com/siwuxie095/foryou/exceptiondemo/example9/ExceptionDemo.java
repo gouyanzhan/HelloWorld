@@ -38,7 +38,7 @@ public class ExceptionDemo {
             System.out.println(i);
         } catch (Exception e) {
             System.out.println("arithmetic 中产生了异常，抛出该异常");
-            throw new CustomizedCheckedException("产生了自定义的非检查异常");
+            throw new CustomizedCheckedException("产生了自定义的检查异常");
         }
 
     }

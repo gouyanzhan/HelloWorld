@@ -30,7 +30,7 @@ public class ExceptionDemo {
     }
 
     private static void uncheckedEx() throws NullPointerException, ArithmeticException, ArrayIndexOutOfBoundsException, Exception {
-        nullPointer();
+        //nullPointer();
         arithmetic();
         arrayIndexOutOfBounds();
     }
