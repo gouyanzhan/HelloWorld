@@ -456,7 +456,8 @@ public class MyArrayList<E> extends MyAbstractList<E> implements List<E>, Random
 
         if (size > 0) {
             int capacity = calculateCapacity(elementData, size);
-            SharedSecrets.getJavaOISAccess().checkArray(stream, Object[].class, capacity);
+            // todo 先注释掉
+            //SharedSecrets.getJavaOISAccess().checkArray(stream, Object[].class, capacity);
             ensureCapacityInternal(size);
 
             Object[] arr = elementData;

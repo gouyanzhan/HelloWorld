@@ -23,6 +23,8 @@ public class Main {
         System.out.println(d.toString());
         BigDecimal e = new BigDecimal("10.0000");
         System.out.println(e.toString());
+        String abc = "abcde";
+        System.out.println(abc.substring(3));
     }
 
 }

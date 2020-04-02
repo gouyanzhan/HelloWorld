@@ -807,7 +807,8 @@ public class MyHashMap<K, V> extends MyAbstractMap<K, V> implements MyMap<K, V>,
             float ft = (float) cap * lf;
             threshold = cap < MAXIMUM_CAPACITY && ft < MAXIMUM_CAPACITY ? (int) ft : Integer.MAX_VALUE;
 
-            SharedSecrets.getJavaOISAccess().checkArray(stream, MyMap.Entry[].class, cap);
+            // todo 先注释掉
+            //SharedSecrets.getJavaOISAccess().checkArray(stream, MyMap.Entry[].class, cap);
             Node<K, V>[] tab = (Node<K, V>[]) new Node[cap];
             table = tab;
 
