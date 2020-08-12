@@ -8,7 +8,10 @@ import java.io.StringWriter;
  * @date 2020-08-10 17:41:54
  */
 public class Main {
-
+    /**
+     * 说明的问题：
+     * 1、将 StackTrace 输出为 String。
+     */
     public static void main(String[] args) {
         try {
             nested1();
