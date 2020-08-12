@@ -4,6 +4,7 @@ package com.siwuxie095.forme.test.test047;
  * @author Jiajing Li
  * @date 2020-08-12 16:09:38
  */
+@SuppressWarnings("all")
 public class Main {
     /**
      * 说明的问题：
@@ -21,6 +22,20 @@ public class Main {
         wrapper1.str.set("11111");
         System.out.println(wrapper2.str.get());
         System.out.println(wrapper1.str.get());
+        print111(true);
     }
+
+    private static void print111(boolean a) {
+        try {
+            if (a) {
+                System.out.println("BBB");
+                return;
+            }
+            System.out.println("CCC");
+        } finally {
+            System.out.println("AAA");
+        }
+    }
+
 
 }
